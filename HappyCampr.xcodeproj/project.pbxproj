@@ -17,6 +17,16 @@
 		F116416413D0736200A528F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F116416213D0736200A528F8 /* InfoPlist.strings */; };
 		F116416713D0736200A528F8 /* HappyCamprTests.h in Resources */ = {isa = PBXBuildFile; fileRef = F116416613D0736200A528F8 /* HappyCamprTests.h */; };
 		F116416913D0736200A528F8 /* HappyCamprTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F116416813D0736200A528F8 /* HappyCamprTests.m */; };
+		F116417313D0737600A528F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F116417213D0737600A528F8 /* SystemConfiguration.framework */; };
+		F116417513D0738100A528F8 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F116417413D0738100A528F8 /* libz.1.2.3.dylib */; };
+		F116417713D0738F00A528F8 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F116417613D0738F00A528F8 /* CoreServices.framework */; };
+		F11641CC13D0739D00A528F8 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F116417D13D0739D00A528F8 /* ASIDataCompressor.m */; };
+		F11641CD13D0739D00A528F8 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F116417F13D0739D00A528F8 /* ASIDataDecompressor.m */; };
+		F11641CE13D0739D00A528F8 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418113D0739D00A528F8 /* ASIDownloadCache.m */; };
+		F11641CF13D0739D00A528F8 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418313D0739D00A528F8 /* ASIFormDataRequest.m */; };
+		F11641D013D0739D00A528F8 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418513D0739D00A528F8 /* ASIHTTPRequest.m */; };
+		F11641D113D0739D00A528F8 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418913D0739D00A528F8 /* ASIInputStream.m */; };
+		F11641D213D0739D00A528F8 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418B13D0739D00A528F8 /* ASINetworkQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +45,43 @@
 		F116414113D0736200A528F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F116414213D0736200A528F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F116414313D0736200A528F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F116414613D0736200A528F8 /* HappyCampr-Info.plist */ = {isa = PBXFileReference; path = "HappyCampr-Info.plist"; sourceTree = "<group>"; };
+		F116414613D0736200A528F8 /* HappyCampr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HappyCampr-Info.plist"; sourceTree = "<group>"; };
 		F116414813D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F116414A13D0736200A528F8 /* HappyCampr-Prefix.pch */ = {isa = PBXFileReference; path = "HappyCampr-Prefix.pch"; sourceTree = "<group>"; };
+		F116414A13D0736200A528F8 /* HappyCampr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HappyCampr-Prefix.pch"; sourceTree = "<group>"; };
 		F116414B13D0736200A528F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F116414E13D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		F116415013D0736200A528F8 /* HappyCamprAppDelegate.h */ = {isa = PBXFileReference; path = HappyCamprAppDelegate.h; sourceTree = "<group>"; };
+		F116415013D0736200A528F8 /* HappyCamprAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappyCamprAppDelegate.h; sourceTree = "<group>"; };
 		F116415113D0736200A528F8 /* HappyCamprAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyCamprAppDelegate.m; sourceTree = "<group>"; };
 		F116415413D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F116415B13D0736200A528F8 /* HappyCamprTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyCamprTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F116416113D0736200A528F8 /* HappyCamprTests-Info.plist */ = {isa = PBXFileReference; path = "HappyCamprTests-Info.plist"; sourceTree = "<group>"; };
+		F116416113D0736200A528F8 /* HappyCamprTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HappyCamprTests-Info.plist"; sourceTree = "<group>"; };
 		F116416313D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F116416513D0736200A528F8 /* HappyCamprTests-Prefix.pch */ = {isa = PBXFileReference; path = "HappyCamprTests-Prefix.pch"; sourceTree = "<group>"; };
+		F116416513D0736200A528F8 /* HappyCamprTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HappyCamprTests-Prefix.pch"; sourceTree = "<group>"; };
 		F116416613D0736200A528F8 /* HappyCamprTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappyCamprTests.h; sourceTree = "<group>"; };
 		F116416813D0736200A528F8 /* HappyCamprTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyCamprTests.m; sourceTree = "<group>"; };
+		F116417213D0737600A528F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F116417413D0738100A528F8 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		F116417613D0738F00A528F8 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		F116417913D0739D00A528F8 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		F116417A13D0739D00A528F8 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		F116417B13D0739D00A528F8 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		F116417C13D0739D00A528F8 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		F116417D13D0739D00A528F8 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		F116417E13D0739D00A528F8 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		F116417F13D0739D00A528F8 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		F116418013D0739D00A528F8 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		F116418113D0739D00A528F8 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		F116418213D0739D00A528F8 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		F116418313D0739D00A528F8 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		F116418413D0739D00A528F8 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		F116418513D0739D00A528F8 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		F116418613D0739D00A528F8 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		F116418713D0739D00A528F8 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		F116418813D0739D00A528F8 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		F116418913D0739D00A528F8 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		F116418A13D0739D00A528F8 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		F116418B13D0739D00A528F8 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		F116418C13D0739D00A528F8 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +89,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F116417713D0738F00A528F8 /* CoreServices.framework in Frameworks */,
+				F116417513D0738100A528F8 /* libz.1.2.3.dylib in Frameworks */,
+				F116417313D0737600A528F8 /* SystemConfiguration.framework in Frameworks */,
 				F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +110,9 @@
 		F116412F13D0736200A528F8 = {
 			isa = PBXGroup;
 			children = (
+				F116417613D0738F00A528F8 /* CoreServices.framework */,
+				F116417413D0738100A528F8 /* libz.1.2.3.dylib */,
+				F116417213D0737600A528F8 /* SystemConfiguration.framework */,
 				F116414413D0736200A528F8 /* HappyCampr */,
 				F116415F13D0736200A528F8 /* HappyCamprTests */,
 				F116413D13D0736200A528F8 /* Frameworks */,
@@ -112,6 +151,7 @@
 		F116414413D0736200A528F8 /* HappyCampr */ = {
 			isa = PBXGroup;
 			children = (
+				F116417813D0739D00A528F8 /* ASIHTTPRequest */,
 				F116415013D0736200A528F8 /* HappyCamprAppDelegate.h */,
 				F116415113D0736200A528F8 /* HappyCamprAppDelegate.m */,
 				F116415313D0736200A528F8 /* MainMenu.xib */,
@@ -150,6 +190,34 @@
 				F116416513D0736200A528F8 /* HappyCamprTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F116417813D0739D00A528F8 /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				F116417913D0739D00A528F8 /* ASIAuthenticationDialog.h */,
+				F116417A13D0739D00A528F8 /* ASIAuthenticationDialog.m */,
+				F116417B13D0739D00A528F8 /* ASICacheDelegate.h */,
+				F116417C13D0739D00A528F8 /* ASIDataCompressor.h */,
+				F116417D13D0739D00A528F8 /* ASIDataCompressor.m */,
+				F116417E13D0739D00A528F8 /* ASIDataDecompressor.h */,
+				F116417F13D0739D00A528F8 /* ASIDataDecompressor.m */,
+				F116418013D0739D00A528F8 /* ASIDownloadCache.h */,
+				F116418113D0739D00A528F8 /* ASIDownloadCache.m */,
+				F116418213D0739D00A528F8 /* ASIFormDataRequest.h */,
+				F116418313D0739D00A528F8 /* ASIFormDataRequest.m */,
+				F116418413D0739D00A528F8 /* ASIHTTPRequest.h */,
+				F116418513D0739D00A528F8 /* ASIHTTPRequest.m */,
+				F116418613D0739D00A528F8 /* ASIHTTPRequestConfig.h */,
+				F116418713D0739D00A528F8 /* ASIHTTPRequestDelegate.h */,
+				F116418813D0739D00A528F8 /* ASIInputStream.h */,
+				F116418913D0739D00A528F8 /* ASIInputStream.m */,
+				F116418A13D0739D00A528F8 /* ASINetworkQueue.h */,
+				F116418B13D0739D00A528F8 /* ASINetworkQueue.m */,
+				F116418C13D0739D00A528F8 /* ASIProgressDelegate.h */,
+			);
+			name = ASIHTTPRequest;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +327,13 @@
 			files = (
 				F116414C13D0736200A528F8 /* main.m in Sources */,
 				F116415213D0736200A528F8 /* HappyCamprAppDelegate.m in Sources */,
+				F11641CC13D0739D00A528F8 /* ASIDataCompressor.m in Sources */,
+				F11641CD13D0739D00A528F8 /* ASIDataDecompressor.m in Sources */,
+				F11641CE13D0739D00A528F8 /* ASIDownloadCache.m in Sources */,
+				F11641CF13D0739D00A528F8 /* ASIFormDataRequest.m in Sources */,
+				F11641D013D0739D00A528F8 /* ASIHTTPRequest.m in Sources */,
+				F11641D113D0739D00A528F8 /* ASIInputStream.m in Sources */,
+				F11641D213D0739D00A528F8 /* ASINetworkQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
