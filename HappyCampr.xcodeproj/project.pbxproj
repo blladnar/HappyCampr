@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F116413E13D0736200A528F8 /* Cocoa.framework */; };
+		F116414913D0736200A528F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F116414713D0736200A528F8 /* InfoPlist.strings */; };
+		F116414C13D0736200A528F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F116414B13D0736200A528F8 /* main.m */; };
+		F116414F13D0736200A528F8 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F116414D13D0736200A528F8 /* Credits.rtf */; };
+		F116415213D0736200A528F8 /* HappyCamprAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F116415113D0736200A528F8 /* HappyCamprAppDelegate.m */; };
+		F116415513D0736200A528F8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F116415313D0736200A528F8 /* MainMenu.xib */; };
+		F116415C13D0736200A528F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F116413E13D0736200A528F8 /* Cocoa.framework */; };
+		F116416413D0736200A528F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F116416213D0736200A528F8 /* InfoPlist.strings */; };
+		F116416713D0736200A528F8 /* HappyCamprTests.h in Resources */ = {isa = PBXBuildFile; fileRef = F116416613D0736200A528F8 /* HappyCamprTests.h */; };
+		F116416913D0736200A528F8 /* HappyCamprTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F116416813D0736200A528F8 /* HappyCamprTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F116415D13D0736200A528F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F116413113D0736200A528F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F116413913D0736200A528F8;
+			remoteInfo = HappyCampr;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F116413A13D0736200A528F8 /* HappyCampr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCampr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F116413E13D0736200A528F8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F116414113D0736200A528F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F116414213D0736200A528F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F116414313D0736200A528F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F116414613D0736200A528F8 /* HappyCampr-Info.plist */ = {isa = PBXFileReference; path = "HappyCampr-Info.plist"; sourceTree = "<group>"; };
+		F116414813D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F116414A13D0736200A528F8 /* HappyCampr-Prefix.pch */ = {isa = PBXFileReference; path = "HappyCampr-Prefix.pch"; sourceTree = "<group>"; };
+		F116414B13D0736200A528F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F116414E13D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F116415013D0736200A528F8 /* HappyCamprAppDelegate.h */ = {isa = PBXFileReference; path = HappyCamprAppDelegate.h; sourceTree = "<group>"; };
+		F116415113D0736200A528F8 /* HappyCamprAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyCamprAppDelegate.m; sourceTree = "<group>"; };
+		F116415413D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F116415B13D0736200A528F8 /* HappyCamprTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyCamprTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F116416113D0736200A528F8 /* HappyCamprTests-Info.plist */ = {isa = PBXFileReference; path = "HappyCamprTests-Info.plist"; sourceTree = "<group>"; };
+		F116416313D0736200A528F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F116416513D0736200A528F8 /* HappyCamprTests-Prefix.pch */ = {isa = PBXFileReference; path = "HappyCamprTests-Prefix.pch"; sourceTree = "<group>"; };
+		F116416613D0736200A528F8 /* HappyCamprTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappyCamprTests.h; sourceTree = "<group>"; };
+		F116416813D0736200A528F8 /* HappyCamprTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyCamprTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F116413713D0736200A528F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F116415713D0736200A528F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F116415C13D0736200A528F8 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F116412F13D0736200A528F8 = {
+			isa = PBXGroup;
+			children = (
+				F116414413D0736200A528F8 /* HappyCampr */,
+				F116415F13D0736200A528F8 /* HappyCamprTests */,
+				F116413D13D0736200A528F8 /* Frameworks */,
+				F116413B13D0736200A528F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F116413B13D0736200A528F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F116413A13D0736200A528F8 /* HappyCampr.app */,
+				F116415B13D0736200A528F8 /* HappyCamprTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F116413D13D0736200A528F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F116413E13D0736200A528F8 /* Cocoa.framework */,
+				F116414013D0736200A528F8 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F116414013D0736200A528F8 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F116414113D0736200A528F8 /* AppKit.framework */,
+				F116414213D0736200A528F8 /* CoreData.framework */,
+				F116414313D0736200A528F8 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F116414413D0736200A528F8 /* HappyCampr */ = {
+			isa = PBXGroup;
+			children = (
+				F116415013D0736200A528F8 /* HappyCamprAppDelegate.h */,
+				F116415113D0736200A528F8 /* HappyCamprAppDelegate.m */,
+				F116415313D0736200A528F8 /* MainMenu.xib */,
+				F116414513D0736200A528F8 /* Supporting Files */,
+			);
+			path = HappyCampr;
+			sourceTree = "<group>";
+		};
+		F116414513D0736200A528F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F116414613D0736200A528F8 /* HappyCampr-Info.plist */,
+				F116414713D0736200A528F8 /* InfoPlist.strings */,
+				F116414A13D0736200A528F8 /* HappyCampr-Prefix.pch */,
+				F116414B13D0736200A528F8 /* main.m */,
+				F116414D13D0736200A528F8 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F116415F13D0736200A528F8 /* HappyCamprTests */ = {
+			isa = PBXGroup;
+			children = (
+				F116416613D0736200A528F8 /* HappyCamprTests.h */,
+				F116416813D0736200A528F8 /* HappyCamprTests.m */,
+				F116416013D0736200A528F8 /* Supporting Files */,
+			);
+			path = HappyCamprTests;
+			sourceTree = "<group>";
+		};
+		F116416013D0736200A528F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F116416113D0736200A528F8 /* HappyCamprTests-Info.plist */,
+				F116416213D0736200A528F8 /* InfoPlist.strings */,
+				F116416513D0736200A528F8 /* HappyCamprTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F116413913D0736200A528F8 /* HappyCampr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F116416C13D0736200A528F8 /* Build configuration list for PBXNativeTarget "HappyCampr" */;
+			buildPhases = (
+				F116413613D0736200A528F8 /* Sources */,
+				F116413713D0736200A528F8 /* Frameworks */,
+				F116413813D0736200A528F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HappyCampr;
+			productName = HappyCampr;
+			productReference = F116413A13D0736200A528F8 /* HappyCampr.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F116415A13D0736200A528F8 /* HappyCamprTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F116416F13D0736200A528F8 /* Build configuration list for PBXNativeTarget "HappyCamprTests" */;
+			buildPhases = (
+				F116415613D0736200A528F8 /* Sources */,
+				F116415713D0736200A528F8 /* Frameworks */,
+				F116415813D0736200A528F8 /* Resources */,
+				F116415913D0736200A528F8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F116415E13D0736200A528F8 /* PBXTargetDependency */,
+			);
+			name = HappyCamprTests;
+			productName = HappyCamprTests;
+			productReference = F116415B13D0736200A528F8 /* HappyCamprTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F116413113D0736200A528F8 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = F116413413D0736200A528F8 /* Build configuration list for PBXProject "HappyCampr" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F116412F13D0736200A528F8;
+			productRefGroup = F116413B13D0736200A528F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F116413913D0736200A528F8 /* HappyCampr */,
+				F116415A13D0736200A528F8 /* HappyCamprTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F116413813D0736200A528F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F116414913D0736200A528F8 /* InfoPlist.strings in Resources */,
+				F116414F13D0736200A528F8 /* Credits.rtf in Resources */,
+				F116415513D0736200A528F8 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F116415813D0736200A528F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F116416413D0736200A528F8 /* InfoPlist.strings in Resources */,
+				F116416713D0736200A528F8 /* HappyCamprTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F116415913D0736200A528F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F116413613D0736200A528F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F116414C13D0736200A528F8 /* main.m in Sources */,
+				F116415213D0736200A528F8 /* HappyCamprAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F116415613D0736200A528F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F116416913D0736200A528F8 /* HappyCamprTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F116415E13D0736200A528F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F116413913D0736200A528F8 /* HappyCampr */;
+			targetProxy = F116415D13D0736200A528F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F116414713D0736200A528F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F116414813D0736200A528F8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F116414D13D0736200A528F8 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F116414E13D0736200A528F8 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F116415313D0736200A528F8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F116415413D0736200A528F8 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		F116416213D0736200A528F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F116416313D0736200A528F8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F116416A13D0736200A528F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F116416B13D0736200A528F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F116416D13D0736200A528F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HappyCampr/HappyCampr-Prefix.pch";
+				INFOPLIST_FILE = "HappyCampr/HappyCampr-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F116416E13D0736200A528F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HappyCampr/HappyCampr-Prefix.pch";
+				INFOPLIST_FILE = "HappyCampr/HappyCampr-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F116417013D0736200A528F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HappyCampr.app/Contents/MacOS/HappyCampr";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HappyCamprTests/HappyCamprTests-Prefix.pch";
+				INFOPLIST_FILE = "HappyCamprTests/HappyCamprTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F116417113D0736200A528F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HappyCampr.app/Contents/MacOS/HappyCampr";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HappyCamprTests/HappyCamprTests-Prefix.pch";
+				INFOPLIST_FILE = "HappyCamprTests/HappyCamprTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F116413413D0736200A528F8 /* Build configuration list for PBXProject "HappyCampr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F116416A13D0736200A528F8 /* Debug */,
+				F116416B13D0736200A528F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F116416C13D0736200A528F8 /* Build configuration list for PBXNativeTarget "HappyCampr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F116416D13D0736200A528F8 /* Debug */,
+				F116416E13D0736200A528F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F116416F13D0736200A528F8 /* Build configuration list for PBXNativeTarget "HappyCamprTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F116417013D0736200A528F8 /* Debug */,
+				F116417113D0736200A528F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F116413113D0736200A528F8 /* Project object */;
+}
