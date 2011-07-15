@@ -10,6 +10,7 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "Room.h"
+#import "ScreencastProxy.h"
 
 @implementation HappyCamprAppDelegate
 @synthesize messageField;
@@ -18,7 +19,14 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+   NSString *screencastURL = @"http://www.screencast.stage/api/rest.ashx";
+   NSString *testRunnerAPIKey = @"0bbfcdfb-3640-495b-80de-4acd36babbc1";
+   NSString *testRunnerSecretKey = @"167e3ebd-7bbd-4e8b-b7a9-0b11aa276924";
+   
+   scCommunicator = [[ScreencastProxy alloc] initWithURL:[NSURL URLWithString:screencastURL] apiKey:testRunnerAPIKey secretKey:testRunnerSecretKey];   
+   
    rooms = [NSMutableArray new];
+   screencastFolders = [NSMutableArray new];
    
    
    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"https://bravoteam.campfirenow.com/rooms.xml"]];
@@ -100,4 +108,18 @@
     
 }
 
+- (IBAction)screencastLogin:(id)sender 
+{   
+   screencastAuthCode = [scCommunicator loginWithEmail:@"r.brown@techsmith.com" andPassword:@"Dikele11" error:nil];
+   
+   NSDictionary *mediaGroupList = [scCommunicator mediaGroupListWithAuthCode:screencastAuthCode error:nil];
+   NSLog(@"%@", mediaGroupList);
+   
+   for( NSString* key in [mediaGroupList allKeys] )
+   {
+      [screencastFolders addObject:[mediaGroupList objectForKey:key]];
+      [folderPicker addItemWithTitle:key];
+   }
+   
+}
 @end
