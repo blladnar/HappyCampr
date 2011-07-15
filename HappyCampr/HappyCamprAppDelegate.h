@@ -11,8 +11,17 @@
 @interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate> {
 @private
    NSWindow *window;
+   IBOutlet NSPopUpButton *roomPicker;
+   
+   NSMutableArray *rooms;
+   NSButton *sendMessage;
+   NSTextField *messageField;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+- (IBAction)roomPicked:(id)sender;
+- (IBAction)sendMessage:(id)sender;
+
+@property (assign) IBOutlet NSTextField *messageField;
 
 @end

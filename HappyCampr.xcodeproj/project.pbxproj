@@ -27,6 +27,15 @@
 		F11641D013D0739D00A528F8 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418513D0739D00A528F8 /* ASIHTTPRequest.m */; };
 		F11641D113D0739D00A528F8 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418913D0739D00A528F8 /* ASIInputStream.m */; };
 		F11641D213D0739D00A528F8 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418B13D0739D00A528F8 /* ASINetworkQueue.m */; };
+		F11641F213D0785C00A528F8 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = F11641F113D0785C00A528F8 /* Room.m */; };
+		F13549C513D08BC400967F63 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549C413D08BC400967F63 /* GDataXMLNode.m */; };
+		F13549CD13D08BE000967F63 /* ScreencastMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549C813D08BE000967F63 /* ScreencastMediaItem.m */; };
+		F13549CE13D08BE000967F63 /* ScreencastProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549CB13D08BE000967F63 /* ScreencastProxy.m */; };
+		F13549D013D08C0300967F63 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F13549CF13D08C0300967F63 /* libxml2.2.dylib */; };
+		F13549D613D08CA200967F63 /* RESTProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549D213D08CA200967F63 /* RESTProxy.m */; };
+		F13549D713D08CA200967F63 /* RestSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549D413D08CA200967F63 /* RestSignatureProvider.m */; };
+		F13549DC13D08CDB00967F63 /* GDataXMLDocument+UTF16.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549D913D08CDB00967F63 /* GDataXMLDocument+UTF16.m */; };
+		F13549DD13D08CDB00967F63 /* NSString+TSCCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549DB13D08CDB00967F63 /* NSString+TSCCrypto.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +91,27 @@
 		F116418A13D0739D00A528F8 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
 		F116418B13D0739D00A528F8 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		F116418C13D0739D00A528F8 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		F11641F013D0785C00A528F8 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		F11641F113D0785C00A528F8 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		F13549C313D08BC400967F63 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		F13549C413D08BC400967F63 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		F13549C613D08BE000967F63 /* ErrorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorConstants.h; sourceTree = "<group>"; };
+		F13549C713D08BE000967F63 /* ScreencastMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreencastMediaItem.h; sourceTree = "<group>"; };
+		F13549C813D08BE000967F63 /* ScreencastMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreencastMediaItem.m; sourceTree = "<group>"; };
+		F13549C913D08BE000967F63 /* ScreencastMediaProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreencastMediaProtocol.h; sourceTree = "<group>"; };
+		F13549CA13D08BE000967F63 /* ScreencastProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreencastProxy.h; sourceTree = "<group>"; };
+		F13549CB13D08BE000967F63 /* ScreencastProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreencastProxy.m; sourceTree = "<group>"; };
+		F13549CC13D08BE000967F63 /* UploadProgressProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadProgressProtocol.h; sourceTree = "<group>"; };
+		F13549CF13D08C0300967F63 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		F13549D113D08CA200967F63 /* RESTProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTProxy.h; sourceTree = "<group>"; };
+		F13549D213D08CA200967F63 /* RESTProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTProxy.m; sourceTree = "<group>"; };
+		F13549D313D08CA200967F63 /* RestSignatureProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestSignatureProvider.h; sourceTree = "<group>"; };
+		F13549D413D08CA200967F63 /* RestSignatureProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestSignatureProvider.m; sourceTree = "<group>"; };
+		F13549D513D08CA200967F63 /* RestSignatureProviderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestSignatureProviderProtocol.h; sourceTree = "<group>"; };
+		F13549D813D08CDB00967F63 /* GDataXMLDocument+UTF16.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GDataXMLDocument+UTF16.h"; sourceTree = "<group>"; };
+		F13549D913D08CDB00967F63 /* GDataXMLDocument+UTF16.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GDataXMLDocument+UTF16.m"; sourceTree = "<group>"; };
+		F13549DA13D08CDB00967F63 /* NSString+TSCCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TSCCrypto.h"; sourceTree = "<group>"; };
+		F13549DB13D08CDB00967F63 /* NSString+TSCCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TSCCrypto.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13549D013D08C0300967F63 /* libxml2.2.dylib in Frameworks */,
 				F116417713D0738F00A528F8 /* CoreServices.framework in Frameworks */,
 				F116417513D0738100A528F8 /* libz.1.2.3.dylib in Frameworks */,
 				F116417313D0737600A528F8 /* SystemConfiguration.framework in Frameworks */,
@@ -110,6 +141,7 @@
 		F116412F13D0736200A528F8 = {
 			isa = PBXGroup;
 			children = (
+				F13549CF13D08C0300967F63 /* libxml2.2.dylib */,
 				F116417613D0738F00A528F8 /* CoreServices.framework */,
 				F116417413D0738100A528F8 /* libz.1.2.3.dylib */,
 				F116417213D0737600A528F8 /* SystemConfiguration.framework */,
@@ -151,11 +183,31 @@
 		F116414413D0736200A528F8 /* HappyCampr */ = {
 			isa = PBXGroup;
 			children = (
+				F13549D813D08CDB00967F63 /* GDataXMLDocument+UTF16.h */,
+				F13549D913D08CDB00967F63 /* GDataXMLDocument+UTF16.m */,
+				F13549DA13D08CDB00967F63 /* NSString+TSCCrypto.h */,
+				F13549DB13D08CDB00967F63 /* NSString+TSCCrypto.m */,
+				F13549D113D08CA200967F63 /* RESTProxy.h */,
+				F13549D213D08CA200967F63 /* RESTProxy.m */,
+				F13549D313D08CA200967F63 /* RestSignatureProvider.h */,
+				F13549D413D08CA200967F63 /* RestSignatureProvider.m */,
+				F13549D513D08CA200967F63 /* RestSignatureProviderProtocol.h */,
+				F13549C613D08BE000967F63 /* ErrorConstants.h */,
+				F13549C713D08BE000967F63 /* ScreencastMediaItem.h */,
+				F13549C813D08BE000967F63 /* ScreencastMediaItem.m */,
+				F13549C913D08BE000967F63 /* ScreencastMediaProtocol.h */,
+				F13549CA13D08BE000967F63 /* ScreencastProxy.h */,
+				F13549CB13D08BE000967F63 /* ScreencastProxy.m */,
+				F13549CC13D08BE000967F63 /* UploadProgressProtocol.h */,
+				F13549C313D08BC400967F63 /* GDataXMLNode.h */,
+				F13549C413D08BC400967F63 /* GDataXMLNode.m */,
 				F116417813D0739D00A528F8 /* ASIHTTPRequest */,
 				F116415013D0736200A528F8 /* HappyCamprAppDelegate.h */,
 				F116415113D0736200A528F8 /* HappyCamprAppDelegate.m */,
 				F116415313D0736200A528F8 /* MainMenu.xib */,
 				F116414513D0736200A528F8 /* Supporting Files */,
+				F11641F013D0785C00A528F8 /* Room.h */,
+				F11641F113D0785C00A528F8 /* Room.m */,
 			);
 			path = HappyCampr;
 			sourceTree = "<group>";
@@ -228,8 +280,8 @@
 			buildConfigurationList = F116416C13D0736200A528F8 /* Build configuration list for PBXNativeTarget "HappyCampr" */;
 			buildPhases = (
 				F116413613D0736200A528F8 /* Sources */,
-				F116413713D0736200A528F8 /* Frameworks */,
 				F116413813D0736200A528F8 /* Resources */,
+				F116413713D0736200A528F8 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -334,6 +386,14 @@
 				F11641D013D0739D00A528F8 /* ASIHTTPRequest.m in Sources */,
 				F11641D113D0739D00A528F8 /* ASIInputStream.m in Sources */,
 				F11641D213D0739D00A528F8 /* ASINetworkQueue.m in Sources */,
+				F11641F213D0785C00A528F8 /* Room.m in Sources */,
+				F13549C513D08BC400967F63 /* GDataXMLNode.m in Sources */,
+				F13549CD13D08BE000967F63 /* ScreencastMediaItem.m in Sources */,
+				F13549CE13D08BE000967F63 /* ScreencastProxy.m in Sources */,
+				F13549D613D08CA200967F63 /* RESTProxy.m in Sources */,
+				F13549D713D08CA200967F63 /* RestSignatureProvider.m in Sources */,
+				F13549DC13D08CDB00967F63 /* GDataXMLDocument+UTF16.m in Sources */,
+				F13549DD13D08CDB00967F63 /* NSString+TSCCrypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,10 +488,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HappyCampr/HappyCampr-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "HappyCampr/HappyCampr-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -444,9 +509,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HappyCampr/HappyCampr-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "HappyCampr/HappyCampr-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -516,6 +586,7 @@
 				F116416E13D0736200A528F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F116416F13D0736200A528F8 /* Build configuration list for PBXNativeTarget "HappyCamprTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +595,7 @@
 				F116417113D0736200A528F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
