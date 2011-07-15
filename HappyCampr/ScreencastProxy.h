@@ -42,6 +42,8 @@
 
 //Media
 -(NSDictionary *)mediaGroupListWithAuthCode:(NSString *)authCode error:(NSError **)error;
+-(NSArray *)getInfoAboutMediaGroup:(NSString*)mediaGroupID authCode:(NSString*)authCode error:(NSError **)error;
+-(NSDictionary *)getInfoAboutMediaSet:(NSString*)defaultMediaSetId  mediaGroupId:(NSString*)mediaGroupID authCode:(NSString*)authCode error:(NSError **)error;
 -(BOOL)delete:(NSString *)mediaSetId authCode:(NSString *)authCode error:(NSError **)error;
 
 //Upload

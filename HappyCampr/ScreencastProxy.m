@@ -291,6 +291,72 @@
 	return mediaGroupDict;
 }
 
+-(NSArray *)getInfoAboutMediaGroup:(NSString*)mediaGroupID authCode:(NSString*)authCode error:(NSError **)error
+{
+	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+	[parameters setObject:@"TRUE" forKey:@"includeList"];
+	[parameters setObject:mediaGroupID forKey:@"mediaGroupId"];
+   [parameters setObject:@"TitleAsc" forKey:@"sortOrder"];
+	
+   GDataXMLNode *responseNode = [self makeGetRequest:@"Screencast.MediaGroup.GetInfo" withParameters:parameters authCode:authCode error:error];
+   if(!responseNode)
+   {
+      return nil;
+   }
+
+	NSArray *nodeArray = [responseNode nodesForXPath:@"/rsp/mediaSetInfoList/mediaSetInfo" error:error];
+	if (!nodeArray)
+	{
+      
+		return nil;
+	}
+   
+   NSMutableArray *mediaSets = [[NSMutableArray alloc] init];
+   
+   for( GDataXMLElement *element in nodeArray )
+   {
+      NSMutableDictionary *mediaSetInfo = [[[NSMutableDictionary alloc] init] autorelease];
+      [mediaSetInfo setObject:[[[element elementsForName:@"title"] lastObject] stringValue] forKey:@"title"];
+      [mediaSetInfo setObject:[[[element elementsForName:@"mediaSetGuid"] lastObject] stringValue] forKey:@"mediaSetGuid"];
+      
+      
+      [mediaSets addObject:mediaSetInfo];
+      
+   }
+	return mediaSets;   
+}
+
+-(NSDictionary *)getInfoAboutMediaSet:(NSString*)defaultMediaSetId  mediaGroupId:(NSString*)mediaGroupID authCode:(NSString*)authCode error:(NSError **)error
+{
+	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+	[parameters setObject:@"bd537386-0c27-4a84-a1fa-ae91a530d8d3" forKey:@"mediaSetId"];
+   [parameters setObject:@"dca16542-5f20-4a21-a323-cd0b419a3ea0" forKey:@"mediaGroupId"];
+	
+   GDataXMLNode *responseNode = [self makeGetRequest:@"Screencast.MediaSet.GetInfo" withParameters:parameters authCode:authCode error:error];
+   if(!responseNode)
+   {
+      return nil;
+   }
+   
+	GDataXMLElement *mediaSetElement = [[responseNode nodesForXPath:@"/rsp/mediaSetInfo" error:error] lastObject];
+	if (!mediaSetElement)
+	{
+      
+		return nil;
+	}
+   
+   NSMutableDictionary *mediaSetDictionary = [[[NSMutableDictionary alloc] init] autorelease];
+   
+   
+   NSString* defaultContentURL = [[[mediaSetElement nodesForXPath:@"/contentUrlList/defaultMediaContentUrl" error:nil] lastObject] stringValue];
+   
+   [mediaSetDictionary setObject:defaultContentURL forKey:@"defaultMediaContentUrl"];
+   [mediaSetDictionary setObject:[[[mediaSetElement elementsForName:@"title"] lastObject] stringValue] forKey:@"title"];
+   
+   return mediaSetDictionary;
+   
+}
+
 -(BOOL)delete:(NSString *)mediaSetId authCode:(NSString *)authCode error:(NSError **)error
 {
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

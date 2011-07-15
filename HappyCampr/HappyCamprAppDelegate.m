@@ -110,7 +110,7 @@
 
 - (IBAction)screencastLogin:(id)sender 
 {   
-   screencastAuthCode = [scCommunicator loginWithEmail:@"r.brown@techsmith.com" andPassword:@"Dikele11" error:nil];
+   screencastAuthCode = [[scCommunicator loginWithEmail:@"r.brown@techsmith.com" andPassword:@"stuff" error:nil] retain];
    
    NSDictionary *mediaGroupList = [scCommunicator mediaGroupListWithAuthCode:screencastAuthCode error:nil];
    NSLog(@"%@", mediaGroupList);
@@ -122,4 +122,81 @@
    }
    
 }
+
+- (IBAction)getFolderContents:(id)sender 
+{
+  NSArray *mediaSets = [scCommunicator getInfoAboutMediaGroup:[screencastFolders objectAtIndex:[folderPicker indexOfSelectedItem]] authCode:screencastAuthCode error:nil];
+   
+   for( NSDictionary *mediaSet in mediaSets )
+   {
+      NSError *error;
+      NSLog(@"%@", [scCommunicator getInfoAboutMediaSet:[mediaSet objectForKey:@"mediaSetGuid"] mediaGroupId:[screencastFolders objectAtIndex:[folderPicker indexOfSelectedItem]] authCode:screencastAuthCode error:&error]);
+      NSLog(@"%@", error);
+   }
+   
+   
+   
+}
+
+
+-(void)sendSoundMessageWithSound:(NSString*)sound
+{
+   NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
+   
+   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@/speak.xml",roomID];
+   
+   
+   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+   
+   [request addRequestHeader:@"Content-Type" value:@"application/xml"];
+   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+   [request setUsername:@"e5a0a21c647ad0977f3f2a34dc9b67044184a991"];
+   [request setPassword:@"X"];
+   
+   NSString *postBody = [self messageWithType:@"SoundMessage" andMessage:sound];
+   
+   [request setPostBody:[postBody dataUsingEncoding:NSUTF8StringEncoding]];
+   
+   [request setCompletionBlock:^{
+      NSLog(@"%@", [request responseString]);
+   }];
+   
+   [request startAsynchronous];
+}
+
+- (IBAction)theMoreYouKnowSound:(id)sender 
+{
+   [self sendSoundMessageWithSound:@"tmyk"];
+}
+
+- (IBAction)rimShotSound:(id)sender 
+{
+   [self sendSoundMessageWithSound:@"rimshot"];
+}
+
+- (IBAction)sadTromboneSound:(id)sender 
+{
+   [self sendSoundMessageWithSound:@"trombone"];
+}
+
+- (IBAction)crickets:(id)sender 
+{
+   [self sendSoundMessageWithSound:@"crickets"];
+}
+
+- (IBAction)doItLiveSound:(id)sender 
+{
+   [self sendSoundMessageWithSound:@"live"];
+}
+
+- (IBAction)greatJobSound:(id)sender 
+{
+   [self sendSoundMessageWithSound:@"greatjob"];
+}
+
+- (IBAction)vuvuzelaSound:(id)sender 
+{
+   [self sendSoundMessageWithSound:@"vuvuzela"];
+}
+
 @end
