@@ -11,11 +11,21 @@
 #import "ASIFormDataRequest.h"
 #import "Room.h"
 #import "ScreencastProxy.h"
+#import "SFHFKeychainUtils.h"
+#import "Message.h"
+#import "User.h"
 
 @implementation HappyCamprAppDelegate
 @synthesize messageField;
 
 @synthesize window;
+
+-(void)applicationWillBecomeActive:(NSNotification *)notification
+{
+   NSDockTile *tile = [[NSApplication sharedApplication] dockTile];
+   [tile setBadgeLabel:nil];
+   numberOfUnreadMessages = 0;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -23,44 +33,65 @@
    NSString *testRunnerAPIKey = @"0bbfcdfb-3640-495b-80de-4acd36babbc1";
    NSString *testRunnerSecretKey = @"167e3ebd-7bbd-4e8b-b7a9-0b11aa276924";
    
+   lastMessageID = 0;
+   numberOfUnreadMessages = 0;
+   
    scCommunicator = [[ScreencastProxy alloc] initWithURL:[NSURL URLWithString:screencastURL] apiKey:testRunnerAPIKey secretKey:testRunnerSecretKey];   
    
    rooms = [NSMutableArray new];
    screencastFolders = [NSMutableArray new];
    
+   NSError *error;
+   campfireAuthCode = [[SFHFKeychainUtils getPasswordForUsername:@"HappyCampr" andServiceName:@"HappyCampr:AuthToken" error:&error] retain];
    
-   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"https://bravoteam.campfirenow.com/rooms.xml"]];
-   
-   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-   [request setUsername:@"e5a0a21c647ad0977f3f2a34dc9b67044184a991"];
-   [request setPassword:@"X"];
-   
-   [request setCompletionBlock:^{
-      // Use when fetching text data
-      NSString *responseString = [request responseString];
+   if( campfireAuthCode )
+   {
       
-      NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+      __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"https://bravoteam.campfirenow.com/rooms.xml"]];
       
-      NSArray *roomElements = [[responseDoc rootElement] elementsForName:@"room"];
-      
-      for( NSXMLElement *roomElement in roomElements )
-      {
-         Room *room = [Room new];
+      [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+      [request setUsername:campfireAuthCode];
+      [request setPassword:@"X"];
+      [request setFailedBlock:^{
+         NSLog(@"%@", request.error);
+      }];
+      [request setCompletionBlock:^{
+         [saveAuthButton setTitle:@"Sign Out"];
+         // Use when fetching text data
+         NSString *responseString = [request responseString];
          
-         room.roomID = [[[roomElement elementsForName:@"id"] lastObject] stringValue];
-         room.name = [[[roomElement elementsForName:@"name"] lastObject] stringValue];
-         room.topic = [[[roomElement elementsForName:@"topic"] lastObject] stringValue];
+         NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
          
-         [roomPicker addItemWithTitle:room.name];
+         NSArray *roomElements = [[responseDoc rootElement] elementsForName:@"room"];
          
-         [rooms addObject:room];
-      }
+         for( NSXMLElement *roomElement in roomElements )
+         {
+            Room *room = [Room new];
+            
+            room.roomID = [[[roomElement elementsForName:@"id"] lastObject] stringValue];
+            room.name = [[[roomElement elementsForName:@"name"] lastObject] stringValue];
+            room.topic = [[[roomElement elementsForName:@"topic"] lastObject] stringValue];
+            
+            [roomPicker addItemWithTitle:room.name];
+            
+            [rooms addObject:room];
+         }
+         
+         NSLog(@"%@", rooms);
+         NSError *error;
+         [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
+         [apiField setHidden:YES];
+         NSLog(@"%i", [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]);
+         [roomPicker selectItemAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]];
+         [self roomPicked:nil];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+      }];
       
-      NSLog(@"%@", rooms);
+      [request startAsynchronous];   
       
-   }];
+   }
    
-   [request startAsynchronous];
    
    // Insert code here to initialize your application
 }
@@ -74,6 +105,217 @@
 - (IBAction)roomPicked:(id)sender 
 {
    NSLog(@"%@", [rooms objectAtIndex:[roomPicker indexOfSelectedItem]]);
+   [[NSUserDefaults standardUserDefaults] setInteger:[roomPicker indexOfSelectedItem] forKey:@"SelectedRoom"];
+   [[NSUserDefaults standardUserDefaults] synchronize];
+   
+   lastMessageID = 0;
+   [chatTextView setString:@""];
+   [self getMessagesForSelectedRoom];
+   [self getUsersForSelectedRoom];
+   [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getMessagesForSelectedRoom) userInfo:nil repeats:YES];
+   
+   if( [stealModeCheckBox state] == NSOffState )
+   {
+      NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
+      
+      NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@/join.xml",roomID];
+      
+      __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+      
+      [request addRequestHeader:@"Content-Type" value:@"application/xml"];
+      [request setPostBody:[@"<hello/>" dataUsingEncoding:NSUTF8StringEncoding]];
+      [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+      [request setUsername:campfireAuthCode];
+      [request setPassword:@"X"];
+      
+      [request setCompletionBlock:^{
+         NSString *responseString = [request responseString];
+         NSLog(@"%@", responseString);
+         NSLog(@"%i", request.responseStatusCode);
+         
+      }];
+      
+      [request startAsynchronous];  
+      
+      if( [oldRoomId length] )
+      {
+         NSString *urlString2 = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@/leave.xml",oldRoomId];
+         
+         __block ASIHTTPRequest *leaveRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString2]];
+         
+         [leaveRequest addRequestHeader:@"Content-Type" value:@"application/xml"];
+         [leaveRequest setPostBody:[@"<hello/>" dataUsingEncoding:NSUTF8StringEncoding]];
+         [leaveRequest setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+         [leaveRequest setUsername:campfireAuthCode];
+         [leaveRequest setPassword:@"X"];
+         
+         [leaveRequest setCompletionBlock:^{
+            NSString *responseString = [request responseString];
+            NSLog(@"%@", responseString);
+            NSLog(@"%i", request.responseStatusCode);
+            
+         }];
+         
+         [leaveRequest startAsynchronous];   
+      }
+      
+      oldRoomId = [roomID retain];
+      
+      
+   }
+   
+}
+
+-(void)getUsersForSelectedRoom
+{
+   [usersTextView setString:@""];
+   
+   NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
+   
+   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@.xml",roomID];
+   
+   usersInRoom = [[NSMutableArray alloc] init];
+   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+   
+   [request addRequestHeader:@"Content-Type" value:@"application/xml"];
+   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+   [request setUsername:campfireAuthCode];
+   [request setPassword:@"X"];
+   
+   [request setCompletionBlock:^{
+      NSString *responseString = [request responseString];
+      NSLog(@"%@", responseString);
+      
+      NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+      
+      NSArray *userElements = [[[[responseDoc rootElement] elementsForName:@"users"] lastObject] elementsForName:@"user"];
+      
+      for( NSXMLElement *userElement in userElements )
+      {
+         User *user = [User new];
+         user.userID = [[[[userElement elementsForName:@"id"] lastObject] stringValue] intValue];
+         user.name = [[[userElement elementsForName:@"name"] lastObject] stringValue];
+         user.email = [[[userElement elementsForName:@"email-address"] lastObject] stringValue];
+         user.avatarURL = [[[userElement elementsForName:@"avatar-url"] lastObject] stringValue];
+         
+         [usersInRoom addObject:user];
+         
+         [usersTextView insertText:[NSString stringWithFormat:@"\n%@", user.name]];
+      }
+      
+   }];
+   
+   [request startAsynchronous];      
+}
+
+-(void)getMessagesForSelectedRoom
+{
+   NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
+   
+   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@/recent.xml?since_message_id=%i",roomID, lastMessageID];
+   
+   messages = [[NSMutableArray alloc] init];
+   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+   
+   [request addRequestHeader:@"Content-Type" value:@"application/xml"];
+   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+   [request setUsername:campfireAuthCode];
+   [request setPassword:@"X"];
+   
+   [request setCompletionBlock:^{
+      NSString *responseString = [request responseString];
+      
+      NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+      
+      NSArray *messageElements = [[responseDoc rootElement] elementsForName:@"message"];
+      
+      for( NSXMLElement *messageElement in messageElements )
+      {
+         Message *message = [Message new];
+         
+         message.messageId = [[[[messageElement elementsForName:@"id"] lastObject] stringValue] intValue];
+         
+         NSDateFormatter *dateFormatter = [[NSDateFormatter new] autorelease];
+         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+         message.timeStamp = [dateFormatter dateFromString:[[[messageElement elementsForName:@"created-at"] lastObject] stringValue]];
+         message.roomID = [[[[messageElement elementsForName:@"room-id"] lastObject] stringValue] intValue];
+         message.userID = [[[[messageElement elementsForName:@"user-id"] lastObject] stringValue] intValue];
+         message.messageBody = [[[messageElement elementsForName:@"body"] lastObject] stringValue];
+         message.messageType = [[[messageElement elementsForName:@"type"] lastObject] stringValue];
+         
+         [messages addObject:message];
+      }
+      
+      if( [[messages lastObject] messageId] > lastMessageID )
+      {
+         lastMessageID = [[messages lastObject] messageId];
+      }
+      
+      
+      
+      if( [messages count] )
+      {
+         [self formatMessages];
+         
+         if( ![[NSApplication sharedApplication] isActive] )
+         {
+            NSDockTile *tile = [[NSApplication sharedApplication] dockTile];
+            numberOfUnreadMessages += [messages count];
+            
+            [tile setBadgeLabel:[NSString stringWithFormat:@"%i", numberOfUnreadMessages]];
+            [[NSApplication sharedApplication] requestUserAttention:NSInformationalRequest];
+         }
+      }
+   }];
+   
+   [request startAsynchronous];   
+}
+
+-(NSString*)usernameForID:(NSInteger)userID
+{
+   for( User *user in usersInRoom )
+   {
+      if (userID == user.userID ) 
+      {
+         return user.name;
+      }
+   }
+   return @"";
+}
+
+-(NSString*)formatMessages
+{
+   NSString *messagesString = @"";
+   for( Message *message in messages )
+   {
+      if( [message.messageType isEqualToString:@"TextMessage"] )
+      {
+         if( [message.messageBody hasSuffix:@".jpg"] || [message.messageBody hasSuffix:@".png"] )
+         {
+            NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
+            [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@:",dateString, [self usernameForID:message.userID]]];
+            
+            NSImage * pic = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:message.messageBody]];
+            NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:pic];
+            NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+            [attachment setAttachmentCell: attachmentCell ];
+            NSAttributedString *attributedString = [NSAttributedString  attributedStringWithAttachment: attachment];
+            [[chatTextView textStorage] appendAttributedString:attributedString];
+            [chatTextView scrollRangeToVisible: NSMakeRange ([[chatTextView string] length], 0)];
+            
+            
+         }
+         else
+         {            
+            NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
+            // messagesString = [messagesString stringByAppendingFormat:@"%@ %@: %@\n",dateString, [self usernameForID:message.userID],message.messageBody];
+            [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@: %@",dateString, [self usernameForID:message.userID],message.messageBody]];
+         }
+
+      }
+   }
+   
+   return messagesString;
 }
 
 -(NSString*)messageWithType:(NSString*)messageType andMessage:(NSString*)message
@@ -92,7 +334,7 @@
    
    [request addRequestHeader:@"Content-Type" value:@"application/xml"];
    [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-   [request setUsername:@"e5a0a21c647ad0977f3f2a34dc9b67044184a991"];
+   [request setUsername:campfireAuthCode];
    [request setPassword:@"X"];
    
    NSString *postBody = [self messageWithType:@"TextMessage" andMessage:[messageField stringValue]];
@@ -104,7 +346,7 @@
    }];
    
    [request startAsynchronous];
-    
+   [messageField setStringValue:@""];
     
 }
 
@@ -150,7 +392,7 @@
    
    [request addRequestHeader:@"Content-Type" value:@"application/xml"];
    [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-   [request setUsername:@"e5a0a21c647ad0977f3f2a34dc9b67044184a991"];
+   [request setUsername:campfireAuthCode];
    [request setPassword:@"X"];
    
    NSString *postBody = [self messageWithType:@"SoundMessage" andMessage:sound];
@@ -197,6 +439,61 @@
 - (IBAction)vuvuzelaSound:(id)sender 
 {
    [self sendSoundMessageWithSound:@"vuvuzela"];
+}
+
+- (IBAction)saveAuthToken:(id)sender 
+{
+   if( [campfireAuthCode length] )
+   {
+      [saveAuthButton setTitle:@"Save"];
+      campfireAuthCode = @"";
+      [apiField setHidden:NO];
+      [roomPicker removeAllItems];
+      NSError *error;
+      [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
+   }
+   else
+   {
+      [saveAuthButton setTitle:@"Sign Out"];
+      campfireAuthCode = [[apiField stringValue] retain];
+      
+      __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"https://bravoteam.campfirenow.com/rooms.xml"]];
+      
+      [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+      [request setUsername:campfireAuthCode];
+      [request setPassword:@"X"];
+      
+      [request setCompletionBlock:^{
+         // Use when fetching text data
+         NSString *responseString = [request responseString];
+         
+         NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+         
+         NSArray *roomElements = [[responseDoc rootElement] elementsForName:@"room"];
+         
+         for( NSXMLElement *roomElement in roomElements )
+         {
+            Room *room = [Room new];
+            
+            room.roomID = [[[roomElement elementsForName:@"id"] lastObject] stringValue];
+            room.name = [[[roomElement elementsForName:@"name"] lastObject] stringValue];
+            room.topic = [[[roomElement elementsForName:@"topic"] lastObject] stringValue];
+            
+            [roomPicker addItemWithTitle:room.name];
+            
+            [rooms addObject:room];
+         }
+         
+         NSLog(@"%@", rooms);
+         
+         NSError *error;
+         [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
+         
+      }];
+      
+      [request startAsynchronous];   
+      [apiField setHidden:YES];
+   }
 }
 
 @end

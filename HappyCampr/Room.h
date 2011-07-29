@@ -17,5 +17,6 @@
 @property (retain) NSString *name;
 @property (retain) NSString *topic;
 @property (retain) NSString *roomID;
+@property (retain) NSArray *users;
 
 @end
