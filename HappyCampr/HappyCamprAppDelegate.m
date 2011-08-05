@@ -510,16 +510,15 @@
    return [usersInRoom count];
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
-{
-   return [[usersInRoom objectAtIndex:rowIndex] name];
-}
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
    NSTableRowView *rowView = [[NSTableRowView alloc] initWithFrame:NSMakeRect(0, 0, userTableView.frame.size.width, 20)];
 
    NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, userTableView.frame.size.width, 20)];
+   [textField setEditable:NO];
+   
+   [textField setStringValue:[[usersInRoom objectAtIndex:row]name]];
    
    [rowView addSubview:textField];
    
@@ -528,10 +527,14 @@
    
    [userTableViews addObject:rowView];
    
+   
    return rowView;
 }
 
-
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+   return nil;
+}
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
 {

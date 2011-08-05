@@ -12,6 +12,7 @@
 {
    NSPopover *popover;
    NSView *positioningView;
+
 }
 
 @property NSView *positioningView;
