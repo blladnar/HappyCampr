@@ -545,7 +545,7 @@
 {
    NSLog(@"%@",[usersInRoom objectAtIndex:rowIndex] );
    
-   UserPopoverController *popover = [UserPopoverController new];
+   UserPopoverController *popover = [[UserPopoverController alloc] initWithNibName:@"UserPopoverController" bundle:nil];
    id view = [userTableView viewAtColumn:0 row:rowIndex makeIfNecessary:YES];
    
    popover.positioningView = [userTableViews objectAtIndex:rowIndex];

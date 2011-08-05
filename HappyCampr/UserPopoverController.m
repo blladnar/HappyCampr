@@ -22,22 +22,11 @@
    
    popover.behavior = NSPopoverBehaviorTransient;
    NSLog(@"%@", user.email);
-   
-   emailField = [[NSTextField alloc] initWithFrame:NSMakeRect(0,0,100,30)];
-   [emailField setStringValue:user.email];
-   
-   [self.view addSubview:emailField];
+
+   [emailLabel setStringValue:user.email];
    
    [popover showRelativeToRect:[positioningView bounds] ofView:positioningView preferredEdge:NSMaxXEdge];
 }
-
--(void)loadView
-{
-   [super loadView];
-   
-
-}
-
 
 
 @end

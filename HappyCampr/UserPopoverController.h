@@ -13,6 +13,7 @@
    NSPopover *popover;
    NSView *positioningView;
 
+   IBOutlet NSTextField *emailLabel;
 }
 
 @property NSView *positioningView;
