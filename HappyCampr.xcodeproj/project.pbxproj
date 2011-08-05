@@ -45,6 +45,8 @@
 		F13549ED13D0CD0E00967F63 /* happyCamperIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F13549EC13D0CD0E00967F63 /* happyCamperIcon.icns */; };
 		F13549F313D0D92000967F63 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13549F113D0D8D300967F63 /* Security.framework */; };
 		F13549F413D0D9E200967F63 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549EE13D0D7A200967F63 /* SFHFKeychainUtils.m */; };
+		F178CFCB13EC778500A6AD3E /* UserPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = F178CFC913EC778500A6AD3E /* UserPopoverController.m */; };
+		F178CFCC13EC778500A6AD3E /* UserPopoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F178CFCA13EC778500A6AD3E /* UserPopoverController.xib */; };
 		F191440513E2F26B0069ECF9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F191440413E2F26B0069ECF9 /* libz.dylib */; };
 		F191440C13E2F6D70069ECF9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440B13E2F6D70069ECF9 /* Message.m */; };
 		F191440F13E312540069ECF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440E13E312540069ECF9 /* User.m */; };
@@ -135,6 +137,9 @@
 		F13549EE13D0D7A200967F63 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		F13549EF13D0D7A200967F63 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		F13549F113D0D8D300967F63 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F178CFC813EC778500A6AD3E /* UserPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPopoverController.h; sourceTree = "<group>"; };
+		F178CFC913EC778500A6AD3E /* UserPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPopoverController.m; sourceTree = "<group>"; };
+		F178CFCA13EC778500A6AD3E /* UserPopoverController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPopoverController.xib; sourceTree = "<group>"; };
 		F191440413E2F26B0069ECF9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F191440A13E2F6D70069ECF9 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		F191440B13E2F6D70069ECF9 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
@@ -245,6 +250,9 @@
 				F191440B13E2F6D70069ECF9 /* Message.m */,
 				F191440D13E312540069ECF9 /* User.h */,
 				F191440E13E312540069ECF9 /* User.m */,
+				F178CFC813EC778500A6AD3E /* UserPopoverController.h */,
+				F178CFC913EC778500A6AD3E /* UserPopoverController.m */,
+				F178CFCA13EC778500A6AD3E /* UserPopoverController.xib */,
 			);
 			path = HappyCampr;
 			sourceTree = "<group>";
@@ -395,6 +403,7 @@
 				F13549E913D0C2C900967F63 /* Pic_GreatJob.gif in Resources */,
 				F13549EB13D0C2FE00967F63 /* vuvuzelas-300x230.jpg in Resources */,
 				F13549ED13D0CD0E00967F63 /* happyCamperIcon.icns in Resources */,
+				F178CFCC13EC778500A6AD3E /* UserPopoverController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +459,7 @@
 				F13549DD13D08CDB00967F63 /* NSString+TSCCrypto.m in Sources */,
 				F191440C13E2F6D70069ECF9 /* Message.m in Sources */,
 				F191440F13E312540069ECF9 /* User.m in Sources */,
+				F178CFCB13EC778500A6AD3E /* UserPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

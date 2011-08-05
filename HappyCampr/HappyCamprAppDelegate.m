@@ -14,6 +14,7 @@
 #import "SFHFKeychainUtils.h"
 #import "Message.h"
 #import "User.h"
+#import "UserPopoverController.h"
 
 @implementation HappyCamprAppDelegate
 @synthesize messageField;
@@ -168,8 +169,6 @@
 
 -(void)getUsersForSelectedRoom
 {
-   [usersTextView setString:@""];
-   
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    
    NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@.xml",roomID];
@@ -200,8 +199,9 @@
          
          [usersInRoom addObject:user];
          
-         [usersTextView insertText:[NSString stringWithFormat:@"\n%@", user.name]];
       }
+      
+      [userTableView reloadData];
       
    }];
    
@@ -243,7 +243,10 @@
          message.messageBody = [[[messageElement elementsForName:@"body"] lastObject] stringValue];
          message.messageType = [[[messageElement elementsForName:@"type"] lastObject] stringValue];
          
-         [messages addObject:message];
+         if( ![message.messageType isEqualToString:@""] )
+         {
+            [messages addObject:message];
+         }
       }
       
       if( [[messages lastObject] messageId] > lastMessageID )
@@ -288,11 +291,12 @@
    NSString *messagesString = @"";
    for( Message *message in messages )
    {
+      NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
       if( [message.messageType isEqualToString:@"TextMessage"] )
       {
          if( [message.messageBody hasSuffix:@".jpg"] || [message.messageBody hasSuffix:@".png"] )
          {
-            NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
+            
             [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@:",dateString, [self usernameForID:message.userID]]];
             
             NSImage * pic = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:message.messageBody]];
@@ -312,6 +316,10 @@
             [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@: %@",dateString, [self usernameForID:message.userID],message.messageBody]];
          }
 
+      }
+      else if( [message.messageType isEqualToString:@"SoundMessage"] )
+      {
+         [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@: %@",dateString, [self usernameForID:message.userID],message.messageBody]];
       }
    }
    
@@ -352,7 +360,8 @@
 
 - (IBAction)screencastLogin:(id)sender 
 {   
-   screencastAuthCode = [[scCommunicator loginWithEmail:@"r.brown@techsmith.com" andPassword:@"stuff" error:nil] retain];
+   NSError *error;
+   screencastAuthCode = [[scCommunicator loginWithEmail:@"r.brown@techsmith.com" andPassword:@"stuff" error:&error] retain];
    
    NSDictionary *mediaGroupList = [scCommunicator mediaGroupListWithAuthCode:screencastAuthCode error:nil];
    NSLog(@"%@", mediaGroupList);
@@ -494,6 +503,52 @@
       [request startAsynchronous];   
       [apiField setHidden:YES];
    }
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+   return [usersInRoom count];
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+   return [[usersInRoom objectAtIndex:rowIndex] name];
+}
+
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
+{
+   NSTableRowView *rowView = [[NSTableRowView alloc] initWithFrame:NSMakeRect(0, 0, userTableView.frame.size.width, 20)];
+
+   NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, userTableView.frame.size.width, 20)];
+   
+   [rowView addSubview:textField];
+   
+   if( !userTableViews )
+      userTableViews = [[NSMutableArray alloc] init];
+   
+   [userTableViews addObject:rowView];
+   
+   return rowView;
+}
+
+
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
+   return 20;
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
+{
+   NSLog(@"%@",[usersInRoom objectAtIndex:rowIndex] );
+   
+   UserPopoverController *popover = [UserPopoverController new];
+   id view = [userTableView viewAtColumn:0 row:rowIndex makeIfNecessary:YES];
+   
+   popover.positioningView = [userTableViews objectAtIndex:rowIndex];
+   [popover showPopoverForUser:[usersInRoom objectAtIndex:rowIndex]];
+
+   return YES;
 }
 
 @end

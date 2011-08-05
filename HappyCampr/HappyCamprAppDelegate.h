@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ScreencastProxy.h"
 
-@interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate> {
+@interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource> {
 @private
    NSWindow *window;
    IBOutlet NSPopUpButton *roomPicker;
@@ -26,7 +26,6 @@
    ScreencastProxy *scCommunicator;
    NSString *oldRoomId;
    
-   IBOutlet NSTextView *usersTextView;
    IBOutlet NSTextView *chatTextView;
    NSString *campfireAuthCode;
    NSButton *saveAuthToken;
@@ -35,6 +34,10 @@
    NSMutableArray *messages;
    NSInteger lastMessageID;
    NSInteger numberOfUnreadMessages;
+   
+   NSMutableArray *userTableViews;
+   
+   IBOutlet NSTableView *userTableView;
 }
 
 @property (assign) IBOutlet NSWindow *window;
