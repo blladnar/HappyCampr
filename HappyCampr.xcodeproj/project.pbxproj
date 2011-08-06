@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70A3EB8B13ECC36100150E41 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8A13ECC36100150E41 /* MessageTableViewController.m */; };
+		70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8E13ECCBA800150E41 /* MessageView.m */; };
+		70A3EB9B13ECD15700150E41 /* NSString+FindURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */; };
 		F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F116413E13D0736200A528F8 /* Cocoa.framework */; };
 		F116414913D0736200A528F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F116414713D0736200A528F8 /* InfoPlist.strings */; };
 		F116414C13D0736200A528F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F116414B13D0736200A528F8 /* main.m */; };
@@ -63,6 +66,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70A3EB8913ECC36100150E41 /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewController.h; sourceTree = "<group>"; };
+		70A3EB8A13ECC36100150E41 /* MessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewController.m; sourceTree = "<group>"; };
+		70A3EB8D13ECCBA800150E41 /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
+		70A3EB8E13ECCBA800150E41 /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
+		70A3EB9913ECD15700150E41 /* NSString+FindURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FindURLs.h"; sourceTree = "<group>"; };
+		70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FindURLs.m"; sourceTree = "<group>"; };
 		F116413A13D0736200A528F8 /* HappyCampr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCampr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F116413E13D0736200A528F8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F116414113D0736200A528F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -253,6 +262,12 @@
 				F178CFC813EC778500A6AD3E /* UserPopoverController.h */,
 				F178CFC913EC778500A6AD3E /* UserPopoverController.m */,
 				F178CFCA13EC778500A6AD3E /* UserPopoverController.xib */,
+				70A3EB8913ECC36100150E41 /* MessageTableViewController.h */,
+				70A3EB8A13ECC36100150E41 /* MessageTableViewController.m */,
+				70A3EB8D13ECCBA800150E41 /* MessageView.h */,
+				70A3EB8E13ECCBA800150E41 /* MessageView.m */,
+				70A3EB9913ECD15700150E41 /* NSString+FindURLs.h */,
+				70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */,
 			);
 			path = HappyCampr;
 			sourceTree = "<group>";
@@ -460,6 +475,9 @@
 				F191440C13E2F6D70069ECF9 /* Message.m in Sources */,
 				F191440F13E312540069ECF9 /* User.m in Sources */,
 				F178CFCB13EC778500A6AD3E /* UserPopoverController.m in Sources */,
+				70A3EB8B13ECC36100150E41 /* MessageTableViewController.m in Sources */,
+				70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */,
+				70A3EB9B13ECD15700150E41 /* NSString+FindURLs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

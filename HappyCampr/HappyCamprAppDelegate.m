@@ -14,7 +14,6 @@
 #import "SFHFKeychainUtils.h"
 #import "Message.h"
 #import "User.h"
-#import "UserPopoverController.h"
 
 @implementation HappyCamprAppDelegate
 @synthesize messageField;
@@ -33,9 +32,12 @@
    NSString *screencastURL = @"http://www.screencast.stage/api/rest.ashx";
    NSString *testRunnerAPIKey = @"0bbfcdfb-3640-495b-80de-4acd36babbc1";
    NSString *testRunnerSecretKey = @"167e3ebd-7bbd-4e8b-b7a9-0b11aa276924";
-   
+ 
+    popover = [[UserPopoverController alloc] initWithNibName:@"UserPopoverController" bundle:nil];
    lastMessageID = 0;
    numberOfUnreadMessages = 0;
+   
+   allMessages = [NSMutableArray new];
    
    scCommunicator = [[ScreencastProxy alloc] initWithURL:[NSURL URLWithString:screencastURL] apiKey:testRunnerAPIKey secretKey:testRunnerSecretKey];   
    
@@ -254,7 +256,12 @@
          lastMessageID = [[messages lastObject] messageId];
       }
       
+      [allMessages addObjectsFromArray:messages];
+      messageTableController.messages = allMessages;
+      [messageView reloadData];
+      NSLog(@"%i", [allMessages count]);
       
+      [messageView scrollToEndOfDocument:nil];
       
       if( [messages count] )
       {
@@ -513,19 +520,14 @@
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-   NSTableRowView *rowView = [[NSTableRowView alloc] initWithFrame:NSMakeRect(0, 0, userTableView.frame.size.width, 20)];
+   NSTableRowView *rowView = [[NSTableRowView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)];
 
-   NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, userTableView.frame.size.width, 20)];
+   NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)];
    [textField setEditable:NO];
    
    [textField setStringValue:[[usersInRoom objectAtIndex:row]name]];
    
    [rowView addSubview:textField];
-   
-   if( !userTableViews )
-      userTableViews = [[NSMutableArray alloc] init];
-   
-   [userTableViews addObject:rowView];
    
    
    return rowView;
@@ -538,20 +540,19 @@
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
 {
-   return 20;
+   return 30;
 }
 
 - (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
 {
    NSLog(@"%@",[usersInRoom objectAtIndex:rowIndex] );
    
-   UserPopoverController *popover = [[UserPopoverController alloc] initWithNibName:@"UserPopoverController" bundle:nil];
-   id view = [userTableView viewAtColumn:0 row:rowIndex makeIfNecessary:YES];
+   id view = [userTableView rowViewAtRow:rowIndex makeIfNecessary:YES];
    
-   popover.positioningView = [userTableViews objectAtIndex:rowIndex];
+   popover.positioningView = view;
    [popover showPopoverForUser:[usersInRoom objectAtIndex:rowIndex]];
 
-   return YES;
+   return NO;
 }
 
 @end

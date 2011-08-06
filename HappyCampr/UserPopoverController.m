@@ -23,10 +23,17 @@
    popover.behavior = NSPopoverBehaviorTransient;
    NSLog(@"%@", user.email);
 
-   [emailLabel setStringValue:user.email];
+   [nameLabel setStringValue:user.name];
+   [emailButton setTitle:user.email];
+   [avatarImageView setImage:[[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:user.avatarURL]]];
+
    
    [popover showRelativeToRect:[positioningView bounds] ofView:positioningView preferredEdge:NSMaxXEdge];
 }
 
 
+- (IBAction)sendEmail:(id)sender
+{
+   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mailto:%@",[sender title]]]];
+}
 @end

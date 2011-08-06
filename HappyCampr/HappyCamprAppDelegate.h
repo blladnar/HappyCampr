@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ScreencastProxy.h"
+#import "UserPopoverController.h"
+#import "MessageTableViewController.h"
 
 @interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource> {
 @private
@@ -32,12 +34,16 @@
    
    IBOutlet NSButton *stealModeCheckBox;
    NSMutableArray *messages;
+   NSMutableArray *allMessages;
    NSInteger lastMessageID;
    NSInteger numberOfUnreadMessages;
    
    NSMutableArray *userTableViews;
    
+   IBOutlet NSTableView *messageView;
+   IBOutlet MessageTableViewController *messageTableController;
    IBOutlet NSTableView *userTableView;
+    UserPopoverController *popover;
 }
 
 @property (assign) IBOutlet NSWindow *window;

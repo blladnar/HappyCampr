@@ -13,8 +13,11 @@
    NSPopover *popover;
    NSView *positioningView;
 
-   IBOutlet NSTextField *emailLabel;
+    IBOutlet NSImageView *avatarImageView;
+    IBOutlet NSTextField *nameLabel;
+   IBOutlet NSButton *emailButton;
 }
 
-@property NSView *positioningView;
+@property (retain) NSView *positioningView;
+- (IBAction)sendEmail:(id)sender;
 @end
