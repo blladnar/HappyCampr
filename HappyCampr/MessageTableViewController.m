@@ -11,7 +11,8 @@
 #import "NSString+FindURLs.h"
 
 @implementation MessageTableViewController
-@synthesize messages;
+@dynamic messages;
+@synthesize showJoinKickMessages;
 
 - (id)init
 {
@@ -25,6 +26,22 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
+   int i=0;
+   
+   if( !showJoinKickMessages )
+   {
+   
+      for( Message *message in messages )
+      {
+         if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] )
+         {
+            i++;
+         }
+      }
+   
+      return i;
+   }
+   
    return [messages count];
 }
 
@@ -35,7 +52,7 @@
    
    view.emphasized = row%2 == 0;
    
-   view.message = [messages objectAtIndex:row];
+   view.message = [messagesToShow objectAtIndex:row];
    
    return view;
 
@@ -48,7 +65,7 @@
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
 {
-   Message *message = [messages objectAtIndex:row];
+   Message *message = [messagesToShow objectAtIndex:row];
 
    NSArray *linksInMessage = [message.messageBody arrayOfLinks];
    
@@ -64,6 +81,31 @@
    
    
    return 30;
+}
+
+-(void)setMessages:(NSMutableArray *)theMessages
+{
+   messages = [theMessages retain];
+   
+   if( !showJoinKickMessages )
+   {
+      if( !messagesToShow )
+      {
+         messagesToShow = [[NSMutableArray alloc] init];
+      }
+      
+      for( Message *message in messages )
+      {
+         if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] )
+         {
+            [messagesToShow addObject:message];
+         }
+      }
+   }
+   else
+   {
+      messagesToShow = messages;
+   }
 }
 
 @end

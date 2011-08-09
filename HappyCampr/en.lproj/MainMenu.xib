@@ -1701,7 +1701,7 @@
 							<string key="NSFrame">{{741, 588}, {96, 32}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
+							<reference key="NSNextKeyView" ref="258295899"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="462703316">
 								<int key="NSCellFlags">67239424</int>
@@ -1723,7 +1723,7 @@
 							<string key="NSFrame">{{664, 300}, {104, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="328094034"/>
+							<reference key="NSNextKeyView" ref="843567720"/>
 							<string key="NSReuseIdentifierKey">_NS:239</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="479513085">
@@ -1735,11 +1735,11 @@
 								<reference key="NSControlView" ref="113657056"/>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
-								<object class="NSCustomResource" key="NSNormalImage">
+								<object class="NSCustomResource" key="NSNormalImage" id="316805004">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSSwitch</string>
 								</object>
-								<object class="NSButtonImageSource" key="NSAlternateImage">
+								<object class="NSButtonImageSource" key="NSAlternateImage" id="167800743">
 									<string key="NSImageName">NSSwitch</string>
 								</object>
 								<string key="NSAlternateContents"/>
@@ -1911,7 +1911,7 @@
 										<object class="NSTableView" id="85759629">
 											<reference key="NSNextResponder" ref="239594552"/>
 											<int key="NSvFlags">256</int>
-											<string key="NSFrameSize">{627, 205}</string>
+											<string key="NSFrameSize">{627, 428}</string>
 											<reference key="NSSuperview" ref="239594552"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="325581635"/>
@@ -1988,13 +1988,39 @@
 							<reference key="NSContentView" ref="239594552"/>
 							<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 						</object>
+						<object class="NSButton" id="843567720">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{664, 274}, {187, 18}}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="328094034"/>
+							<string key="NSReuseIdentifierKey">_NS:239</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="857329377">
+								<int key="NSCellFlags">67239424</int>
+								<int key="NSCellFlags2">0</int>
+								<string key="NSContents">Show Entry/Exit Messages</string>
+								<reference key="NSSupport" ref="28864556"/>
+								<string key="NSCellIdentifier">_NS:239</string>
+								<reference key="NSControlView" ref="843567720"/>
+								<int key="NSButtonFlags">1211912703</int>
+								<int key="NSButtonFlags2">2</int>
+								<reference key="NSNormalImage" ref="316805004"/>
+								<reference key="NSAlternateImage" ref="167800743"/>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
+							</object>
+						</object>
 					</object>
 					<string key="NSFrameSize">{862, 636}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="906803493"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -2915,6 +2941,22 @@
 					</object>
 					<int key="connectionID">686</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">shoeEnterMessageCheckbox</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="843567720"/>
+					</object>
+					<int key="connectionID">689</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showEnterMessageCheckbox</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="843567720"/>
+					</object>
+					<int key="connectionID">690</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -3487,6 +3529,7 @@
 							<reference ref="113657056"/>
 							<reference ref="1070143723"/>
 							<reference ref="258295899"/>
+							<reference ref="843567720"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -4285,6 +4328,20 @@
 						<reference key="object" ref="96442989"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">687</int>
+						<reference key="object" ref="843567720"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="857329377"/>
+						</object>
+						<reference key="parent" ref="439893737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">688</int>
+						<reference key="object" ref="857329377"/>
+						<reference key="parent" ref="843567720"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -4479,6 +4536,8 @@
 					<string>667.IBPluginDependency</string>
 					<string>667.ibExternalAutomaticallyCalculatesRowSizeFromViewHeight</string>
 					<string>682.IBPluginDependency</string>
+					<string>687.IBPluginDependency</string>
+					<string>688.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>73.IBPluginDependency</string>
 					<string>74.IBPluginDependency</string>
@@ -4694,6 +4753,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -4708,7 +4769,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">686</int>
+			<int key="maxID">690</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4830,6 +4891,7 @@
 							<string>messageView</string>
 							<string>roomPicker</string>
 							<string>saveAuthButton</string>
+							<string>showEnterMessageCheckbox</string>
 							<string>stealModeCheckBox</string>
 							<string>userTableView</string>
 							<string>window</string>
@@ -4843,6 +4905,7 @@
 							<string>MessageTableViewController</string>
 							<string>NSTableView</string>
 							<string>NSPopUpButton</string>
+							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSTableView</string>
@@ -4861,6 +4924,7 @@
 							<string>messageView</string>
 							<string>roomPicker</string>
 							<string>saveAuthButton</string>
+							<string>showEnterMessageCheckbox</string>
 							<string>stealModeCheckBox</string>
 							<string>userTableView</string>
 							<string>window</string>
@@ -4897,6 +4961,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">saveAuthButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">showEnterMessageCheckbox</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">

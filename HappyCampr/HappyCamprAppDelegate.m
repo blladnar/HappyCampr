@@ -245,7 +245,9 @@
          message.messageBody = [[[messageElement elementsForName:@"body"] lastObject] stringValue];
          message.messageType = [[[messageElement elementsForName:@"type"] lastObject] stringValue];
          
-         if( ![message.messageType isEqualToString:@""] )
+         NSLog(@"%@", message.messageType);
+         // ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"]
+         if( ![message.messageType isEqualToString:@"TimestampMessage"] )
          {
             [messages addObject:message];
          }
@@ -258,8 +260,8 @@
       
       [allMessages addObjectsFromArray:messages];
       messageTableController.messages = allMessages;
+      messageTableController.showJoinKickMessages = [showEnterMessageCheckbox state] == NSOnState;
       [messageView reloadData];
-      NSLog(@"%i", [allMessages count]);
       
       [messageView scrollToEndOfDocument:nil];
       

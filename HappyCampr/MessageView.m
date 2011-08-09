@@ -30,6 +30,7 @@
    [timeStampLabel setEditable:NO];
    timeStampLabel.drawsBackground = NO;
    [timeStampLabel setBordered:NO];
+   [timeStampLabel setSelectable:YES];
    
    NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
    

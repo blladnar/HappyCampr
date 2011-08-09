@@ -11,7 +11,10 @@
 @interface MessageTableViewController : NSObject<NSTableViewDelegate,NSTableViewDataSource>
 {
    NSMutableArray *messages;
+   NSMutableArray *messagesToShow;
+   BOOL showJoinKickMessages;
 }
 
 @property (retain) NSMutableArray *messages;
+@property (assign) BOOL showJoinKickMessages;
 @end

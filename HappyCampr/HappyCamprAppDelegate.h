@@ -32,6 +32,7 @@
    NSString *campfireAuthCode;
    NSButton *saveAuthToken;
    
+   IBOutlet NSButton *showEnterMessageCheckbox;
    IBOutlet NSButton *stealModeCheckBox;
    NSMutableArray *messages;
    NSMutableArray *allMessages;
