@@ -32,7 +32,11 @@
    [timeStampLabel setBordered:NO];
    [timeStampLabel setSelectable:YES];
    
-   NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
+   NSLog(@"%@", message.timeStamp);
+   
+   NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:[NSTimeZone timeZoneWithName:@"EST"] locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
+   
+   NSLog(@"%@" ,dateString);
    
    [timeStampLabel setStringValue:dateString];   
    [self addSubview:timeStampLabel];

@@ -80,11 +80,11 @@
             [rooms addObject:room];
          }
          
-         NSLog(@"%@", rooms);
+      //   NSLog(@"%@", rooms);
          NSError *error;
          [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
          [apiField setHidden:YES];
-         NSLog(@"%i", [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]);
+      //  NSLog(@"%i", [[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]);
          [roomPicker selectItemAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]];
          [self roomPicked:nil];
          [[NSUserDefaults standardUserDefaults] synchronize];
@@ -107,12 +107,11 @@
 
 - (IBAction)roomPicked:(id)sender 
 {
-   NSLog(@"%@", [rooms objectAtIndex:[roomPicker indexOfSelectedItem]]);
+  // NSLog(@"%@", [rooms objectAtIndex:[roomPicker indexOfSelectedItem]]);
    [[NSUserDefaults standardUserDefaults] setInteger:[roomPicker indexOfSelectedItem] forKey:@"SelectedRoom"];
    [[NSUserDefaults standardUserDefaults] synchronize];
    
    lastMessageID = 0;
-   [chatTextView setString:@""];
    [self getMessagesForSelectedRoom];
    [self getUsersForSelectedRoom];
    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getMessagesForSelectedRoom) userInfo:nil repeats:YES];
@@ -133,8 +132,8 @@
       
       [request setCompletionBlock:^{
          NSString *responseString = [request responseString];
-         NSLog(@"%@", responseString);
-         NSLog(@"%i", request.responseStatusCode);
+     //    NSLog(@"%@", responseString);
+     //    NSLog(@"%i", request.responseStatusCode);
          
       }];
       
@@ -154,8 +153,8 @@
          
          [leaveRequest setCompletionBlock:^{
             NSString *responseString = [request responseString];
-            NSLog(@"%@", responseString);
-            NSLog(@"%i", request.responseStatusCode);
+        //    NSLog(@"%@", responseString);
+        //    NSLog(@"%i", request.responseStatusCode);
             
          }];
          
@@ -163,8 +162,7 @@
       }
       
       oldRoomId = [roomID retain];
-      
-      
+
    }
    
 }
@@ -185,7 +183,7 @@
    
    [request setCompletionBlock:^{
       NSString *responseString = [request responseString];
-      NSLog(@"%@", responseString);
+   //   NSLog(@"%@", responseString);
       
       NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
       
@@ -231,6 +229,8 @@
       
       NSArray *messageElements = [[responseDoc rootElement] elementsForName:@"message"];
       
+      [messages removeAllObjects];
+      
       for( NSXMLElement *messageElement in messageElements )
       {
          Message *message = [Message new];
@@ -245,7 +245,7 @@
          message.messageBody = [[[messageElement elementsForName:@"body"] lastObject] stringValue];
          message.messageType = [[[messageElement elementsForName:@"type"] lastObject] stringValue];
          
-         NSLog(@"%@", message.messageType);
+      //   NSLog(@"%@", message.messageType);
          // ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"]
          if( ![message.messageType isEqualToString:@"TimestampMessage"] )
          {
@@ -259,15 +259,17 @@
       }
       
       [allMessages addObjectsFromArray:messages];
-      messageTableController.messages = allMessages;
       messageTableController.showJoinKickMessages = [showEnterMessageCheckbox state] == NSOnState;
+      messageTableController.messages = allMessages;
+      
       [messageView reloadData];
       
-      [messageView scrollToEndOfDocument:nil];
+     // [messageView scrollToEndOfDocument:nil];
+      
+      NSLog(@"Number of new messages %i", [messages count]);
       
       if( [messages count] )
       {
-         [self formatMessages];
          
          if( ![[NSApplication sharedApplication] isActive] )
          {
@@ -295,46 +297,6 @@
    return @"";
 }
 
--(NSString*)formatMessages
-{
-   NSString *messagesString = @"";
-   for( Message *message in messages )
-   {
-      NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
-      if( [message.messageType isEqualToString:@"TextMessage"] )
-      {
-         if( [message.messageBody hasSuffix:@".jpg"] || [message.messageBody hasSuffix:@".png"] )
-         {
-            
-            [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@:",dateString, [self usernameForID:message.userID]]];
-            
-            NSImage * pic = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:message.messageBody]];
-            NSTextAttachmentCell *attachmentCell = [[NSTextAttachmentCell alloc] initImageCell:pic];
-            NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-            [attachment setAttachmentCell: attachmentCell ];
-            NSAttributedString *attributedString = [NSAttributedString  attributedStringWithAttachment: attachment];
-            [[chatTextView textStorage] appendAttributedString:attributedString];
-            [chatTextView scrollRangeToVisible: NSMakeRange ([[chatTextView string] length], 0)];
-            
-            
-         }
-         else
-         {            
-            NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:nil locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
-            // messagesString = [messagesString stringByAppendingFormat:@"%@ %@: %@\n",dateString, [self usernameForID:message.userID],message.messageBody];
-            [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@: %@",dateString, [self usernameForID:message.userID],message.messageBody]];
-         }
-
-      }
-      else if( [message.messageType isEqualToString:@"SoundMessage"] )
-      {
-         [chatTextView insertText:[NSString stringWithFormat:@"\n%@ %@: %@",dateString, [self usernameForID:message.userID],message.messageBody]];
-      }
-   }
-   
-   return messagesString;
-}
-
 -(NSString*)messageWithType:(NSString*)messageType andMessage:(NSString*)message
 {
    return [NSString stringWithFormat:@"<message><type>%@</type><body>%@</body></message>", messageType, message];
@@ -359,7 +321,7 @@
    [request setPostBody:[postBody dataUsingEncoding:NSUTF8StringEncoding]];
    
    [request setCompletionBlock:^{
-      NSLog(@"%@", [request responseString]);
+    //  NSLog(@"%@", [request responseString]);
    }];
    
    [request startAsynchronous];
@@ -373,7 +335,7 @@
    screencastAuthCode = [[scCommunicator loginWithEmail:@"r.brown@techsmith.com" andPassword:@"stuff" error:&error] retain];
    
    NSDictionary *mediaGroupList = [scCommunicator mediaGroupListWithAuthCode:screencastAuthCode error:nil];
-   NSLog(@"%@", mediaGroupList);
+ //  NSLog(@"%@", mediaGroupList);
    
    for( NSString* key in [mediaGroupList allKeys] )
    {
@@ -418,7 +380,7 @@
    [request setPostBody:[postBody dataUsingEncoding:NSUTF8StringEncoding]];
    
    [request setCompletionBlock:^{
-      NSLog(@"%@", [request responseString]);
+   //   NSLog(@"%@", [request responseString]);
    }];
    
    [request startAsynchronous];
@@ -502,7 +464,7 @@
             [rooms addObject:room];
          }
          
-         NSLog(@"%@", rooms);
+      //   NSLog(@"%@", rooms);
          
          NSError *error;
          [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
@@ -547,7 +509,7 @@
 
 - (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
 {
-   NSLog(@"%@",[usersInRoom objectAtIndex:rowIndex] );
+  // NSLog(@"%@",[usersInRoom objectAtIndex:rowIndex] );
    
    id view = [userTableView rowViewAtRow:rowIndex makeIfNecessary:YES];
    

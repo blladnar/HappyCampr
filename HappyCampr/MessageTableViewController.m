@@ -53,6 +53,10 @@
    view.emphasized = row%2 == 0;
    
    view.message = [messagesToShow objectAtIndex:row];
+   if( row == [messagesToShow count]-1 ) 
+   {
+      NSLog(@"%@", [messagesToShow objectAtIndex:row]);
+   }
    
    return view;
 
@@ -86,7 +90,7 @@
 -(void)setMessages:(NSMutableArray *)theMessages
 {
    messages = [theMessages retain];
-   
+   [messagesToShow removeAllObjects];
    if( !showJoinKickMessages )
    {
       if( !messagesToShow )

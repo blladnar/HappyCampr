@@ -28,7 +28,6 @@
    ScreencastProxy *scCommunicator;
    NSString *oldRoomId;
    
-   IBOutlet NSTextView *chatTextView;
    NSString *campfireAuthCode;
    NSButton *saveAuthToken;
    
