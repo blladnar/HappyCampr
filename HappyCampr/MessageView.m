@@ -9,6 +9,8 @@
 #import "MessageView.h"
 #import "NSString+FindURLs.h"
 #import "NS(Attributed)String+Geometrics.h"
+#import "ASIHTTPRequest.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation MessageView
 @dynamic message;
@@ -21,6 +23,45 @@
     }
     
     return self;
+}
+
+-(Message*)message
+{
+   return message;
+}
+
+-(void)getUserNameFromInternetWithID:(NSInteger)userID
+{
+   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/users/%i.xml", userID];
+   NSError* error;
+   
+   NSString *campfireAuthCode = [[SFHFKeychainUtils getPasswordForUsername:@"HappyCampr" andServiceName:@"HappyCampr:AuthToken" error:&error] retain];
+   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+   
+   [request addRequestHeader:@"Content-Type" value:@"application/xml"];
+   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+   [request setUsername:campfireAuthCode];
+   [request setPassword:@"X"];
+   
+   [request setCompletionBlock:^{
+      NSString *responseString = [request responseString];
+      
+      NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+      NSArray *userElement = [responseDoc rootElement];
+
+
+      NSString *userName = [[[userElement elementsForName:@"name"] lastObject] stringValue];
+      
+      self.message.userName = userName;
+      
+      if( userName )
+      {
+         [usernameField setStringValue:userName];
+      }
+      
+   }];
+   
+   [request startAsynchronous];  
 }
 
 -(void)setMessage:(Message *)aMessage
@@ -39,11 +80,17 @@
    [timeStampLabel setStringValue:dateString];   
    [self addSubview:timeStampLabel];
    
-   NSTextField *usernameField = [[NSTextField alloc] initWithFrame:NSMakeRect(40, 0, 60, 20)];
+    usernameField = [[NSTextField alloc] initWithFrame:NSMakeRect(40, 0, 60, 20)];
    [usernameField setEditable:NO];
    [usernameField setBordered:NO];
-   [usernameField setStringValue:aMessage.userName];
    usernameField.drawsBackground = NO;   
+   
+   if( ![aMessage.userName length])
+   {
+      [self getUserNameFromInternetWithID:aMessage.userID];
+   }
+   
+   [usernameField setStringValue:aMessage.userName];
    
    
    NSTextView *textView = [[NSTextView alloc] initWithFrame:NSMakeRect(100, 0, self.frame.size.width - 115, 40)];

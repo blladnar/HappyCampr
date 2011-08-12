@@ -12,6 +12,7 @@
 @interface MessageView : NSTableRowView
 {
    Message *message;
+   NSTextField *usernameField;
 }
 
 @property (retain) Message *message;
