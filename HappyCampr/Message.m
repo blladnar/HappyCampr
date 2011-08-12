@@ -16,6 +16,7 @@
 @synthesize userID;
 @synthesize messageBody;
 @synthesize messageType;
+@synthesize userName;
 
 - (id)init
 {

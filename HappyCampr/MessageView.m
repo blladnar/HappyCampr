@@ -8,6 +8,7 @@
 
 #import "MessageView.h"
 #import "NSString+FindURLs.h"
+#import "NS(Attributed)String+Geometrics.h"
 
 @implementation MessageView
 @dynamic message;
@@ -26,29 +27,35 @@
 {
    message = aMessage;
    
-   NSTextField *timeStampLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 60, 20)];
+   NSTextField *timeStampLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 40, 20)];
    [timeStampLabel setEditable:NO];
    timeStampLabel.drawsBackground = NO;
    [timeStampLabel setBordered:NO];
    [timeStampLabel setSelectable:YES];
+
+   NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:[NSTimeZone localTimeZone] locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
    
-   NSLog(@"%@", message.timeStamp);
-   
-   NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:[NSTimeZone timeZoneWithName:@"EST"] locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
-   
-   NSLog(@"%@" ,dateString);
    
    [timeStampLabel setStringValue:dateString];   
    [self addSubview:timeStampLabel];
    
+   NSTextField *usernameField = [[NSTextField alloc] initWithFrame:NSMakeRect(40, 0, 60, 20)];
+   [usernameField setEditable:NO];
+   [usernameField setBordered:NO];
+   [usernameField setStringValue:aMessage.userName];
+   usernameField.drawsBackground = NO;   
    
    
-   NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(60, 0, self.frame.size.width, 20)];
-   [textField setEditable:NO];
-   [textField setBordered:NO];
+   NSTextView *textView = [[NSTextView alloc] initWithFrame:NSMakeRect(100, 0, self.frame.size.width - 115, 40)];
+   NSInteger height = [aMessage.messageBody heightForWidth:self.frame.size.width-115 font:[textView font]];
+   textView.frame = NSMakeRect(100, 0, self.frame.size.width - 115, height);
+   [textView setDrawsBackground:NO];
+   [textView setEditable:NO];
+   self.frame = NSMakeRect(0, 0, self.frame.size.width, height);
    
-   [textField setStringValue:aMessage.messageBody];
-   textField.drawsBackground = NO;
+   [textView setString:aMessage.messageBody];
+   
+   [self addSubview:textView];
    
    NSArray *linksInMessage = [aMessage.messageBody arrayOfLinks];
    if( [[linksInMessage lastObject] rangeOfString:@"youtube"].location != NSNotFound)
@@ -90,8 +97,7 @@
       [self addSubview:imageView];
    }
    
-   
-   [self addSubview:textField];
+   [self addSubview:usernameField];
 }
 
 -(void)pressYoutubeButton:(id)sender

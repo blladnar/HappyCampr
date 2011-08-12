@@ -9,10 +9,12 @@
 #import "MessageTableViewController.h"
 #import "MessageView.h"
 #import "NSString+FindURLs.h"
+#import "User.h"
 
 @implementation MessageTableViewController
 @dynamic messages;
 @synthesize showJoinKickMessages;
+@synthesize userCache;
 
 - (id)init
 {
@@ -33,16 +35,17 @@
    
       for( Message *message in messages )
       {
-         if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] )
+         if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] && ![message.messageType isEqualToString:@"LeaveMessage"] )
          {
             i++;
          }
       }
    
-      return i;
+      NSLog(@"Number of rows in tableview %i",i);
+      return i; 
    }
    
-   return [messages count];
+   return [messagesToShow count];
 }
 
 
@@ -52,12 +55,11 @@
    
    view.emphasized = row%2 == 0;
    
-   view.message = [messagesToShow objectAtIndex:row];
-   if( row == [messagesToShow count]-1 ) 
-   {
-      NSLog(@"%@", [messagesToShow objectAtIndex:row]);
-   }
+   Message *message = [messagesToShow objectAtIndex:row];
+      message.userName = [self usernameForID:message.userID];
    
+   view.message = message;
+   NSLog(@"%i %@", row, message.messageBody );
    return view;
 
 }
@@ -82,9 +84,11 @@
       }
    }
    
+   MessageView *view = [[MessageView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)];
+   message.userName = @"";
+   view.message = message;
    
-   
-   return 30;
+   return view.frame.size.height + 5;
 }
 
 -(void)setMessages:(NSMutableArray *)theMessages
@@ -100,7 +104,7 @@
       
       for( Message *message in messages )
       {
-         if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] )
+         if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] && ![message.messageType isEqualToString:@"LeaveMessage"] )
          {
             [messagesToShow addObject:message];
          }
@@ -110,6 +114,19 @@
    {
       messagesToShow = messages;
    }
+   NSLog(@"%@", messagesToShow);
+}
+
+-(NSString*)usernameForID:(NSInteger)userID
+{
+   for( User *user in userCache )
+   {
+      if (userID == user.userID ) 
+      {
+         return user.name;
+      }
+   }
+   return @"";
 }
 
 @end

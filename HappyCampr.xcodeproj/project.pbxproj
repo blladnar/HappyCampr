@@ -53,6 +53,8 @@
 		F191440513E2F26B0069ECF9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F191440413E2F26B0069ECF9 /* libz.dylib */; };
 		F191440C13E2F6D70069ECF9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440B13E2F6D70069ECF9 /* Message.m */; };
 		F191440F13E312540069ECF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440E13E312540069ECF9 /* User.m */; };
+		F1BE16D413F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BE16D313F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m */; };
+		F1BE16DD13F5BD570025AC17 /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BE16DC13F5BD570025AC17 /* NSAttributedString+Hyperlink.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +156,10 @@
 		F191440B13E2F6D70069ECF9 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		F191440D13E312540069ECF9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		F191440E13E312540069ECF9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F1BE16D213F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS(Attributed)String+Geometrics.h"; sourceTree = "<group>"; };
+		F1BE16D313F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
+		F1BE16DB13F5BD570025AC17 /* NSAttributedString+Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Hyperlink.h"; sourceTree = "<group>"; };
+		F1BE16DC13F5BD570025AC17 /* NSAttributedString+Hyperlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Hyperlink.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,8 @@
 				F13549C713D08BE000967F63 /* ScreencastMediaItem.h */,
 				F13549C813D08BE000967F63 /* ScreencastMediaItem.m */,
 				F13549C913D08BE000967F63 /* ScreencastMediaProtocol.h */,
+				F1BE16D213F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.h */,
+				F1BE16D313F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m */,
 				F13549CA13D08BE000967F63 /* ScreencastProxy.h */,
 				F13549CB13D08BE000967F63 /* ScreencastProxy.m */,
 				F13549CC13D08BE000967F63 /* UploadProgressProtocol.h */,
@@ -268,6 +276,8 @@
 				70A3EB8E13ECCBA800150E41 /* MessageView.m */,
 				70A3EB9913ECD15700150E41 /* NSString+FindURLs.h */,
 				70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */,
+				F1BE16DB13F5BD570025AC17 /* NSAttributedString+Hyperlink.h */,
+				F1BE16DC13F5BD570025AC17 /* NSAttributedString+Hyperlink.m */,
 			);
 			path = HappyCampr;
 			sourceTree = "<group>";
@@ -478,6 +488,8 @@
 				70A3EB8B13ECC36100150E41 /* MessageTableViewController.m in Sources */,
 				70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */,
 				70A3EB9B13ECD15700150E41 /* NSString+FindURLs.m in Sources */,
+				F1BE16D413F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m in Sources */,
+				F1BE16DD13F5BD570025AC17 /* NSAttributedString+Hyperlink.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

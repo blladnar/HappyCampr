@@ -12,9 +12,13 @@
 {
    NSMutableArray *messages;
    NSMutableArray *messagesToShow;
+   NSMutableArray *userCache;
    BOOL showJoinKickMessages;
 }
 
 @property (retain) NSMutableArray *messages;
+@property (retain) NSMutableArray *userCache;
 @property (assign) BOOL showJoinKickMessages;
+
+-(NSString*)usernameForID:(NSInteger)userID;
 @end

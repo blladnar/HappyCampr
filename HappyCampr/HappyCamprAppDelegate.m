@@ -15,6 +15,11 @@
 #import "Message.h"
 #import "User.h"
 
+void NSLogRect(NSRect rect)
+{
+   NSLog(@"%f %f %f %f",rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+}
+
 @implementation HappyCamprAppDelegate
 @synthesize messageField;
 
@@ -202,6 +207,7 @@
       }
       
       [userTableView reloadData];
+      messageTableController.userCache = usersInRoom;
       
    }];
    
@@ -223,8 +229,9 @@
    [request setPassword:@"X"];
    
    [request setCompletionBlock:^{
+
       NSString *responseString = [request responseString];
-      
+
       NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
       
       NSArray *messageElements = [[responseDoc rootElement] elementsForName:@"message"];
@@ -238,6 +245,7 @@
          message.messageId = [[[[messageElement elementsForName:@"id"] lastObject] stringValue] intValue];
          
          NSDateFormatter *dateFormatter = [[NSDateFormatter new] autorelease];
+         [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
          [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
          message.timeStamp = [dateFormatter dateFromString:[[[messageElement elementsForName:@"created-at"] lastObject] stringValue]];
          message.roomID = [[[[messageElement elementsForName:@"room-id"] lastObject] stringValue] intValue];
@@ -262,11 +270,20 @@
       messageTableController.showJoinKickMessages = [showEnterMessageCheckbox state] == NSOnState;
       messageTableController.messages = allMessages;
       
+      BOOL scrollDown = NO;
+      if( [messageView visibleRect].origin.y + [messageView visibleRect].size.height == messageView.bounds.size.height )
+      {
+         scrollDown = YES;
+      }
+      
       [messageView reloadData];
+     
+      if( scrollDown )
+      {
+         [messageView scrollToEndOfDocument:nil];
+      }
       
-     // [messageView scrollToEndOfDocument:nil];
-      
-      NSLog(@"Number of new messages %i", [messages count]);
+
       
       if( [messages count] )
       {
@@ -463,8 +480,6 @@
             
             [rooms addObject:room];
          }
-         
-      //   NSLog(@"%@", rooms);
          
          NSError *error;
          [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];

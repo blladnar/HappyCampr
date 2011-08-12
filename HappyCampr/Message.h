@@ -19,6 +19,7 @@
 @property (assign) NSInteger userID;
 @property (retain) NSString* messageBody;
 @property (retain) NSString* messageType;
+@property (retain) NSString* userName;
 
 
 @end
