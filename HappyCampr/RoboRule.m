@@ -32,4 +32,21 @@
    return self;
 }
 
+-(void) encodeWithCoder: (NSCoder*) coder 
+{
+   [coder encodeObject: self.response forKey: @"response"];
+   [coder encodeObject: self.response forKey: @"trigger"];
+}
+
+-(id) initWithCoder: (NSCoder*) coder
+{
+   self = [super init];
+   if ( ! self) return nil;
+   
+   self.trigger = [coder decodeObjectForKey:@"trigger"];
+   self.response = [coder decodeObjectForKey:@"response"];
+   
+   return self;
+}
+
 @end

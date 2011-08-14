@@ -11,6 +11,7 @@
 #import "UserPopoverController.h"
 #import "MessageTableViewController.h"
 #import "User.h"
+#import "RoboRulesController.h"
 
 @interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource> {
 @private
@@ -50,6 +51,7 @@
    
    IBOutlet NSWindow *rulesWindow;
    BOOL initialMessageLoad;
+   IBOutlet RoboRulesController *rulesController;
 }
 - (IBAction)openRulesWindow:(id)sender;
 

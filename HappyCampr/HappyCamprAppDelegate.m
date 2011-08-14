@@ -35,7 +35,7 @@ void NSLogRect(NSRect rect)
 
 -(void)processRoboRulesAgainstMessages:(NSArray*)theMessages
 {
-   for( RoboRule *rule in roboRules )
+   for( RoboRule *rule in [rulesController rules] )
    {
       for( Message *message in theMessages )
       {
