@@ -49,7 +49,7 @@
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-   MessageView *view = [[MessageView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)];
+   MessageView *view = [[[MessageView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)] autorelease];
    
    view.emphasized = row%2 == 0;
    
@@ -74,14 +74,13 @@
    
    for( NSString* link in linksInMessage )
    {
-      NSRange range = [link rangeOfString:@"youtube"];
       if( [link linkIsImage] || [link rangeOfString:@"youtube"].location != NSNotFound)
       {
          return 200;
       }
    }
    
-   MessageView *view = [[MessageView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)];
+   MessageView *view = [[[MessageView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)] autorelease];
    message.userName = @"";
    view.message = message;
    

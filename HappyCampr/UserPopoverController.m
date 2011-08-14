@@ -31,6 +31,12 @@
    [popover showRelativeToRect:[positioningView bounds] ofView:positioningView preferredEdge:NSMaxXEdge];
 }
 
+-(void)dealloc
+{
+   [popover release];
+   [super dealloc];
+}
+
 
 - (IBAction)sendEmail:(id)sender
 {

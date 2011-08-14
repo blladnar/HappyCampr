@@ -45,10 +45,12 @@
    [request setUsername:campfireAuthCode];
    [request setPassword:@"X"];
    
+   [campfireAuthCode release];
+   
    [request setCompletionBlock:^{
       NSString *responseString = [request responseString];
       
-      NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+      NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil] autorelease];
       NSArray *userElement = [responseDoc rootElement];
 
       
@@ -76,7 +78,7 @@
 {
    message = aMessage;
    
-   NSTextField *timeStampLabel = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 40, 20)];
+   NSTextField *timeStampLabel = [[[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 40, 20)] autorelease];
    [timeStampLabel setEditable:NO];
    timeStampLabel.drawsBackground = NO;
    [timeStampLabel setBordered:NO];
@@ -108,7 +110,7 @@
    [usernameField setStringValue:userName];
    
    
-   NSTextView *textView = [[NSTextView alloc] initWithFrame:NSMakeRect(100, 0, self.frame.size.width - 115, 40)];
+   NSTextView *textView = [[[NSTextView alloc] initWithFrame:NSMakeRect(100, 0, self.frame.size.width - 115, 40)] autorelease];
    NSInteger height = [aMessage.messageBody heightForWidth:self.frame.size.width-115 font:[textView font]];
    textView.frame = NSMakeRect(100, 0, self.frame.size.width - 115, height);
    [textView setDrawsBackground:NO];
@@ -142,10 +144,10 @@
       NSString* videoID = [pairs objectForKey:@"v"];
       if( videoID )
       {
-         NSButton *youtubeButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 30, 150, 150)];
+         NSButton *youtubeButton = [[[NSButton alloc] initWithFrame:NSMakeRect(10, 30, 150, 150)] autorelease];
          [youtubeButton setTitle:[linksInMessage lastObject]];
          NSString *youtubePreviewImage = [NSString stringWithFormat:@"http://img.youtube.com/vi/%@/1.jpg",videoID];
-         [youtubeButton setImage:[[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:youtubePreviewImage]]];
+         [youtubeButton setImage:[[[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:youtubePreviewImage]] autorelease]];
          
          [youtubeButton setTarget:self];
          [youtubeButton setAction:@selector(pressYoutubeButton:)];
@@ -156,8 +158,8 @@
    
    else if( [[linksInMessage lastObject] linkIsImage] )
    {
-      NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10, 30, 150, 150)];
-      [imageView setImage:[[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[linksInMessage lastObject]]]];
+      NSImageView *imageView = [[[NSImageView alloc] initWithFrame:NSMakeRect(10, 30, 150, 150)] autorelease];
+      [imageView setImage:[[[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[linksInMessage lastObject]]] autorelease]];
       [self addSubview:imageView];
    }
    

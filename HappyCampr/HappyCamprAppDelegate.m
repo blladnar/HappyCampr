@@ -69,13 +69,13 @@ void NSLogRect(NSRect rect)
          // Use when fetching text data
          NSString *responseString = [request responseString];
          
-         NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+         NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil] autorelease];
          
          NSArray *roomElements = [[responseDoc rootElement] elementsForName:@"room"];
          
          for( NSXMLElement *roomElement in roomElements )
          {
-            Room *room = [Room new];
+            Room *room = [[Room new] autorelease];
             
             room.roomID = [[[roomElement elementsForName:@"id"] lastObject] stringValue];
             room.name = [[[roomElement elementsForName:@"name"] lastObject] stringValue];
@@ -138,7 +138,7 @@ void NSLogRect(NSRect rect)
       [request setPassword:@"X"];
       
       [request setCompletionBlock:^{
-         NSString *responseString = [request responseString];
+        // NSString *responseString = [request responseString];
      //    NSLog(@"%@", responseString);
      //    NSLog(@"%i", request.responseStatusCode);
          
@@ -159,7 +159,7 @@ void NSLogRect(NSRect rect)
          [leaveRequest setPassword:@"X"];
          
          [leaveRequest setCompletionBlock:^{
-            NSString *responseString = [request responseString];
+         //   NSString *responseString = [request responseString];
         //    NSLog(@"%@", responseString);
         //    NSLog(@"%i", request.responseStatusCode);
             
@@ -192,13 +192,13 @@ void NSLogRect(NSRect rect)
       NSString *responseString = [request responseString];
    //   NSLog(@"%@", responseString);
       
-      NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+      NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil] autorelease];
       
       NSArray *userElements = [[[[responseDoc rootElement] elementsForName:@"users"] lastObject] elementsForName:@"user"];
       
       for( NSXMLElement *userElement in userElements )
       {
-         User *user = [User new];
+         User *user = [[User new] autorelease];
          user.userID = [[[[userElement elementsForName:@"id"] lastObject] stringValue] intValue];
          user.name = [[[userElement elementsForName:@"name"] lastObject] stringValue];
          user.email = [[[userElement elementsForName:@"email-address"] lastObject] stringValue];
@@ -235,7 +235,7 @@ void NSLogRect(NSRect rect)
 
       NSString *responseString = [request responseString];
 
-      NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+      NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil] autorelease];
       
       NSArray *messageElements = [[responseDoc rootElement] elementsForName:@"message"];
       
@@ -243,7 +243,7 @@ void NSLogRect(NSRect rect)
       
       for( NSXMLElement *messageElement in messageElements )
       {
-         Message *message = [Message new];
+         Message *message = [[Message new] autorelease];
          
          message.messageId = [[[[messageElement elementsForName:@"id"] lastObject] stringValue] intValue];
          
@@ -467,13 +467,13 @@ void NSLogRect(NSRect rect)
          // Use when fetching text data
          NSString *responseString = [request responseString];
          
-         NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
+         NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil] autorelease];
          
          NSArray *roomElements = [[responseDoc rootElement] elementsForName:@"room"];
          
          for( NSXMLElement *roomElement in roomElements )
          {
-            Room *room = [Room new];
+            Room *room = [[Room new] autorelease];
             
             room.roomID = [[[roomElement elementsForName:@"id"] lastObject] stringValue];
             room.name = [[[roomElement elementsForName:@"name"] lastObject] stringValue];
@@ -502,9 +502,9 @@ void NSLogRect(NSRect rect)
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-   NSTableRowView *rowView = [[NSTableRowView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)];
+   NSTableRowView *rowView = [[[NSTableRowView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)] autorelease];
 
-   NSTextField *textField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)];
+   NSTextField *textField = [[[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)] autorelease];
    [textField setEditable:NO];
    
    [textField setStringValue:[[usersInRoom objectAtIndex:row]name]];
