@@ -14,6 +14,7 @@
 #import "SFHFKeychainUtils.h"
 #import "Message.h"
 #import "User.h"
+#import "RoboRule.h"
 
 void NSLogRect(NSRect rect)
 {
@@ -32,11 +33,26 @@ void NSLogRect(NSRect rect)
    numberOfUnreadMessages = 0;
 }
 
+-(void)processRoboRulesAgainstMessages:(NSArray*)theMessages
+{
+   for( RoboRule *rule in roboRules )
+   {
+      for( Message *message in theMessages )
+      {
+         if( !NSEqualRanges([message.messageBody rangeOfString:rule.trigger], NSMakeRange(NSNotFound, 0)) )
+         {
+            [self sendTextMessage:rule.response];
+         }
+      }
+   }
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
    NSString *screencastURL = @"http://www.screencast.stage/api/rest.ashx";
    NSString *testRunnerAPIKey = @"0bbfcdfb-3640-495b-80de-4acd36babbc1";
    NSString *testRunnerSecretKey = @"167e3ebd-7bbd-4e8b-b7a9-0b11aa276924";
+   initialMessageLoad = YES;
  
     popover = [[UserPopoverController alloc] initWithNibName:@"UserPopoverController" bundle:nil];
    lastMessageID = 0;
@@ -44,6 +60,10 @@ void NSLogRect(NSRect rect)
    
    allMessages = [NSMutableArray new];
    userCache = [NSMutableArray new];
+   roboRules = [NSMutableArray new];
+   
+   RoboRule *rule1 = [[RoboRule alloc] initWithTrigger:@"hello" andResponse:@"http://2pep.com/funny%20pics/funny%20hilarious/super_funny_hilarious_pictures_crazy_fun_laughing_cute_kittens-4089.jpg"];
+   [roboRules addObject:rule1];
    
    scCommunicator = [[ScreencastProxy alloc] initWithURL:[NSURL URLWithString:screencastURL] apiKey:testRunnerAPIKey secretKey:testRunnerSecretKey];   
    
@@ -269,6 +289,15 @@ void NSLogRect(NSRect rect)
          lastMessageID = [[messages lastObject] messageId];
       }
       
+      if( !initialMessageLoad )
+      {
+         [self processRoboRulesAgainstMessages:messages];
+      }
+      else
+      {
+         initialMessageLoad = NO;
+      }
+      
       [allMessages addObjectsFromArray:messages];
       messageTableController.showJoinKickMessages = [showEnterMessageCheckbox state] == NSOnState;
       messageTableController.messages = allMessages;
@@ -322,7 +351,7 @@ void NSLogRect(NSRect rect)
    return [NSString stringWithFormat:@"<message><type>%@</type><body>%@</body></message>", messageType, message];
 }
 
-- (IBAction)sendMessage:(id)sender 
+-(void)sendTextMessage:(NSString*)text
 {
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    
@@ -336,15 +365,20 @@ void NSLogRect(NSRect rect)
    [request setUsername:campfireAuthCode];
    [request setPassword:@"X"];
    
-   NSString *postBody = [self messageWithType:@"TextMessage" andMessage:[messageField stringValue]];
-
+   NSString *postBody = [self messageWithType:@"TextMessage" andMessage:text];
+   
    [request setPostBody:[postBody dataUsingEncoding:NSUTF8StringEncoding]];
    
    [request setCompletionBlock:^{
-    //  NSLog(@"%@", [request responseString]);
+      //  NSLog(@"%@", [request responseString]);
    }];
    
    [request startAsynchronous];
+}
+
+- (IBAction)sendMessage:(id)sender 
+{
+   [self sendTextMessage:[messageField stringValue]];
    [messageField setStringValue:@""];
     
 }
@@ -542,4 +576,8 @@ void NSLogRect(NSRect rect)
    [userCache addObject:user];
 }
 
+- (IBAction)openRulesWindow:(id)sender 
+{
+   [rulesWindow makeKeyAndOrderFront:sender];
+}
 @end

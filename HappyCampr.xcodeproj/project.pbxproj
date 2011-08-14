@@ -11,6 +11,7 @@
 		70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8E13ECCBA800150E41 /* MessageView.m */; };
 		70A3EB9B13ECD15700150E41 /* NSString+FindURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */; };
 		70BDE04A13F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE04913F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.m */; };
+		70BDE04E13F8594F00FC2C93 /* RoboRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE04D13F8594F00FC2C93 /* RoboRule.m */; };
 		F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F116413E13D0736200A528F8 /* Cocoa.framework */; };
 		F116414913D0736200A528F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F116414713D0736200A528F8 /* InfoPlist.strings */; };
 		F116414C13D0736200A528F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F116414B13D0736200A528F8 /* main.m */; };
@@ -77,6 +78,8 @@
 		70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FindURLs.m"; sourceTree = "<group>"; };
 		70BDE04813F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+AutomaticLinkDetection.h"; sourceTree = "<group>"; };
 		70BDE04913F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+AutomaticLinkDetection.m"; sourceTree = "<group>"; };
+		70BDE04C13F8594F00FC2C93 /* RoboRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoboRule.h; sourceTree = "<group>"; };
+		70BDE04D13F8594F00FC2C93 /* RoboRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoboRule.m; sourceTree = "<group>"; };
 		F116413A13D0736200A528F8 /* HappyCampr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCampr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F116413E13D0736200A528F8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F116414113D0736200A528F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -283,6 +286,8 @@
 				70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */,
 				F1BE16DB13F5BD570025AC17 /* NSAttributedString+Hyperlink.h */,
 				F1BE16DC13F5BD570025AC17 /* NSAttributedString+Hyperlink.m */,
+				70BDE04C13F8594F00FC2C93 /* RoboRule.h */,
+				70BDE04D13F8594F00FC2C93 /* RoboRule.m */,
 			);
 			path = HappyCampr;
 			sourceTree = "<group>";
@@ -496,6 +501,7 @@
 				F1BE16D413F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m in Sources */,
 				F1BE16DD13F5BD570025AC17 /* NSAttributedString+Hyperlink.m in Sources */,
 				70BDE04A13F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.m in Sources */,
+				70BDE04E13F8594F00FC2C93 /* RoboRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

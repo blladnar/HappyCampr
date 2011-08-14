@@ -24,6 +24,7 @@
    NSMutableArray *screencastFolders;
    NSMutableArray *usersInRoom;
    NSMutableArray *userCache;
+   NSMutableArray *roboRules;
    NSButton *sendMessage;
    NSTextField *messageField;
    NSString *screencastAuthCode;
@@ -46,7 +47,11 @@
    IBOutlet MessageTableViewController *messageTableController;
    IBOutlet NSTableView *userTableView;
     UserPopoverController *popover;
+   
+   IBOutlet NSWindow *rulesWindow;
+   BOOL initialMessageLoad;
 }
+- (IBAction)openRulesWindow:(id)sender;
 
 @property (assign) IBOutlet NSWindow *window;
 - (IBAction)roomPicked:(id)sender;
@@ -61,6 +66,7 @@
 - (IBAction)greatJobSound:(id)sender;
 - (IBAction)vuvuzelaSound:(id)sender;
 - (IBAction)saveAuthToken:(id)sender;
+-(void)sendTextMessage:(NSString*)text;
 
 
 
