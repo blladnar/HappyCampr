@@ -12,6 +12,7 @@
 #import "ASIHTTPRequest.h"
 #import "SFHFKeychainUtils.h"
 #import "HappyCamprAppDelegate.h"
+#import "NSTextView+AutomaticLinkDetection.h"
 
 @implementation MessageView
 @dynamic message;
@@ -112,9 +113,11 @@
    textView.frame = NSMakeRect(100, 0, self.frame.size.width - 115, height);
    [textView setDrawsBackground:NO];
    [textView setEditable:NO];
+
    self.frame = NSMakeRect(0, 0, self.frame.size.width, height);
    
    [textView setString:aMessage.messageBody];
+   [textView detectAndAddLinks];
    
    [self addSubview:textView];
    
@@ -151,7 +154,7 @@
       }
    }
    
-   else if( [[linksInMessage lastObject] hasSuffix:@"png"] || [[linksInMessage lastObject] hasSuffix:@"jpg"] )
+   else if( [[linksInMessage lastObject] linkIsImage] )
    {
       NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(10, 30, 150, 150)];
       [imageView setImage:[[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[linksInMessage lastObject]]]];

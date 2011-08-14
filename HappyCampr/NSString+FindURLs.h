@@ -11,5 +11,7 @@
 @interface NSString (NSString_FindURLs)
 
 -(NSArray*)arrayOfLinks;
+-(NSArray*)locationsOfLinks;
+-(BOOL)linkIsImage;
 
 @end

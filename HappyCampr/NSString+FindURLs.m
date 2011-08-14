@@ -32,4 +32,22 @@
     return links;  
 }
 
+-(NSArray*)locationsOfLinks
+{
+   NSString *regexToReplaceRawLinks = @"(\\b(https?):\\/\\/[-A-Z0-9+&@#\\/%?=~_|!:,.;]*[-A-Z0-9+&@#\\/%=~_|])";   
+   
+   NSError *error = NULL;
+   NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexToReplaceRawLinks
+                                                                          options:NSRegularExpressionCaseInsensitive
+                                                                            error:&error];
+   
+   NSArray *results = [regex matchesInString:self options:0 range:NSMakeRange(0, [self length])];
+   return results;
+}
+
+-(BOOL)linkIsImage
+{
+   return /*[self hasSuffix:@"gif"] ||*/ [self hasSuffix:@"jpeg"] || [self hasSuffix:@"png"] || [self hasSuffix:@"jpg"];
+}
+
 @end

@@ -75,7 +75,7 @@
    for( NSString* link in linksInMessage )
    {
       NSRange range = [link rangeOfString:@"youtube"];
-      if( [link hasSuffix:@"png"] || [link hasSuffix:@"jpg"] || [link rangeOfString:@"youtube"].location != NSNotFound)
+      if( [link linkIsImage] || [link rangeOfString:@"youtube"].location != NSNotFound)
       {
          return 200;
       }
