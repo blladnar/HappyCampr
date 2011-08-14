@@ -10,6 +10,7 @@
 #import "ScreencastProxy.h"
 #import "UserPopoverController.h"
 #import "MessageTableViewController.h"
+#import "User.h"
 
 @interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource> {
 @private
@@ -22,6 +23,7 @@
    NSMutableArray *rooms;
    NSMutableArray *screencastFolders;
    NSMutableArray *usersInRoom;
+   NSMutableArray *userCache;
    NSButton *sendMessage;
    NSTextField *messageField;
    NSString *screencastAuthCode;
@@ -63,5 +65,8 @@
 
 
 @property (assign) IBOutlet NSTextField *messageField;
+
+-(void)addUserToCache:(User*)user;
+-(NSString*)usernameForID:(NSInteger)userID;
 
 @end

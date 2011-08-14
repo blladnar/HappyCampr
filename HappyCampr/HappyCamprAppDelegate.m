@@ -43,6 +43,7 @@ void NSLogRect(NSRect rect)
    numberOfUnreadMessages = 0;
    
    allMessages = [NSMutableArray new];
+   userCache = [NSMutableArray new];
    
    scCommunicator = [[ScreencastProxy alloc] initWithURL:[NSURL URLWithString:screencastURL] apiKey:testRunnerAPIKey secretKey:testRunnerSecretKey];   
    
@@ -117,6 +118,7 @@ void NSLogRect(NSRect rect)
    [[NSUserDefaults standardUserDefaults] synchronize];
    
    lastMessageID = 0;
+   [allMessages removeAllObjects];
    [self getMessagesForSelectedRoom];
    [self getUsersForSelectedRoom];
    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getMessagesForSelectedRoom) userInfo:nil repeats:YES];
@@ -206,8 +208,9 @@ void NSLogRect(NSRect rect)
          
       }
       
+      [userCache addObjectsFromArray:usersInRoom];
+      
       [userTableView reloadData];
-      messageTableController.userCache = usersInRoom;
       
    }];
    
@@ -304,7 +307,7 @@ void NSLogRect(NSRect rect)
 
 -(NSString*)usernameForID:(NSInteger)userID
 {
-   for( User *user in usersInRoom )
+   for( User *user in userCache )
    {
       if (userID == user.userID ) 
       {
@@ -532,6 +535,11 @@ void NSLogRect(NSRect rect)
    [popover showPopoverForUser:[usersInRoom objectAtIndex:rowIndex]];
 
    return NO;
+}
+
+-(void)addUserToCache:(User*)user
+{
+   [userCache addObject:user];
 }
 
 @end

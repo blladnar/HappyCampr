@@ -10,11 +10,11 @@
 #import "MessageView.h"
 #import "NSString+FindURLs.h"
 #import "User.h"
+#import "HappyCamprAppDelegate.h"
 
 @implementation MessageTableViewController
 @dynamic messages;
 @synthesize showJoinKickMessages;
-@synthesize userCache;
 
 - (id)init
 {
@@ -40,8 +40,6 @@
             i++;
          }
       }
-   
-      NSLog(@"Number of rows in tableview %i",i);
       return i; 
    }
    
@@ -56,10 +54,9 @@
    view.emphasized = row%2 == 0;
    
    Message *message = [messagesToShow objectAtIndex:row];
-      message.userName = [self usernameForID:message.userID];
+      message.userName = [[[NSApplication sharedApplication] delegate] usernameForID:message.userID];
    
    view.message = message;
-   NSLog(@"%i %@", row, message.messageBody );
    return view;
 
 }
@@ -114,19 +111,6 @@
    {
       messagesToShow = messages;
    }
-   NSLog(@"%@", messagesToShow);
-}
-
--(NSString*)usernameForID:(NSInteger)userID
-{
-   for( User *user in userCache )
-   {
-      if (userID == user.userID ) 
-      {
-         return user.name;
-      }
-   }
-   return @"";
 }
 
 @end

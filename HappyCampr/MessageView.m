@@ -11,6 +11,7 @@
 #import "NS(Attributed)String+Geometrics.h"
 #import "ASIHTTPRequest.h"
 #import "SFHFKeychainUtils.h"
+#import "HappyCamprAppDelegate.h"
 
 @implementation MessageView
 @dynamic message;
@@ -49,10 +50,16 @@
       NSXMLDocument *responseDoc = [[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil];
       NSArray *userElement = [responseDoc rootElement];
 
-
-      NSString *userName = [[[userElement elementsForName:@"name"] lastObject] stringValue];
       
+      NSString *userName = [[[userElement elementsForName:@"name"] lastObject] stringValue];
+      User *user = [[User new] autorelease];
+      user.userID = [[[[userElement elementsForName:@"id"] lastObject] stringValue] intValue];
+      user.name = [[[userElement elementsForName:@"name"] lastObject] stringValue];
+      user.email = [[[userElement elementsForName:@"email-address"] lastObject] stringValue];
+      user.avatarURL = [[[userElement elementsForName:@"avatar-url"] lastObject] stringValue];      
       self.message.userName = userName;
+      
+      [[[NSApplication sharedApplication] delegate] addUserToCache:user];
       
       if( userName )
       {
@@ -85,12 +92,19 @@
    [usernameField setBordered:NO];
    usernameField.drawsBackground = NO;   
    
-   if( ![aMessage.userName length])
+   NSString *userName = message.userName;
+   
+   if( ![userName length] )
+   {
+      userName = [[[NSApplication sharedApplication] delegate] usernameForID:message.messageId];
+   }
+   
+   if( ![userName length])
    {
       [self getUserNameFromInternetWithID:aMessage.userID];
    }
    
-   [usernameField setStringValue:aMessage.userName];
+   [usernameField setStringValue:userName];
    
    
    NSTextView *textView = [[NSTextView alloc] initWithFrame:NSMakeRect(100, 0, self.frame.size.width - 115, 40)];
