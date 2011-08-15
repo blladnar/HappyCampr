@@ -14,6 +14,8 @@
 		70BDE04E13F8594F00FC2C93 /* RoboRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE04D13F8594F00FC2C93 /* RoboRule.m */; };
 		70BDE05113F86FCD00FC2C93 /* RoboRulesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE05013F86FCC00FC2C93 /* RoboRulesController.m */; };
 		70BDE06013F88CF000FC2C93 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE05F13F88CF000FC2C93 /* NSFileManager+DirectoryLocations.m */; };
+		70BDE06413F89EAF00FC2C93 /* MacroController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE06313F89EAF00FC2C93 /* MacroController.m */; };
+		70BDE06713F8A0AF00FC2C93 /* Macro.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE06613F8A0AF00FC2C93 /* Macro.m */; };
 		F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F116413E13D0736200A528F8 /* Cocoa.framework */; };
 		F116414913D0736200A528F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F116414713D0736200A528F8 /* InfoPlist.strings */; };
 		F116414C13D0736200A528F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F116414B13D0736200A528F8 /* main.m */; };
@@ -86,6 +88,10 @@
 		70BDE05013F86FCC00FC2C93 /* RoboRulesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoboRulesController.m; sourceTree = "<group>"; };
 		70BDE05E13F88CF000FC2C93 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		70BDE05F13F88CF000FC2C93 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
+		70BDE06213F89EAE00FC2C93 /* MacroController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroController.h; sourceTree = "<group>"; };
+		70BDE06313F89EAF00FC2C93 /* MacroController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacroController.m; sourceTree = "<group>"; };
+		70BDE06513F8A0AF00FC2C93 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		70BDE06613F8A0AF00FC2C93 /* Macro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Macro.m; sourceTree = "<group>"; };
 		F116413A13D0736200A528F8 /* HappyCampr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyCampr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F116413E13D0736200A528F8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F116414113D0736200A528F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -298,6 +304,10 @@
 				70BDE04D13F8594F00FC2C93 /* RoboRule.m */,
 				70BDE04F13F86FCC00FC2C93 /* RoboRulesController.h */,
 				70BDE05013F86FCC00FC2C93 /* RoboRulesController.m */,
+				70BDE06213F89EAE00FC2C93 /* MacroController.h */,
+				70BDE06313F89EAF00FC2C93 /* MacroController.m */,
+				70BDE06513F8A0AF00FC2C93 /* Macro.h */,
+				70BDE06613F8A0AF00FC2C93 /* Macro.m */,
 			);
 			path = HappyCampr;
 			sourceTree = "<group>";
@@ -514,6 +524,8 @@
 				70BDE04E13F8594F00FC2C93 /* RoboRule.m in Sources */,
 				70BDE05113F86FCD00FC2C93 /* RoboRulesController.m in Sources */,
 				70BDE06013F88CF000FC2C93 /* NSFileManager+DirectoryLocations.m in Sources */,
+				70BDE06413F89EAF00FC2C93 /* MacroController.m in Sources */,
+				70BDE06713F8A0AF00FC2C93 /* Macro.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

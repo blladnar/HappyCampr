@@ -12,6 +12,7 @@
 #import "MessageTableViewController.h"
 #import "User.h"
 #import "RoboRulesController.h"
+#import "MacroController.h"
 
 @interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource> {
 @private
@@ -42,6 +43,7 @@
    NSInteger lastMessageID;
    NSInteger numberOfUnreadMessages;
    
+   IBOutlet MacroController *macrosController;
    NSMutableArray *userTableViews;
    
    IBOutlet NSTableView *messageView;
@@ -49,6 +51,7 @@
    IBOutlet NSTableView *userTableView;
     UserPopoverController *popover;
    
+   IBOutlet NSWindow *macrosWindow;
    IBOutlet NSWindow *rulesWindow;
    BOOL initialMessageLoad;
    IBOutlet RoboRulesController *rulesController;
@@ -69,6 +72,7 @@
 - (IBAction)vuvuzelaSound:(id)sender;
 - (IBAction)saveAuthToken:(id)sender;
 -(void)sendTextMessage:(NSString*)text;
+- (IBAction)openMacrosWindow:(id)sender;
 
 
 

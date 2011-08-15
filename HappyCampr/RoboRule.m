@@ -35,7 +35,7 @@
 -(void) encodeWithCoder: (NSCoder*) coder 
 {
    [coder encodeObject: self.response forKey: @"response"];
-   [coder encodeObject: self.response forKey: @"trigger"];
+   [coder encodeObject: self.trigger forKey: @"trigger"];
 }
 
 -(id) initWithCoder: (NSCoder*) coder

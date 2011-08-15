@@ -376,9 +376,23 @@ void NSLogRect(NSRect rect)
    [request startAsynchronous];
 }
 
+- (IBAction)openMacrosWindow:(id)sender 
+{
+   [macrosWindow makeKeyAndOrderFront:sender];
+}
+
 - (IBAction)sendMessage:(id)sender 
 {
-   [self sendTextMessage:[messageField stringValue]];
+   NSString *longMessage = [macrosController processMacrosWithMessage:[messageField stringValue]];
+   
+   if( longMessage )
+   {
+      [self sendTextMessage:longMessage];
+   }
+   else
+   {
+     [self sendTextMessage:[messageField stringValue]];   
+   }
    [messageField setStringValue:@""];
     
 }
