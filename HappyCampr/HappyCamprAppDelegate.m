@@ -261,6 +261,7 @@ void NSLogRect(NSRect rect)
       
       [messages removeAllObjects];
       
+      int newMessageCount = 0;
       for( NSXMLElement *messageElement in messageElements )
       {
          Message *message = [[Message new] autorelease];
@@ -280,6 +281,10 @@ void NSLogRect(NSRect rect)
          // ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"]
          if( ![message.messageType isEqualToString:@"TimestampMessage"] )
          {
+            if( ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] && ![message.messageType isEqualToString:@"LeaveMessage"] )
+            {
+               newMessageCount++;
+            }
             [messages addObject:message];
          }
       }
@@ -317,7 +322,7 @@ void NSLogRect(NSRect rect)
       
 
       
-      if( [messages count] )
+      if( newMessageCount )
       {
          
          if( ![[NSApplication sharedApplication] isActive] )
@@ -325,7 +330,7 @@ void NSLogRect(NSRect rect)
             NSDockTile *tile = [[NSApplication sharedApplication] dockTile];
             numberOfUnreadMessages += [messages count];
             
-            [tile setBadgeLabel:[NSString stringWithFormat:@"%i", numberOfUnreadMessages]];
+            [tile setBadgeLabel:[NSString stringWithFormat:@"%i", newMessageCount]];
             [[NSApplication sharedApplication] requestUserAttention:NSInformationalRequest];
          }
       }
