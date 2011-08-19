@@ -84,7 +84,11 @@
    [timeStampLabel setBordered:NO];
    [timeStampLabel setSelectable:YES];
 
-   NSString *dateString = [message.timeStamp descriptionWithCalendarFormat:@"%I:%M" timeZone:[NSTimeZone localTimeZone] locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
+   NSDate *offsetTimestamp = message.timeStamp;
+   NSTimeInterval gmtOffset = [[NSTimeZone localTimeZone] secondsFromGMT];
+   offsetTimestamp = [offsetTimestamp dateByAddingTimeInterval:gmtOffset];
+   
+   NSString *dateString = [offsetTimestamp descriptionWithCalendarFormat:@"%I:%M" timeZone:[NSTimeZone localTimeZone] locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
    
    
    [timeStampLabel setStringValue:dateString];   

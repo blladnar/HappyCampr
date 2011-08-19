@@ -141,6 +141,7 @@ void NSLogRect(NSRect rect)
 
 - (IBAction)roomPicked:(id)sender 
 {
+   initialMessageLoad = YES;
   // NSLog(@"%@", [rooms objectAtIndex:[roomPicker indexOfSelectedItem]]);
    [[NSUserDefaults standardUserDefaults] setInteger:[roomPicker indexOfSelectedItem] forKey:@"SelectedRoom"];
    [[NSUserDefaults standardUserDefaults] synchronize];
