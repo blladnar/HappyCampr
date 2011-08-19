@@ -18,6 +18,10 @@
     {
        message = [taskString retain];
        NSRange startTaskRange = [taskString rangeOfString:@"task("];
+       
+       if( NSEqualRanges(startTaskRange, NSMakeRange(NSNotFound, 0)) )
+          return self;
+          
        int taskStart = startTaskRange.location + startTaskRange.length;
        NSRange secondRange = NSMakeRange(taskStart, taskString.length - taskStart);
        NSRange taskEnd = [taskString rangeOfString:@")" options:NSCaseInsensitiveSearch range:secondRange];
@@ -27,7 +31,7 @@
        
        NSArray *taskAndArgs = [task componentsSeparatedByString:@" "];
        
-       rangeToReplace = NSMakeRange(startTaskRange.location, (taskEnd.location + taskEnd.length)-startTaskRange.length);
+       rangeToReplace = NSMakeRange(startTaskRange.location, (taskEnd.location + taskEnd.length) - startTaskRange.location);
        
        taskName = [[taskAndArgs objectAtIndex:0] retain];
        taskArguments = [[NSMutableArray alloc] init];
@@ -42,6 +46,9 @@
 
 -(NSString*)executeTask
 {
+   
+   if( taskName )
+   {
       NSString *appSupportDirectory = [[NSFileManager defaultManager] applicationSupportDirectory];
       NSTask *task;
       task = [[NSTask alloc] init];
@@ -66,7 +73,8 @@
       
       [task release];     
       
-   message = [message stringByReplacingCharactersInRange:rangeToReplace withString:string];
+      message = [message stringByReplacingCharactersInRange:rangeToReplace withString:string];
+   }
    
       return message;
 }

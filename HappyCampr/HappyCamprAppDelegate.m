@@ -42,7 +42,12 @@ void NSLogRect(NSRect rect)
       {
          if( !NSEqualRanges([message.messageBody rangeOfString:rule.trigger], NSMakeRange(NSNotFound, 0)) )
          {
-            [self sendTextMessage:rule.response];
+            TaskMaster *master = [[TaskMaster alloc] initWithTaskString:rule.response];
+            [master executeTaskWithCompletionHandler:^(NSString *response)
+             {
+                [self sendTextMessage:response];
+             }];
+            
          }
       }
    }
@@ -394,7 +399,11 @@ void NSLogRect(NSRect rect)
    
    if( longMessage )
    {
-      [self sendTextMessage:longMessage];
+      TaskMaster *master = [[TaskMaster alloc] initWithTaskString:longMessage];
+      [master executeTaskWithCompletionHandler:^(NSString *response)
+       {
+          [self sendTextMessage:response];
+       }];
    }
    else
    {
