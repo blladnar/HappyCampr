@@ -15,6 +15,7 @@
 #import "Message.h"
 #import "User.h"
 #import "RoboRule.h"
+#import "TaskMaster.h"
 
 void NSLogRect(NSRect rect)
 {
@@ -390,13 +391,18 @@ void NSLogRect(NSRect rect)
 {
    NSString *longMessage = [macrosController processMacrosWithMessage:[messageField stringValue]];
    
+   
    if( longMessage )
    {
       [self sendTextMessage:longMessage];
    }
    else
    {
-     [self sendTextMessage:[messageField stringValue]];   
+      TaskMaster *master = [[TaskMaster alloc] initWithTaskString:[messageField stringValue]];
+      [master executeTaskWithCompletionHandler:^(NSString *response)
+       {
+          [self sendTextMessage:response];
+       }];  
    }
    [messageField setStringValue:@""];
     

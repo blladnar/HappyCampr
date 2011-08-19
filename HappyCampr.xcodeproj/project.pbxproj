@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70A0914A13FE0FF000EB7D6D /* TaskMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A0914913FE0FF000EB7D6D /* TaskMaster.m */; };
 		70A3EB8B13ECC36100150E41 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8A13ECC36100150E41 /* MessageTableViewController.m */; };
 		70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8E13ECCBA800150E41 /* MessageView.m */; };
 		70A3EB9B13ECD15700150E41 /* NSString+FindURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */; };
@@ -74,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70A0914813FE0FEF00EB7D6D /* TaskMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskMaster.h; sourceTree = "<group>"; };
+		70A0914913FE0FF000EB7D6D /* TaskMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskMaster.m; sourceTree = "<group>"; };
 		70A3EB8913ECC36100150E41 /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewController.h; sourceTree = "<group>"; };
 		70A3EB8A13ECC36100150E41 /* MessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewController.m; sourceTree = "<group>"; };
 		70A3EB8D13ECCBA800150E41 /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				F13549D413D08CA200967F63 /* RestSignatureProvider.m */,
 				F13549D513D08CA200967F63 /* RestSignatureProviderProtocol.h */,
 				F13549C613D08BE000967F63 /* ErrorConstants.h */,
+				70A0914813FE0FEF00EB7D6D /* TaskMaster.h */,
+				70A0914913FE0FF000EB7D6D /* TaskMaster.m */,
 				F13549C713D08BE000967F63 /* ScreencastMediaItem.h */,
 				F13549C813D08BE000967F63 /* ScreencastMediaItem.m */,
 				F13549C913D08BE000967F63 /* ScreencastMediaProtocol.h */,
@@ -526,6 +531,7 @@
 				70BDE06013F88CF000FC2C93 /* NSFileManager+DirectoryLocations.m in Sources */,
 				70BDE06413F89EAF00FC2C93 /* MacroController.m in Sources */,
 				70BDE06713F8A0AF00FC2C93 /* Macro.m in Sources */,
+				70A0914A13FE0FF000EB7D6D /* TaskMaster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
