@@ -55,6 +55,9 @@ void NSLogRect(NSRect rect)
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+   [[NSApplication sharedApplication] setPresentationOptions:NSFullScreenWindowMask];
+   [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary | NSWindowCollectionBehaviorFullScreenAuxiliary];
+  // [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
    NSString *screencastURL = @"http://www.screencast.stage/api/rest.ashx";
    NSString *testRunnerAPIKey = @"0bbfcdfb-3640-495b-80de-4acd36babbc1";
    NSString *testRunnerSecretKey = @"167e3ebd-7bbd-4e8b-b7a9-0b11aa276924";
@@ -81,7 +84,6 @@ void NSLogRect(NSRect rect)
    
    if( campfireAuthCode )
    {
-      
       __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"https://bravoteam.campfirenow.com/rooms.xml"]];
       
       [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
@@ -570,14 +572,25 @@ void NSLogRect(NSRect rect)
 
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row
 {
-   NSTableRowView *rowView = [[[NSTableRowView alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)] autorelease];
+   NSTableRowView *rowView = [[[NSTableRowView alloc] initWithFrame:NSMakeRect(33, 0, tableView.frame.size.width-33, 20)] autorelease];
 
-   NSTextField *textField = [[[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, tableView.frame.size.width, 20)] autorelease];
+   NSTextField *textField = [[[NSTextField alloc] initWithFrame:NSMakeRect(33, 0, tableView.frame.size.width-33, 20)] autorelease];
    [textField setEditable:NO];
+   textField.drawsBackground = NO;
+   textField.bezeled = NO;
    
-   [textField setStringValue:[[usersInRoom objectAtIndex:row]name]];
+   User *user = [usersInRoom objectAtIndex:row];
+   [textField setStringValue:[user name]];
    
    [rowView addSubview:textField];
+   
+   NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 30, 30)];
+   NSImage *image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:[user avatarURL]]];
+   imageView.image = image;
+   [rowView addSubview:imageView];
+   
+   rowView.emphasized = row % 2;
+   
    
    
    return rowView;

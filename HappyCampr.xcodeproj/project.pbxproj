@@ -60,6 +60,7 @@
 		F191440513E2F26B0069ECF9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F191440413E2F26B0069ECF9 /* libz.dylib */; };
 		F191440C13E2F6D70069ECF9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440B13E2F6D70069ECF9 /* Message.m */; };
 		F191440F13E312540069ECF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440E13E312540069ECF9 /* User.m */; };
+		F1B7E5FE13FEF25D005201DF /* happyCamper.png in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E5FD13FEF25D005201DF /* happyCamper.png */; };
 		F1BE16D413F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BE16D313F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m */; };
 		F1BE16DD13F5BD570025AC17 /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BE16DC13F5BD570025AC17 /* NSAttributedString+Hyperlink.m */; };
 /* End PBXBuildFile section */
@@ -177,6 +178,7 @@
 		F191440B13E2F6D70069ECF9 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		F191440D13E312540069ECF9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		F191440E13E312540069ECF9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F1B7E5FD13FEF25D005201DF /* happyCamper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happyCamper.png; sourceTree = "<group>"; };
 		F1BE16D213F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS(Attributed)String+Geometrics.h"; sourceTree = "<group>"; };
 		F1BE16D313F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
 		F1BE16DB13F5BD570025AC17 /* NSAttributedString+Hyperlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Hyperlink.h"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				F191440D13E312540069ECF9 /* User.h */,
 				F191440E13E312540069ECF9 /* User.m */,
 				F178CFC813EC778500A6AD3E /* UserPopoverController.h */,
+				F1B7E5FD13FEF25D005201DF /* happyCamper.png */,
 				F178CFC913EC778500A6AD3E /* UserPopoverController.m */,
 				F178CFCA13EC778500A6AD3E /* UserPopoverController.xib */,
 				70A3EB8913ECC36100150E41 /* MessageTableViewController.h */,
@@ -464,6 +467,7 @@
 				F13549EB13D0C2FE00967F63 /* vuvuzelas-300x230.jpg in Resources */,
 				F13549ED13D0CD0E00967F63 /* happyCamperIcon.icns in Resources */,
 				F178CFCC13EC778500A6AD3E /* UserPopoverController.xib in Resources */,
+				F1B7E5FE13FEF25D005201DF /* happyCamper.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,7 +20,7 @@
       popover.contentViewController = self;
    }
    
-   popover.behavior = NSPopoverBehaviorTransient;
+   popover.behavior = NSPopoverBehaviorSemitransient;
    NSLog(@"%@", user.email);
 
    [nameLabel setStringValue:user.name];
