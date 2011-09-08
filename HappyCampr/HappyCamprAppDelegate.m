@@ -79,29 +79,12 @@ void NSLogRect(NSRect rect)
    NSError *error;
    campfireAuthCode = [[SFHFKeychainUtils getPasswordForUsername:@"HappyCampr" andServiceName:@"HappyCampr:AuthToken" error:&error] retain];
    
+   campfire = [[Campfire alloc] initWithCampfireURL:@"https://bravoteam.campfirenow.com"];
+   
    if( campfireAuthCode )
    {
-      campfire = [[Campfire alloc] initWithCampfireURL:@"https://bravoteam.campfirenow.com"];
       campfire.authToken = campfireAuthCode;
-      
-      [campfire getVisibleRoomsWithHandler:^(NSArray* visibleRooms){
-         [saveAuthButton setTitle:@"Sign Out"];
-         // Use when fetching text data
-         
-         for( Room *room in visibleRooms )
-         {
-            [roomPicker addItemWithTitle:room.name];
-            
-            [rooms addObject:room];
-         }
-         
-         NSError *error;
-         [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
-         [apiField setHidden:YES];
-         [roomPicker selectItemAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]];
-         [self roomPicked:nil];
-         [[NSUserDefaults standardUserDefaults] synchronize];         
-      }]; 
+      [self getAndUpdateRooms];
       
    }
    
@@ -285,25 +268,7 @@ void NSLogRect(NSRect rect)
 {
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    
-   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@/speak.xml",roomID];
-   
-   
-   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
-   
-   [request addRequestHeader:@"Content-Type" value:@"application/xml"];
-   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-   [request setUsername:campfireAuthCode];
-   [request setPassword:@"X"];
-   
-   NSString *postBody = [self messageWithType:@"TextMessage" andMessage:text];
-   
-   [request setPostBody:[postBody dataUsingEncoding:NSUTF8StringEncoding]];
-   
-   [request setCompletionBlock:^{
-      //  NSLog(@"%@", [request responseString]);
-   }];
-   
-   [request startAsynchronous];
+   [campfire sendText:text toRoom:roomID];
 }
 
 - (IBAction)openMacrosWindow:(id)sender 
@@ -372,25 +337,7 @@ void NSLogRect(NSRect rect)
 {
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    
-   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@/speak.xml",roomID];
-   
-   
-   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
-   
-   [request addRequestHeader:@"Content-Type" value:@"application/xml"];
-   [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-   [request setUsername:campfireAuthCode];
-   [request setPassword:@"X"];
-   
-   NSString *postBody = [self messageWithType:@"SoundMessage" andMessage:sound];
-   
-   [request setPostBody:[postBody dataUsingEncoding:NSUTF8StringEncoding]];
-   
-   [request setCompletionBlock:^{
-   //   NSLog(@"%@", [request responseString]);
-   }];
-   
-   [request startAsynchronous];
+   [campfire sendSound:sound toRoom:roomID];
 }
 
 - (IBAction)theMoreYouKnowSound:(id)sender 
@@ -428,6 +375,28 @@ void NSLogRect(NSRect rect)
    [self sendSoundMessageWithSound:@"vuvuzela"];
 }
 
+-(void)getAndUpdateRooms
+{
+   [campfire getVisibleRoomsWithHandler:^(NSArray* visibleRooms){
+      [saveAuthButton setTitle:@"Sign Out"];
+      // Use when fetching text data
+      
+      for( Room *room in visibleRooms )
+      {
+         [roomPicker addItemWithTitle:room.name];
+         
+         [rooms addObject:room];
+      }
+      
+      NSError *error;
+      [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
+      [apiField setHidden:YES];
+      [roomPicker selectItemAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]];
+      [self roomPicked:nil];
+      [[NSUserDefaults standardUserDefaults] synchronize];         
+   }];    
+}
+
 - (IBAction)saveAuthToken:(id)sender 
 {
    if( [campfireAuthCode length] )
@@ -441,43 +410,9 @@ void NSLogRect(NSRect rect)
    }
    else
    {
-      [saveAuthButton setTitle:@"Sign Out"];
       campfireAuthCode = [[apiField stringValue] retain];
-      
-      __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"https://bravoteam.campfirenow.com/rooms.xml"]];
-      
-      [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-      [request setUsername:campfireAuthCode];
-      [request setPassword:@"X"];
-      
-      [request setCompletionBlock:^{
-         // Use when fetching text data
-         NSString *responseString = [request responseString];
-         
-         NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil] autorelease];
-         
-         NSArray *roomElements = [[responseDoc rootElement] elementsForName:@"room"];
-         
-         for( NSXMLElement *roomElement in roomElements )
-         {
-            Room *room = [[Room new] autorelease];
-            
-            room.roomID = [[[roomElement elementsForName:@"id"] lastObject] stringValue];
-            room.name = [[[roomElement elementsForName:@"name"] lastObject] stringValue];
-            room.topic = [[[roomElement elementsForName:@"topic"] lastObject] stringValue];
-            
-            [roomPicker addItemWithTitle:room.name];
-            
-            [rooms addObject:room];
-         }
-         
-         NSError *error;
-         [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
-         
-      }];
-      
-      [request startAsynchronous];   
-      [apiField setHidden:YES];
+      campfire.authToken = campfireAuthCode;
+      [self getAndUpdateRooms];
    }
 }
 
