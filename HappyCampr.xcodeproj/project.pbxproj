@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7094E43A141863D7002A09C5 /* HappyCampfire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094E439141863D7002A09C5 /* HappyCampfire.framework */; };
+		7094E43C1418657B002A09C5 /* HappyCampfire.framework in Resources */ = {isa = PBXBuildFile; fileRef = 7094E439141863D7002A09C5 /* HappyCampfire.framework */; };
 		70A0914A13FE0FF000EB7D6D /* TaskMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A0914913FE0FF000EB7D6D /* TaskMaster.m */; };
 		70A3EB8B13ECC36100150E41 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8A13ECC36100150E41 /* MessageTableViewController.m */; };
 		70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8E13ECCBA800150E41 /* MessageView.m */; };
@@ -36,7 +38,6 @@
 		F11641D013D0739D00A528F8 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418513D0739D00A528F8 /* ASIHTTPRequest.m */; };
 		F11641D113D0739D00A528F8 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418913D0739D00A528F8 /* ASIInputStream.m */; };
 		F11641D213D0739D00A528F8 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F116418B13D0739D00A528F8 /* ASINetworkQueue.m */; };
-		F11641F213D0785C00A528F8 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = F11641F113D0785C00A528F8 /* Room.m */; };
 		F13549C513D08BC400967F63 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549C413D08BC400967F63 /* GDataXMLNode.m */; };
 		F13549CD13D08BE000967F63 /* ScreencastMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549C813D08BE000967F63 /* ScreencastMediaItem.m */; };
 		F13549CE13D08BE000967F63 /* ScreencastProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F13549CB13D08BE000967F63 /* ScreencastProxy.m */; };
@@ -58,8 +59,6 @@
 		F178CFCB13EC778500A6AD3E /* UserPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = F178CFC913EC778500A6AD3E /* UserPopoverController.m */; };
 		F178CFCC13EC778500A6AD3E /* UserPopoverController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F178CFCA13EC778500A6AD3E /* UserPopoverController.xib */; };
 		F191440513E2F26B0069ECF9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F191440413E2F26B0069ECF9 /* libz.dylib */; };
-		F191440C13E2F6D70069ECF9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440B13E2F6D70069ECF9 /* Message.m */; };
-		F191440F13E312540069ECF9 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F191440E13E312540069ECF9 /* User.m */; };
 		F1B7E5FE13FEF25D005201DF /* happyCamper.png in Resources */ = {isa = PBXBuildFile; fileRef = F1B7E5FD13FEF25D005201DF /* happyCamper.png */; };
 		F1BE16D413F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BE16D313F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m */; };
 		F1BE16DD13F5BD570025AC17 /* NSAttributedString+Hyperlink.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BE16DC13F5BD570025AC17 /* NSAttributedString+Hyperlink.m */; };
@@ -76,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7094E439141863D7002A09C5 /* HappyCampfire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HappyCampfire.framework; sourceTree = "<group>"; };
 		70A0914813FE0FEF00EB7D6D /* TaskMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskMaster.h; sourceTree = "<group>"; };
 		70A0914913FE0FF000EB7D6D /* TaskMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskMaster.m; sourceTree = "<group>"; };
 		70A3EB8913ECC36100150E41 /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewController.h; sourceTree = "<group>"; };
@@ -138,8 +138,6 @@
 		F116418A13D0739D00A528F8 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
 		F116418B13D0739D00A528F8 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
 		F116418C13D0739D00A528F8 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
-		F11641F013D0785C00A528F8 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
-		F11641F113D0785C00A528F8 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
 		F13549C313D08BC400967F63 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		F13549C413D08BC400967F63 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
 		F13549C613D08BE000967F63 /* ErrorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorConstants.h; sourceTree = "<group>"; };
@@ -174,10 +172,6 @@
 		F178CFC913EC778500A6AD3E /* UserPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPopoverController.m; sourceTree = "<group>"; };
 		F178CFCA13EC778500A6AD3E /* UserPopoverController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPopoverController.xib; sourceTree = "<group>"; };
 		F191440413E2F26B0069ECF9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		F191440A13E2F6D70069ECF9 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		F191440B13E2F6D70069ECF9 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		F191440D13E312540069ECF9 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		F191440E13E312540069ECF9 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F1B7E5FD13FEF25D005201DF /* happyCamper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happyCamper.png; sourceTree = "<group>"; };
 		F1BE16D213F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS(Attributed)String+Geometrics.h"; sourceTree = "<group>"; };
 		F1BE16D313F5B5BC0025AC17 /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
@@ -196,6 +190,7 @@
 				F116417713D0738F00A528F8 /* CoreServices.framework in Frameworks */,
 				F116417313D0737600A528F8 /* SystemConfiguration.framework in Frameworks */,
 				F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */,
+				7094E43A141863D7002A09C5 /* HappyCampfire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +208,7 @@
 		F116412F13D0736200A528F8 = {
 			isa = PBXGroup;
 			children = (
+				7094E439141863D7002A09C5 /* HappyCampfire.framework */,
 				F191440413E2F26B0069ECF9 /* libz.dylib */,
 				F13549F113D0D8D300967F63 /* Security.framework */,
 				F13549CF13D08C0300967F63 /* libxml2.2.dylib */,
@@ -286,16 +282,10 @@
 				F116415113D0736200A528F8 /* HappyCamprAppDelegate.m */,
 				F116415313D0736200A528F8 /* MainMenu.xib */,
 				F116414513D0736200A528F8 /* Supporting Files */,
-				F11641F013D0785C00A528F8 /* Room.h */,
-				F11641F113D0785C00A528F8 /* Room.m */,
 				70BDE05E13F88CF000FC2C93 /* NSFileManager+DirectoryLocations.h */,
 				70BDE05F13F88CF000FC2C93 /* NSFileManager+DirectoryLocations.m */,
 				F13549EE13D0D7A200967F63 /* SFHFKeychainUtils.m */,
 				F13549EF13D0D7A200967F63 /* SFHFKeychainUtils.h */,
-				F191440A13E2F6D70069ECF9 /* Message.h */,
-				F191440B13E2F6D70069ECF9 /* Message.m */,
-				F191440D13E312540069ECF9 /* User.h */,
-				F191440E13E312540069ECF9 /* User.m */,
 				F178CFC813EC778500A6AD3E /* UserPopoverController.h */,
 				F1B7E5FD13FEF25D005201DF /* happyCamper.png */,
 				F178CFC913EC778500A6AD3E /* UserPopoverController.m */,
@@ -465,6 +455,7 @@
 				F13549E713D0C2A900967F63 /* doitlive.jpeg in Resources */,
 				F13549E913D0C2C900967F63 /* Pic_GreatJob.gif in Resources */,
 				F13549EB13D0C2FE00967F63 /* vuvuzelas-300x230.jpg in Resources */,
+				7094E43C1418657B002A09C5 /* HappyCampfire.framework in Resources */,
 				F13549ED13D0CD0E00967F63 /* happyCamperIcon.icns in Resources */,
 				F178CFCC13EC778500A6AD3E /* UserPopoverController.xib in Resources */,
 				F1B7E5FE13FEF25D005201DF /* happyCamper.png in Resources */,
@@ -513,7 +504,6 @@
 				F11641D013D0739D00A528F8 /* ASIHTTPRequest.m in Sources */,
 				F11641D113D0739D00A528F8 /* ASIInputStream.m in Sources */,
 				F11641D213D0739D00A528F8 /* ASINetworkQueue.m in Sources */,
-				F11641F213D0785C00A528F8 /* Room.m in Sources */,
 				F13549C513D08BC400967F63 /* GDataXMLNode.m in Sources */,
 				F13549CD13D08BE000967F63 /* ScreencastMediaItem.m in Sources */,
 				F13549CE13D08BE000967F63 /* ScreencastProxy.m in Sources */,
@@ -521,8 +511,6 @@
 				F13549D713D08CA200967F63 /* RestSignatureProvider.m in Sources */,
 				F13549DC13D08CDB00967F63 /* GDataXMLDocument+UTF16.m in Sources */,
 				F13549DD13D08CDB00967F63 /* NSString+TSCCrypto.m in Sources */,
-				F191440C13E2F6D70069ECF9 /* Message.m in Sources */,
-				F191440F13E312540069ECF9 /* User.m in Sources */,
 				F178CFCB13EC778500A6AD3E /* UserPopoverController.m in Sources */,
 				70A3EB8B13ECC36100150E41 /* MessageTableViewController.m in Sources */,
 				70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */,

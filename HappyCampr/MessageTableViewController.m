@@ -9,7 +9,7 @@
 #import "MessageTableViewController.h"
 #import "MessageView.h"
 #import "NSString+FindURLs.h"
-#import "User.h"
+#import <HappyCampfire/User.h>
 #import "HappyCamprAppDelegate.h"
 
 @implementation MessageTableViewController

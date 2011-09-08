@@ -7,7 +7,7 @@
 //
 
 #import "UserPopoverController.h"
-#import "User.h"
+#import <HappyCampfire/User.h>
 
 @implementation UserPopoverController
 @synthesize positioningView;

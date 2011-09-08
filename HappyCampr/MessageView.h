@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Message.h"
+#import <HappyCampfire/Message.h>
 
 @interface MessageView : NSTableRowView
 {
