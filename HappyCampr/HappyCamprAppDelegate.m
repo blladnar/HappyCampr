@@ -50,6 +50,21 @@ void NSLogRect(NSRect rect)
    }
 }
 
+-(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
+{
+   NSLog(@"%@", filename);
+   
+   NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
+   [campfire postFile:filename toRoom:roomID completionHandler:^(UploadFile *file, NSError *error){
+      NSLog(@"%@", file.fullURL);
+   }];
+   return YES;
+}
+
+-(BOOL)applicationOpenUntitledFile:(NSApplication *)sender
+{
+   return YES;
+}
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
    [[NSApplication sharedApplication] setPresentationOptions:NSFullScreenWindowMask];

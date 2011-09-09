@@ -76,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		7094E439141863D7002A09C5 /* HappyCampfire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HappyCampfire.framework; sourceTree = "<group>"; };
+		7094E43D1419A4EB002A09C5 /* HappyCampr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HappyCampr.entitlements; sourceTree = "<group>"; };
 		70A0914813FE0FEF00EB7D6D /* TaskMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskMaster.h; sourceTree = "<group>"; };
 		70A0914913FE0FF000EB7D6D /* TaskMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskMaster.m; sourceTree = "<group>"; };
 		70A3EB8913ECC36100150E41 /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewController.h; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		F116414413D0736200A528F8 /* HappyCampr */ = {
 			isa = PBXGroup;
 			children = (
+				7094E43D1419A4EB002A09C5 /* HappyCampr.entitlements */,
 				F13549D813D08CDB00967F63 /* GDataXMLDocument+UTF16.h */,
 				F13549D913D08CDB00967F63 /* GDataXMLDocument+UTF16.m */,
 				F13549DA13D08CDB00967F63 /* NSString+TSCCrypto.h */,
@@ -617,6 +619,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -637,6 +640,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
