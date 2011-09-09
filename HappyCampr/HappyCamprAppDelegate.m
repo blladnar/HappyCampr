@@ -30,13 +30,24 @@ void NSLogRect(NSRect rect)
    numberOfUnreadMessages = 0;
 }
 
+-(User*)getAuthenticatedUser
+{
+   if( !authenticatedUser )
+   {
+      [campfire getAuthenticatedUserInfo:^(User* user, NSError *error){
+         authenticatedUser = [user retain];
+      }];
+   }
+   return authenticatedUser;
+}
+
 -(void)processRoboRulesAgainstMessages:(NSArray*)theMessages
 {
    for( RoboRule *rule in [rulesController rules] )
    {
       for( Message *message in theMessages )
       {
-         if( !NSEqualRanges([message.messageBody rangeOfString:rule.trigger], NSMakeRange(NSNotFound, 0)) )
+         if( !NSEqualRanges([message.messageBody rangeOfString:rule.trigger], NSMakeRange(NSNotFound, 0)) && message.userID != [self getAuthenticatedUser].userID )
          {
             TaskMaster *master = [[TaskMaster alloc] initWithTaskString:rule.response];
             [master executeTaskWithCompletionHandler:^(NSString *response)
@@ -76,7 +87,6 @@ void NSLogRect(NSRect rect)
    userCache = [NSMutableArray new];
    roboRules = [NSMutableArray new];
    
-   
    rooms = [NSMutableArray new];
    
    NSError *error;
@@ -90,8 +100,6 @@ void NSLogRect(NSRect rect)
       [self getAndUpdateRooms];
       
    }
-   
-   
    // Insert code here to initialize your application
 }
 
@@ -367,7 +375,9 @@ void NSLogRect(NSRect rect)
       [roomPicker selectItemAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]];
       [self roomPicked:nil];
       [[NSUserDefaults standardUserDefaults] synchronize];         
-   }];    
+   }];
+   
+   [self getAuthenticatedUser];
 }
 
 - (IBAction)saveAuthToken:(id)sender 

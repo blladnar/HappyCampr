@@ -57,6 +57,8 @@
    IBOutlet RoboRulesController *rulesController;
    
    Campfire *campfire;
+   
+   User* authenticatedUser;
 }
 - (IBAction)openRulesWindow:(id)sender;
 

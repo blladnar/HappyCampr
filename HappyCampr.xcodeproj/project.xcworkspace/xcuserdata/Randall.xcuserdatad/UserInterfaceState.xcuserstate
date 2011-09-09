@@ -3125,15 +3125,15 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>392</integer>
+					<integer>394</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>400</integer>
+					<integer>402</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>401</integer>
+					<integer>403</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -3260,7 +3260,7 @@
 				<integer>292</integer>
 			</dict>
 		</dict>
-		<string>HappyCamprAppDelegate.m</string>
+		<string>HappyCamprAppDelegate.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -3311,7 +3311,7 @@
 				<integer>55</integer>
 			</dict>
 			<key>NS.string</key>
-			<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampr/HappyCamprAppDelegate.m</string>
+			<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampr/HappyCamprAppDelegate.h</string>
 		</dict>
 		<dict>
 			<key>$class</key>
@@ -3842,7 +3842,7 @@
 		<string>DocumentNavigableItemName</string>
 		<string>DocumentExtensionIdentifier</string>
 		<string>DocumentURL</string>
-		<string>public.objective-c-source</string>
+		<string>public.c-header</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -3978,10 +3978,10 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>337227344.08929199</real>
-		<string>{1297, 1373}</string>
-		<string>{1656, 0}</string>
-		<string>@implementation HappyCamprAppDelegate</string>
+		<real>337230221.498528</real>
+		<string>{675, 1191}</string>
+		<string>{1741, 0}</string>
+		<string>@interface HappyCamprAppDelegate</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
 			<key>$class</key>
@@ -4000,7 +4000,7 @@
 				<integer>365</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampr/HappyCamprAppDelegate.m</string>
+		<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampr/HappyCamprAppDelegate.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -4100,7 +4100,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>390</integer>
+					<integer>392</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4159,34 +4159,35 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>347</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
 					<integer>374</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>382</integer>
+					<integer>375</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>386</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>292</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>387</integer>
+					<integer>384</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
 					<integer>388</integer>
 				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>378</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>389</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>390</integer>
+				</dict>
 			</array>
 		</dict>
+		<string>public.objective-c-source</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -4196,7 +4197,7 @@
 			<key>DocumentLocation</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>380</integer>
+				<integer>382</integer>
 			</dict>
 			<key>DomainIdentifier</key>
 			<dict>
@@ -4206,7 +4207,7 @@
 			<key>IdentifierPath</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>375</integer>
+				<integer>376</integer>
 			</dict>
 			<key>IndexOfDocumentIdentifier</key>
 			<dict>
@@ -4224,15 +4225,15 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>376</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
 					<integer>377</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>378</integer>
+					<integer>379</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>380</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4245,9 +4246,10 @@
 			<key>Identifier</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>292</integer>
+				<integer>378</integer>
 			</dict>
 		</dict>
+		<string>HappyCamprAppDelegate.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -4269,7 +4271,7 @@
 			<key>Identifier</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>379</integer>
+				<integer>381</integer>
 			</dict>
 		</dict>
 		<string>HappyCampr</string>
@@ -4282,7 +4284,7 @@
 			<key>documentURL</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>381</integer>
+				<integer>383</integer>
 			</dict>
 			<key>timestamp</key>
 			<dict>
@@ -4328,11 +4330,11 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>383</integer>
+					<integer>385</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>384</integer>
+					<integer>386</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4340,7 +4342,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>385</integer>
+					<integer>387</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4363,7 +4365,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>389</integer>
+				<integer>391</integer>
 			</dict>
 		</dict>
 		<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampr/HappyCamprAppDelegate.m</string>
@@ -4377,7 +4379,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>391</integer>
+					<integer>393</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4399,7 +4401,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>393</integer>
+					<integer>395</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4413,11 +4415,11 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>394</integer>
+					<integer>396</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>397</integer>
+					<integer>399</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4442,11 +4444,11 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>395</integer>
+					<integer>397</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>396</integer>
+					<integer>398</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4473,11 +4475,11 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>398</integer>
+					<integer>400</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>399</integer>
+					<integer>401</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4504,7 +4506,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>402</integer>
+					<integer>404</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4515,11 +4517,11 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>403</integer>
+					<integer>405</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>404</integer>
+					<integer>406</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4535,7 +4537,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>405</integer>
+					<integer>407</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4546,7 +4548,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>406</integer>
+					<integer>408</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4580,7 +4582,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>407</integer>
+					<integer>409</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4602,7 +4604,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>408</integer>
+					<integer>410</integer>
 				</dict>
 			</array>
 		</dict>
@@ -4647,11 +4649,11 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>409</integer>
+					<integer>347</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>410</integer>
+					<integer>411</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4663,7 +4665,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>413</integer>
+					<integer>292</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4675,7 +4677,6 @@
 				</dict>
 			</array>
 		</dict>
-		<string>public.c-header</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -4695,7 +4696,7 @@
 			<key>IdentifierPath</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>411</integer>
+				<integer>412</integer>
 			</dict>
 			<key>IndexOfDocumentIdentifier</key>
 			<dict>
@@ -4713,7 +4714,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>412</integer>
+					<integer>413</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -4738,10 +4739,9 @@
 			<key>Identifier</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>413</integer>
+				<integer>292</integer>
 			</dict>
 		</dict>
-		<string>HappyCamprAppDelegate.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -5553,7 +5553,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>498</integer>
+					<integer>496</integer>
 				</dict>
 			</array>
 		</dict>
@@ -5564,7 +5564,7 @@
 		<string>IDESCMStatusFilteringEnabled</string>
 		<string>IDESelectedObjects</string>
 		<string>IDEExpandedItemsSet</string>
-		<string>{{0, 6}, {259, 666}}</string>
+		<string>{{0, 610}, {259, 666}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -5576,6 +5576,10 @@
 				<dict>
 					<key>CF$UID</key>
 					<integer>493</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>495</integer>
 				</dict>
 			</array>
 		</dict>
@@ -5593,22 +5597,37 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>495</integer>
+					<integer>294</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>496</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>497</integer>
+					<integer>292</integer>
 				</dict>
 			</array>
 		</dict>
 		<string>HappyCampr</string>
-		<string>HappyCampfire.framework</string>
-		<string>Headers</string>
-		<string>UploadFile.h</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>88</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>494</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>294</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>378</integer>
+				</dict>
+			</array>
+		</dict>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -5619,15 +5638,15 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
+					<integer>497</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>498</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
 					<integer>499</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>500</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>501</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -5635,7 +5654,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>503</integer>
+					<integer>504</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -5689,51 +5708,16 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>495</integer>
+					<integer>500</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>496</integer>
+					<integer>501</integer>
 				</dict>
 			</array>
 		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>88</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>494</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>495</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>88</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>494</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>504</integer>
-				</dict>
-			</array>
-		</dict>
-		<string>Security.framework</string>
+		<string>HappyCampfire.framework</string>
+		<string>Headers</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -5752,11 +5736,48 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>506</integer>
+					<integer>503</integer>
 				</dict>
 			</array>
 		</dict>
 		<string>Supporting Files</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>88</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>494</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>500</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>88</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>494</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>506</integer>
+				</dict>
+			</array>
+		</dict>
+		<string>Security.framework</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -6171,7 +6192,7 @@
 		</dict>
 		<string>IDEUtilitiesArea</string>
 		<real>260</real>
-		<string>HappyCamprAppDelegate.m</string>
+		<string>HappyCamprAppDelegate.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -13288,7 +13309,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>387</integer>
+					<integer>389</integer>
 				</dict>
 			</array>
 			<key>NS.objects</key>
@@ -14897,7 +14918,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>424</integer>
+				<integer>298</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -16203,9 +16224,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>337226867.74152899</real>
-		<string>{150, 1202}</string>
-		<string>{278, 0}</string>
+		<real>337230221.49522197</real>
+		<string>{675, 1191}</string>
+		<string>{1741, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -16771,9 +16792,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>337227343.96609199</real>
-		<string>{1297, 1373}</string>
-		<string>{1656, 0}</string>
+		<real>337230215.82122099</real>
+		<string>{509, 1152}</string>
+		<string>{918, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -18340,7 +18361,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>381</integer>
+				<integer>383</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -18774,7 +18795,7 @@
 				<integer>1321</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>337227072.12173998</real>
+			<real>337229606.22821099</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -18785,7 +18806,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 10:11 PM</string>
+		<string>Today at 10:53 PM</string>
 		<integer>234</integer>
 		<dict>
 			<key>$class</key>
@@ -18886,7 +18907,7 @@
 				<integer>1329</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampfire.framework/Headers/UploadFile.h</string>
+		<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampr/HappyCamprAppDelegate.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -18904,7 +18925,7 @@
 				<integer>1331</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampr/HappyCamprAppDelegate.h</string>
+		<string>file://localhost/Users/Randall/Desktop/HappyCampr/HappyCampfire.framework/Headers/UploadFile.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
