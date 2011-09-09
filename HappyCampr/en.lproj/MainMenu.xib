@@ -219,7 +219,7 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
-								<object class="NSMenuItem" id="176575608">
+								<object class="NSMenuItem" id="872900601">
 									<reference key="NSMenu" ref="720053764"/>
 									<string key="NSTitle">Change Campfire URL</string>
 									<string key="NSKeyEquiv"/>
@@ -1572,7 +1572,7 @@
 								<int key="NSButtonFlags2">160</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">vuvuzelas-300x230</string>
+									<string key="NSResourceName">vuvuzela</string>
 								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
@@ -1598,7 +1598,7 @@
 								<int key="NSButtonFlags2">160</int>
 								<object class="NSCustomResource" key="NSNormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">original</string>
+									<string key="NSResourceName">Trombone</string>
 								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
@@ -2061,7 +2061,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="906803493"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -2292,7 +2292,7 @@
 					<reference key="NSNextKeyView" ref="791639711"/>
 					<string key="NSReuseIdentifierKey">_NS:2827</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -2516,7 +2516,7 @@
 					<reference key="NSNextKeyView" ref="923698566"/>
 					<string key="NSReuseIdentifierKey">_NS:2827</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -3646,7 +3646,7 @@
 							<reference ref="425164168"/>
 							<reference ref="579971712"/>
 							<reference ref="1010469920"/>
-							<reference ref="176575608"/>
+							<reference ref="872900601"/>
 						</object>
 						<reference key="parent" ref="379814623"/>
 					</object>
@@ -6831,7 +6831,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1095</int>
-						<reference key="object" ref="176575608"/>
+						<reference key="object" ref="872900601"/>
 						<reference key="parent" ref="720053764"/>
 					</object>
 				</object>
@@ -8077,13 +8077,13 @@
 				<string>NSMenuMixedState</string>
 				<string>NSSwitch</string>
 				<string>Pic_GreatJob</string>
+				<string>Trombone</string>
 				<string>doitlive</string>
 				<string>happyCamper</string>
 				<string>j-crickett</string>
-				<string>original</string>
 				<string>rim-shot-johnny-utah</string>
 				<string>the_more_you_know2</string>
-				<string>vuvuzelas-300x230</string>
+				<string>vuvuzela</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
@@ -8091,13 +8091,13 @@
 				<string>{7, 2}</string>
 				<string>{15, 15}</string>
 				<string>{442, 302}</string>
+				<string>{256, 256}</string>
 				<string>{476.94031413279737, 361}</string>
 				<string>{512, 427}</string>
 				<string>{408, 426}</string>
-				<string>{500, 357}</string>
 				<string>{525, 394}</string>
 				<string>{561, 370}</string>
-				<string>{300, 230}</string>
+				<string>{512, 512}</string>
 			</object>
 		</object>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
