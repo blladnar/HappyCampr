@@ -71,8 +71,41 @@ void NSLogRect(NSRect rect)
    return YES;
 }
 
+-(BOOL)application:(NSApplication *)sender openFiles:(NSArray *)filenames
+{
+   NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
+   for( NSString *filename in filenames )
+   {      
+      [campfire postFile:filename toRoom:roomID completionHandler:^(UploadFile *file, NSError *error){
+         NSLog(@"%@", file.fullURL);
+      }];
+   }
+   return YES;
+}
+
+-(void)showURLSheet
+{
+   [NSApp beginSheet:urlSheet modalForWindow:self.window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+   NSView *themeFrame = [[self.window contentView] superview];
+   NSRect titleBarRect = [themeFrame frame];
+   
+   int buttonWidth = 100;
+   int buttonHeight = 20;
+   
+   NSButton *urlButton = [[NSButton alloc] initWithFrame:NSMakeRect(titleBarRect.size.width - buttonWidth - 30, titleBarRect.size.height-buttonHeight-1, buttonWidth, buttonHeight)];
+   [urlButton setTitle:@"Change URL"];
+   [urlButton setBezelStyle:NSRoundRectBezelStyle];
+   [urlButton setTarget:self];
+   [urlButton setAction:@selector(showURLSheet)];
+   
+   [themeFrame addSubview:urlButton];
+   
+
+   
    [[NSApplication sharedApplication] setPresentationOptions:NSFullScreenWindowMask];
    [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary | NSWindowCollectionBehaviorFullScreenAuxiliary];
   // [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
@@ -100,7 +133,10 @@ void NSLogRect(NSRect rect)
       [self getAndUpdateRooms];
       
    }
-   // Insert code here to initialize your application
+   // Insert code here to initialize your application   if( !campfire )
+   {
+      [NSApp beginSheet:urlSheet modalForWindow:[self window] modalDelegate:self didEndSelector:NULL  contextInfo:nil];
+   }
 }
 
 -(void)dealloc
@@ -204,6 +240,12 @@ void NSLogRect(NSRect rect)
             {
                newMessageCount++;
             }
+            
+            if( [message.messageType isEqualToString:@"LeaveMessage"] || [message.messageType isEqualToString:@"JoinMessage"] )
+            {
+               [self getUsersForSelectedRoom];
+            }
+            
             [messages addObject:message];
          }
       }
@@ -285,6 +327,26 @@ void NSLogRect(NSRect rect)
 - (IBAction)openMacrosWindow:(id)sender 
 {
    [macrosWindow makeKeyAndOrderFront:sender];
+}
+
+- (IBAction)saveCampfireURL:(id)sender 
+{
+   if( [[urlBox stringValue] length] )
+   {
+      campfire = [[Campfire alloc] initWithCampfireURL:[urlBox stringValue]];
+      [campfire authenticateUserWithName:@"" password:@"" completionHandler:^(User* user, NSError *error){
+         
+         NSLog(@"%@", user);
+         campfire.authToken = user.authToken;
+         [self getAndUpdateRooms];
+      }];
+      
+      
+      
+   }
+   
+   [NSApp endSheet:urlSheet];
+   [urlSheet orderOut:sender];
 }
 
 - (IBAction)sendMessage:(id)sender 

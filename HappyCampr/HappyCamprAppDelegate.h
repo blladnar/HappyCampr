@@ -33,6 +33,7 @@
    ScreencastProxy *scCommunicator;
    NSString *oldRoomId;
    
+   IBOutlet NSWindow *urlSheet;
    NSString *campfireAuthCode;
    NSButton *saveAuthToken;
    
@@ -55,10 +56,13 @@
    IBOutlet NSWindow *rulesWindow;
    BOOL initialMessageLoad;
    IBOutlet RoboRulesController *rulesController;
+   IBOutlet NSTextField *urlBox;
    
    Campfire *campfire;
    
    User* authenticatedUser;
+   
+   NSString *campfireURL;
 }
 - (IBAction)openRulesWindow:(id)sender;
 
@@ -77,6 +81,7 @@
 - (IBAction)saveAuthToken:(id)sender;
 -(void)sendTextMessage:(NSString*)text;
 - (IBAction)openMacrosWindow:(id)sender;
+- (IBAction)saveCampfireURL:(id)sender;
 
 
 
