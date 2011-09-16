@@ -34,7 +34,7 @@
 
 -(void)getUserNameFromInternetWithID:(NSInteger)userID
 {
-   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/users/%i.xml", userID];
+   NSString *urlString = [NSString stringWithFormat:@"https://randallbrown.campfirenow.com/users/%i.xml", userID];
    NSError* error;
    
    NSString *campfireAuthCode = [[SFHFKeychainUtils getPasswordForUsername:@"HappyCampr" andServiceName:@"HappyCampr:AuthToken" error:&error] retain];

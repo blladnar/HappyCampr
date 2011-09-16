@@ -14,10 +14,10 @@
 #import "MacroController.h"
 #import <HappyCampfire/Campfire.h>
 
-@interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource> {
+@interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate> {
 @private
    NSWindow *window;
-   IBOutlet NSPopUpButton *roomPicker;
+   NSPopUpButton *roomPicker;
    
    IBOutlet NSButton *saveAuthButton;
    IBOutlet NSTextField *apiField;
@@ -32,13 +32,16 @@
    NSString *screencastAuthCode;
    ScreencastProxy *scCommunicator;
    NSString *oldRoomId;
+   NSButton *mainSignIn;
    
-   IBOutlet NSWindow *urlSheet;
    NSString *campfireAuthCode;
    NSButton *saveAuthToken;
    
    IBOutlet NSButton *showEnterMessageCheckbox;
    IBOutlet NSButton *stealModeCheckBox;
+   IBOutlet NSButton *signInWindowButton;
+   IBOutlet NSTextField *userNameField;
+   IBOutlet NSTextField *passwordField;
    NSMutableArray *messages;
    NSMutableArray *allMessages;
    NSInteger lastMessageID;
@@ -57,12 +60,15 @@
    BOOL initialMessageLoad;
    IBOutlet RoboRulesController *rulesController;
    IBOutlet NSTextField *urlBox;
+   IBOutlet NSWindow *signInWindow;
+   IBOutlet NSProgressIndicator *networkSpinner;
    
    Campfire *campfire;
    
    User* authenticatedUser;
    
    NSString *campfireURL;
+   int networkCommunications;
 }
 - (IBAction)openRulesWindow:(id)sender;
 
@@ -83,6 +89,8 @@
 - (IBAction)openMacrosWindow:(id)sender;
 - (IBAction)saveCampfireURL:(id)sender;
 
+-(void)incrementNetworkActivity;
+-(void)decrementNetworkActivity;
 
 
 @property (assign) IBOutlet NSTextField *messageField;

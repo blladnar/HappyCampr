@@ -34,8 +34,10 @@ void NSLogRect(NSRect rect)
 {
    if( !authenticatedUser )
    {
+      [self incrementNetworkActivity];
       [campfire getAuthenticatedUserInfo:^(User* user, NSError *error){
          authenticatedUser = [user retain];
+         [self decrementNetworkActivity];
       }];
    }
    return authenticatedUser;
@@ -85,30 +87,74 @@ void NSLogRect(NSRect rect)
 
 -(void)showURLSheet
 {
-   [NSApp beginSheet:urlSheet modalForWindow:self.window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+   [NSApp beginSheet:signInWindow modalForWindow:self.window modalDelegate:self didEndSelector:NULL contextInfo:nil];
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize
+{
+   NSButton *closeButton = [window standardWindowButton:NSWindowCloseButton];
+   NSButton *zoomButton = [window standardWindowButton:NSWindowZoomButton];
+   NSButton *minimizeButton = [window standardWindowButton:NSWindowMiniaturizeButton];
+   
+   closeButton.frame = NSMakeRect(closeButton.frame.origin.x+5, closeButton.frame.origin.y-12, closeButton.frame.size.height, closeButton.frame.size.width);
+   zoomButton.frame = NSMakeRect(zoomButton.frame.origin.x+5, zoomButton.frame.origin.y-12, zoomButton.frame.size.height, zoomButton.frame.size.width);
+   minimizeButton.frame = NSMakeRect(minimizeButton.frame.origin.x+5, minimizeButton.frame.origin.y-12, minimizeButton.frame.size.height, minimizeButton.frame.size.width);  
+   
+   return proposedFrameSize;
+}
+
+-(void)windowDidResize:(NSNotification *)notification
+{
+   NSButton *closeButton = [window standardWindowButton:NSWindowCloseButton];
+   NSButton *zoomButton = [window standardWindowButton:NSWindowZoomButton];
+   NSButton *minimizeButton = [window standardWindowButton:NSWindowMiniaturizeButton];
+   
+   closeButton.frame = NSMakeRect(closeButton.frame.origin.x+5, closeButton.frame.origin.y-12, closeButton.frame.size.height, closeButton.frame.size.width);
+   zoomButton.frame = NSMakeRect(zoomButton.frame.origin.x+5, zoomButton.frame.origin.y-12, zoomButton.frame.size.height, zoomButton.frame.size.width);
+   minimizeButton.frame = NSMakeRect(minimizeButton.frame.origin.x+5, minimizeButton.frame.origin.y-12, minimizeButton.frame.size.height, minimizeButton.frame.size.width);  
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+   networkCommunications = 0;
+//   [[NSApplication sharedApplication] setPresentationOptions:NSFullScreenWindowMask];
+//   [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary | NSWindowCollectionBehaviorFullScreenAuxiliary];
+
+   roomPicker = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(78, window.frame.size.height - 30 - 9, 200, 30)];
+   [roomPicker setAction:@selector(roomPicked:)];
+   [roomPicker setTarget:self];
+   [roomPicker setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
+   [roomPicker setBezelStyle:NSRoundedBezelStyle];
+   [roomPicker setBezelStyle:NSTexturedRoundedBezelStyle];
+   
+   NSRect logoRect = NSMakeRect(window.frame.size.width-45 - 5, window.frame.size.height-45, 45, 45);
+   NSImageView *logoView = [[NSImageView alloc] initWithFrame:logoRect];
+   logoView.image = [NSImage imageNamed:@"happyCamper"];
+   [logoView setAutoresizingMask:NSViewMinXMargin | NSViewMinYMargin];
+   
    NSView *themeFrame = [[self.window contentView] superview];
    NSRect titleBarRect = [themeFrame frame];
-   
-   int buttonWidth = 100;
-   int buttonHeight = 20;
-   
-   NSButton *urlButton = [[NSButton alloc] initWithFrame:NSMakeRect(titleBarRect.size.width - buttonWidth - 30, titleBarRect.size.height-buttonHeight-1, buttonWidth, buttonHeight)];
-   [urlButton setTitle:@"Change URL"];
-   [urlButton setBezelStyle:NSRoundRectBezelStyle];
-   [urlButton setTarget:self];
-   [urlButton setAction:@selector(showURLSheet)];
-   
-   [themeFrame addSubview:urlButton];
-   
 
    
-   [[NSApplication sharedApplication] setPresentationOptions:NSFullScreenWindowMask];
-   [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary | NSWindowCollectionBehaviorFullScreenAuxiliary];
-  // [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
+   mainSignIn = [[NSButton alloc] initWithFrame:NSMakeRect(titleBarRect.size.width - 200, titleBarRect.size.height - 30-8, 100, 30)];
+   
+
+   [mainSignIn setTitle:@"Sign In"];
+   [mainSignIn setTarget:self];
+   [mainSignIn setAction:@selector(showURLSheet)];
+   [mainSignIn setBezelStyle:NSTexturedRoundedBezelStyle];
+   [mainSignIn setAutoresizingMask:NSViewMinXMargin | NSViewMinYMargin];
+   
+   networkSpinner = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(titleBarRect.size.width - 80, titleBarRect.size.height-30, 20, 20)];
+   [networkSpinner setDisplayedWhenStopped:NO];
+   [networkSpinner setStyle:NSProgressIndicatorSpinningStyle];
+   [networkSpinner setAutoresizingMask:NSViewMinXMargin | NSViewMinYMargin];
+
+   [themeFrame addSubview:roomPicker];
+   [themeFrame addSubview:logoView];
+   [themeFrame addSubview:mainSignIn];
+   [themeFrame addSubview:networkSpinner];
+     // [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
 
    initialMessageLoad = YES;
  
@@ -122,21 +168,16 @@ void NSLogRect(NSRect rect)
    
    rooms = [NSMutableArray new];
    
-   NSError *error;
-   campfireAuthCode = [[SFHFKeychainUtils getPasswordForUsername:@"HappyCampr" andServiceName:@"HappyCampr:AuthToken" error:&error] retain];
-   
-   campfire = [[Campfire alloc] initWithCampfireURL:@"https://bravoteam.campfirenow.com"];
-   
-   if( campfireAuthCode )
-   {
-      campfire.authToken = campfireAuthCode;
-      [self getAndUpdateRooms];
-      
-   }
-   // Insert code here to initialize your application   if( !campfire )
-   {
-      [NSApp beginSheet:urlSheet modalForWindow:[self window] modalDelegate:self didEndSelector:NULL  contextInfo:nil];
-   }
+//   NSError *error;
+//   campfireAuthCode = [[SFHFKeychainUtils getPasswordForUsername:@"HappyCampr" andServiceName:@"HappyCampr:AuthToken" error:&error] retain];
+//   
+//   if( campfireAuthCode )
+//   {
+//      campfire = [[Campfire alloc] initWithCampfireURL:@"https://randallbrown.campfirenow.com"];
+//      campfire.authToken = campfireAuthCode;
+//      [self getAndUpdateRooms];
+//      
+//   }
 }
 
 -(void)dealloc
@@ -196,18 +237,23 @@ void NSLogRect(NSRect rect)
 {
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    
-   NSString *urlString = [NSString stringWithFormat:@"https://bravoteam.campfirenow.com/room/%@/recent.xml?since_message_id=%i",roomID, lastMessageID];
+   NSString *urlString = [NSString stringWithFormat:@"https://randallbrown.campfirenow.com/room/%@/recent.xml?since_message_id=%i",roomID, lastMessageID];
    
    messages = [[NSMutableArray alloc] init];
    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
    
    [request addRequestHeader:@"Content-Type" value:@"application/xml"];
    [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-   [request setUsername:campfireAuthCode];
+   [request setUsername:[campfire authToken]];
    [request setPassword:@"X"];
    
+   [request setFailedBlock:^{
+      NSLog(@"%@", [request error]); 
+      [self decrementNetworkActivity];
+   }];
+   
    [request setCompletionBlock:^{
-
+      [self decrementNetworkActivity];
       NSString *responseString = [request responseString];
 
       NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithXMLString:responseString options:NSXMLDocumentTidyXML error:nil] autorelease];
@@ -297,6 +343,7 @@ void NSLogRect(NSRect rect)
       }
    }];
    
+   [self incrementNetworkActivity];
    [request startAsynchronous];   
 }
 
@@ -334,19 +381,34 @@ void NSLogRect(NSRect rect)
    if( [[urlBox stringValue] length] )
    {
       campfire = [[Campfire alloc] initWithCampfireURL:[urlBox stringValue]];
-      [campfire authenticateUserWithName:@"" password:@"" completionHandler:^(User* user, NSError *error){
+      
+      [self incrementNetworkActivity];
+      [campfire authenticateUserWithName:[userNameField stringValue] password:[passwordField stringValue] completionHandler:^(User* user, NSError *error){
          
-         NSLog(@"%@", user);
-         campfire.authToken = user.authToken;
-         [self getAndUpdateRooms];
+         [self decrementNetworkActivity];
+         if( user )
+         {
+            NSLog(@"%@", user);
+            campfire.authToken = user.authToken;
+            [self getAndUpdateRooms];
+            
+            NSError *saveerror;
+            [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&saveerror];
+            [apiField setHidden:YES];
+            [mainSignIn setTitle:@"Sign Out"];
+         }
+         else
+         {
+            [[NSAlert alertWithError:error] runModal];
+         }
       }];
       
       
       
    }
    
-   [NSApp endSheet:urlSheet];
-   [urlSheet orderOut:sender];
+   [NSApp endSheet:signInWindow];
+   [signInWindow orderOut:sender];
 }
 
 - (IBAction)sendMessage:(id)sender 
@@ -431,34 +493,12 @@ void NSLogRect(NSRect rect)
          [rooms addObject:room];
       }
       
-      NSError *error;
-      [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
-      [apiField setHidden:YES];
       [roomPicker selectItemAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:@"SelectedRoom"]];
       [self roomPicked:nil];
       [[NSUserDefaults standardUserDefaults] synchronize];         
    }];
    
    [self getAuthenticatedUser];
-}
-
-- (IBAction)saveAuthToken:(id)sender 
-{
-   if( [campfireAuthCode length] )
-   {
-      [saveAuthButton setTitle:@"Save"];
-      campfireAuthCode = @"";
-      [apiField setHidden:NO];
-      [roomPicker removeAllItems];
-      NSError *error;
-      [SFHFKeychainUtils storeUsername:@"HappyCampr" andPassword:campfireAuthCode forServiceName:@"HappyCampr:AuthToken" updateExisting:YES error:&error];
-   }
-   else
-   {
-      campfireAuthCode = [[apiField stringValue] retain];
-      campfire.authToken = campfireAuthCode;
-      [self getAndUpdateRooms];
-   }
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
@@ -523,5 +563,20 @@ void NSLogRect(NSRect rect)
 - (IBAction)openRulesWindow:(id)sender 
 {
    [rulesWindow makeKeyAndOrderFront:sender];
+}
+
+-(void)incrementNetworkActivity
+{
+   networkCommunications++;
+
+   [networkSpinner startAnimation:nil];
+}
+-(void)decrementNetworkActivity
+{
+   networkCommunications--;
+   if( networkCommunications <= 0 )
+   {
+      [networkSpinner stopAnimation:nil];
+   }
 }
 @end
