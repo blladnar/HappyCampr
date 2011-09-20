@@ -337,7 +337,7 @@ void NSLogRect(NSRect rect)
             NSDockTile *tile = [[NSApplication sharedApplication] dockTile];
             numberOfUnreadMessages += [messages count];
             
-            [tile setBadgeLabel:[NSString stringWithFormat:@"%i", newMessageCount]];
+            [tile setBadgeLabel:[NSString stringWithFormat:@"%i", numberOfUnreadMessages]];
             [[NSApplication sharedApplication] requestUserAttention:NSInformationalRequest];
          }
       }

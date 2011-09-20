@@ -91,6 +91,7 @@
 
 -(void)incrementNetworkActivity;
 -(void)decrementNetworkActivity;
+-(void)getAndUpdateRooms;
 
 
 @property (assign) IBOutlet NSTextField *messageField;
