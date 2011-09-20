@@ -15,6 +15,9 @@
 		70A3EB8B13ECC36100150E41 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8A13ECC36100150E41 /* MessageTableViewController.m */; };
 		70A3EB8F13ECCBA900150E41 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB8E13ECCBA800150E41 /* MessageView.m */; };
 		70A3EB9B13ECD15700150E41 /* NSString+FindURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */; };
+		70A68F261429530B00BCE30D /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A68F251429530B00BCE30D /* Growl.framework */; };
+		70A68F291429533600BCE30D /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 70A68F251429530B00BCE30D /* Growl.framework */; };
+		70A68F301429543200BCE30D /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 70A68F2F1429543200BCE30D /* Growl Registration Ticket.growlRegDict */; };
 		70BDE04A13F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE04913F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.m */; };
 		70BDE04E13F8594F00FC2C93 /* RoboRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE04D13F8594F00FC2C93 /* RoboRule.m */; };
 		70BDE05113F86FCD00FC2C93 /* RoboRulesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BDE05013F86FCC00FC2C93 /* RoboRulesController.m */; };
@@ -74,6 +77,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		70A68F281429532100BCE30D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				70A68F291429533600BCE30D /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7094E439141863D7002A09C5 /* HappyCampfire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HappyCampfire.framework; sourceTree = "<group>"; };
 		7094E43D1419A4EB002A09C5 /* HappyCampr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HappyCampr.entitlements; sourceTree = "<group>"; };
@@ -87,6 +103,8 @@
 		70A3EB8E13ECCBA800150E41 /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		70A3EB9913ECD15700150E41 /* NSString+FindURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FindURLs.h"; sourceTree = "<group>"; };
 		70A3EB9A13ECD15700150E41 /* NSString+FindURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FindURLs.m"; sourceTree = "<group>"; };
+		70A68F251429530B00BCE30D /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		70A68F2F1429543200BCE30D /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		70BDE04813F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+AutomaticLinkDetection.h"; sourceTree = "<group>"; };
 		70BDE04913F8377300FC2C93 /* NSTextView+AutomaticLinkDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+AutomaticLinkDetection.m"; sourceTree = "<group>"; };
 		70BDE04C13F8594F00FC2C93 /* RoboRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoboRule.h; sourceTree = "<group>"; };
@@ -192,6 +210,7 @@
 				F116417313D0737600A528F8 /* SystemConfiguration.framework in Frameworks */,
 				F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */,
 				7094E43A141863D7002A09C5 /* HappyCampfire.framework in Frameworks */,
+				70A68F261429530B00BCE30D /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +254,7 @@
 		F116413D13D0736200A528F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70A68F251429530B00BCE30D /* Growl.framework */,
 				F116413E13D0736200A528F8 /* Cocoa.framework */,
 				F116414013D0736200A528F8 /* Other Frameworks */,
 			);
@@ -315,6 +335,7 @@
 		F116414513D0736200A528F8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				70A68F2F1429543200BCE30D /* Growl Registration Ticket.growlRegDict */,
 				7094E46A1419B9C3002A09C5 /* vuvuzela.png */,
 				7094E46C1419B9FF002A09C5 /* Trombone.png */,
 				F13549EC13D0CD0E00967F63 /* happyCamperIcon.icns */,
@@ -390,6 +411,7 @@
 				F116413613D0736200A528F8 /* Sources */,
 				F116413813D0736200A528F8 /* Resources */,
 				F116413713D0736200A528F8 /* Frameworks */,
+				70A68F281429532100BCE30D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -461,6 +483,7 @@
 				F1B7E5FE13FEF25D005201DF /* happyCamper.png in Resources */,
 				7094E46B1419B9C3002A09C5 /* vuvuzela.png in Resources */,
 				7094E46D1419B9FF002A09C5 /* Trombone.png in Resources */,
+				70A68F301429543200BCE30D /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

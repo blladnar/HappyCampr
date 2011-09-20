@@ -12,6 +12,7 @@
 #import "SFHFKeychainUtils.h"
 #import "RoboRule.h"
 #import "TaskMaster.h"
+#import <Growl/Growl.h>
 
 void NSLogRect(NSRect rect)
 {
@@ -116,6 +117,7 @@ void NSLogRect(NSRect rect)
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+   [GrowlApplicationBridge setGrowlDelegate:self];
    networkCommunications = 0;
 //   [[NSApplication sharedApplication] setPresentationOptions:NSFullScreenWindowMask];
 //   [[self window] setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary | NSWindowCollectionBehaviorFullScreenAuxiliary];
@@ -278,6 +280,12 @@ void NSLogRect(NSRect rect)
          message.messageBody = [[[messageElement elementsForName:@"body"] lastObject] stringValue];
          message.messageType = [[[messageElement elementsForName:@"type"] lastObject] stringValue];
          
+         if( !initialMessageLoad && ![[NSApplication sharedApplication] isActive] )
+         {
+            [GrowlApplicationBridge notifyWithTitle:[NSString stringWithFormat:@"New message from %@", [self usernameForID:message.userID]] description:message.messageBody notificationName:@"New Message" iconData:nil priority:0 isSticky:NO clickContext:nil];
+         }
+         
+         
       //   NSLog(@"%@", message.messageType);
          // ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"]
          if( ![message.messageType isEqualToString:@"TimestampMessage"] )
@@ -287,7 +295,7 @@ void NSLogRect(NSRect rect)
                newMessageCount++;
             }
             
-            if( [message.messageType isEqualToString:@"LeaveMessage"] || [message.messageType isEqualToString:@"JoinMessage"] )
+            if( [message.messageType isEqualToString:@"LeaveMessage"] || [message.messageType isEqualToString:@"JoinMessage"] || [message.messageType isEqualToString:@"EnterMessage"])
             {
                [self getUsersForSelectedRoom];
             }
