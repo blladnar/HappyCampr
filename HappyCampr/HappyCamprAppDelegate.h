@@ -12,7 +12,7 @@
 #import "MessageTableViewController.h"
 #import "RoboRulesController.h"
 #import "MacroController.h"
-#import <HappyCampfire/Campfire.h>
+#import <HappyCampfire/HappyCampfire.h>
 
 @interface HappyCamprAppDelegate : NSObject <NSApplicationDelegate,NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate> {
 @private
@@ -63,9 +63,9 @@
    IBOutlet NSWindow *signInWindow;
    IBOutlet NSProgressIndicator *networkSpinner;
    
-   Campfire *campfire;
+   HappyCampfire *campfire;
    
-   User* authenticatedUser;
+   HCUser* authenticatedUser;
    
    NSString *campfireURL;
    int networkCommunications;
@@ -96,7 +96,7 @@
 
 @property (assign) IBOutlet NSTextField *messageField;
 
--(void)addUserToCache:(User*)user;
+-(void)addUserToCache:(HCUser*)user;
 -(NSString*)usernameForID:(NSInteger)userID;
 
 @end

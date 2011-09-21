@@ -27,7 +27,7 @@
     return self;
 }
 
--(Message*)message
+-(HCMessage*)message
 {
    return message;
 }
@@ -55,7 +55,7 @@
 
       
       NSString *userName = [[[userElement elementsForName:@"name"] lastObject] stringValue];
-      User *user = [[User new] autorelease];
+      HCUser *user = [[HCUser new] autorelease];
       user.userID = [[[[userElement elementsForName:@"id"] lastObject] stringValue] intValue];
       user.name = [[[userElement elementsForName:@"name"] lastObject] stringValue];
       user.email = [[[userElement elementsForName:@"email-address"] lastObject] stringValue];
@@ -74,7 +74,7 @@
    [request startAsynchronous];  
 }
 
--(void)setMessage:(Message *)aMessage
+-(void)setMessage:(HCMessage *)aMessage
 {
    message = aMessage;
    

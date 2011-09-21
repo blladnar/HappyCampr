@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UploadFile : NSObject
+@interface HCUploadFile : NSObject
 
 @property (assign) NSInteger sizeInBytes;
 @property (assign) NSInteger fileID;

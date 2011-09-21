@@ -9,7 +9,7 @@
 #import "MessageTableViewController.h"
 #import "MessageView.h"
 #import "NSString+FindURLs.h"
-#import <HappyCampfire/User.h>
+#import <HappyCampfire/HCUser.h>
 #import "HappyCamprAppDelegate.h"
 
 @implementation MessageTableViewController
@@ -33,7 +33,7 @@
    if( !showJoinKickMessages )
    {
    
-      for( Message *message in messages )
+      for( HCMessage *message in messages )
       {
          if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] && ![message.messageType isEqualToString:@"LeaveMessage"] )
          {
@@ -53,7 +53,7 @@
    
    view.emphasized = row%2 == 0;
    
-   Message *message = [messagesToShow objectAtIndex:row];
+   HCMessage *message = [messagesToShow objectAtIndex:row];
       message.userName = [[[NSApplication sharedApplication] delegate] usernameForID:message.userID];
    
    view.message = message;
@@ -68,7 +68,7 @@
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
 {
-   Message *message = [messagesToShow objectAtIndex:row];
+   HCMessage *message = [messagesToShow objectAtIndex:row];
 
    NSArray *linksInMessage = [message.messageBody arrayOfLinks];
    
@@ -98,7 +98,7 @@
          messagesToShow = [[NSMutableArray alloc] init];
       }
       
-      for( Message *message in messages )
+      for( HCMessage *message in messages )
       {
          if(  ![message.messageType isEqualToString:@"KickMessage"] && ![message.messageType isEqualToString:@"EnterMessage"] && ![message.messageType isEqualToString:@"LeaveMessage"] )
          {

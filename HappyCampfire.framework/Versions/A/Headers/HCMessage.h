@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Message : NSObject {
+@interface HCMessage : NSObject {
 @private
    
 }
+
++(HCMessage*)messageWithJSON:(NSString*)jsonString;
++(HCMessage*)messageWithDictionary:(NSDictionary*)dictionary;
 
 @property (retain) NSDate *timeStamp;
 @property (assign) NSInteger messageId;

@@ -31,12 +31,12 @@ void NSLogRect(NSRect rect)
    numberOfUnreadMessages = 0;
 }
 
--(User*)getAuthenticatedUser
+-(HCUser*)getAuthenticatedUser
 {
    if( !authenticatedUser )
    {
       [self incrementNetworkActivity];
-      [campfire getAuthenticatedUserInfo:^(User* user, NSError *error){
+      [campfire getAuthenticatedUserInfo:^(HCUser* user, NSError *error){
          authenticatedUser = [user retain];
          [self decrementNetworkActivity];
       }];
@@ -48,7 +48,7 @@ void NSLogRect(NSRect rect)
 {
    for( RoboRule *rule in [rulesController rules] )
    {
-      for( Message *message in theMessages )
+      for( HCMessage *message in theMessages )
       {
          if( !NSEqualRanges([message.messageBody rangeOfString:rule.trigger], NSMakeRange(NSNotFound, 0)) && message.userID != [self getAuthenticatedUser].userID )
          {
@@ -68,7 +68,7 @@ void NSLogRect(NSRect rect)
    NSLog(@"%@", filename);
    
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
-   [campfire postFile:filename toRoom:roomID completionHandler:^(UploadFile *file, NSError *error){
+   [campfire postFile:filename toRoom:roomID completionHandler:^(HCUploadFile *file, NSError *error){
       NSLog(@"%@", file.fullURL);
    }];
    return YES;
@@ -79,7 +79,7 @@ void NSLogRect(NSRect rect)
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    for( NSString *filename in filenames )
    {      
-      [campfire postFile:filename toRoom:roomID completionHandler:^(UploadFile *file, NSError *error){
+      [campfire postFile:filename toRoom:roomID completionHandler:^(HCUploadFile *file, NSError *error){
          NSLog(@"%@", file.fullURL);
       }];
    }
@@ -226,7 +226,7 @@ void NSLogRect(NSRect rect)
 {
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    
-   [campfire getRoomWithID:roomID completionHandler:^(Room *room){
+   [campfire getRoomWithID:roomID completionHandler:^(HCRoom *room){
       usersInRoom = [[NSMutableArray alloc] initWithArray:room.users];
       [userCache addObjectsFromArray:usersInRoom];
       
@@ -235,9 +235,17 @@ void NSLogRect(NSRect rect)
    }];      
 }
 
+- (NSRect)window:(NSWindow *)window willPositionSheet:(NSWindow *)sheet usingRect:(NSRect)rect
+{
+   return NSMakeRect(rect.origin.x, rect.origin.y-24, rect.size.width, rect.size.height);
+}
+
 -(void)getMessagesForSelectedRoom
 {
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
+   [campfire getMessagesFromRoom:roomID sinceID:lastMessageID completionHandler:^(NSArray *messages){
+      
+   }];
    
    NSString *urlString = [NSString stringWithFormat:@"https://randallbrown.campfirenow.com/room/%@/recent.xml?since_message_id=%i",roomID, lastMessageID];
    
@@ -267,7 +275,7 @@ void NSLogRect(NSRect rect)
       int newMessageCount = 0;
       for( NSXMLElement *messageElement in messageElements )
       {
-         Message *message = [[Message new] autorelease];
+         HCMessage *message = [[HCMessage new] autorelease];
          
          message.messageId = [[[[messageElement elementsForName:@"id"] lastObject] stringValue] intValue];
          
@@ -357,7 +365,7 @@ void NSLogRect(NSRect rect)
 
 -(NSString*)usernameForID:(NSInteger)userID
 {
-   for( User *user in userCache )
+   for( HCUser *user in userCache )
    {
       if (userID == user.userID ) 
       {
@@ -388,10 +396,10 @@ void NSLogRect(NSRect rect)
 {
    if( [[urlBox stringValue] length] )
    {
-      campfire = [[Campfire alloc] initWithCampfireURL:[urlBox stringValue]];
+      campfire = [[HappyCampfire alloc] initWithCampfireURL:[urlBox stringValue]];
       
       [self incrementNetworkActivity];
-      [campfire authenticateUserWithName:[userNameField stringValue] password:[passwordField stringValue] completionHandler:^(User* user, NSError *error){
+      [campfire authenticateUserWithName:[userNameField stringValue] password:[passwordField stringValue] completionHandler:^(HCUser* user, NSError *error){
          
          [self decrementNetworkActivity];
          if( user )
@@ -450,7 +458,9 @@ void NSLogRect(NSRect rect)
 {
    NSString *roomID = [[rooms objectAtIndex:[roomPicker indexOfSelectedItem]] roomID];
    
-   [campfire sendSound:sound toRoom:roomID];
+   [campfire sendSound:sound toRoom:roomID completionHandler:^(HCMessage *message, NSError* error){
+      
+   }];
 }
 
 - (IBAction)theMoreYouKnowSound:(id)sender 
@@ -494,7 +504,7 @@ void NSLogRect(NSRect rect)
       [saveAuthButton setTitle:@"Sign Out"];
       // Use when fetching text data
       
-      for( Room *room in visibleRooms )
+      for( HCRoom *room in visibleRooms )
       {
          [roomPicker addItemWithTitle:room.name];
          
@@ -524,7 +534,7 @@ void NSLogRect(NSRect rect)
    textField.drawsBackground = NO;
    textField.bezeled = NO;
    
-   User *user = [usersInRoom objectAtIndex:row];
+   HCUser *user = [usersInRoom objectAtIndex:row];
    [textField setStringValue:[user name]];
    
    [rowView addSubview:textField];
@@ -563,7 +573,7 @@ void NSLogRect(NSRect rect)
    return NO;
 }
 
--(void)addUserToCache:(User*)user
+-(void)addUserToCache:(HCUser*)user
 {
    [userCache addObject:user];
 }

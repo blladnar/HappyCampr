@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7094E43A141863D7002A09C5 /* HappyCampfire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094E439141863D7002A09C5 /* HappyCampfire.framework */; };
-		7094E43C1418657B002A09C5 /* HappyCampfire.framework in Resources */ = {isa = PBXBuildFile; fileRef = 7094E439141863D7002A09C5 /* HappyCampfire.framework */; };
+		7070C003142A3739004EC2FA /* HappyCampfire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7070C002142A3739004EC2FA /* HappyCampfire.framework */; };
+		7070C004142A3B9C004EC2FA /* HappyCampfire.framework in Resources */ = {isa = PBXBuildFile; fileRef = 7070C002142A3739004EC2FA /* HappyCampfire.framework */; };
 		7094E46B1419B9C3002A09C5 /* vuvuzela.png in Resources */ = {isa = PBXBuildFile; fileRef = 7094E46A1419B9C3002A09C5 /* vuvuzela.png */; };
 		7094E46D1419B9FF002A09C5 /* Trombone.png in Resources */ = {isa = PBXBuildFile; fileRef = 7094E46C1419B9FF002A09C5 /* Trombone.png */; };
 		70A0914A13FE0FF000EB7D6D /* TaskMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A0914913FE0FF000EB7D6D /* TaskMaster.m */; };
@@ -91,7 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7094E439141863D7002A09C5 /* HappyCampfire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HappyCampfire.framework; sourceTree = "<group>"; };
+		7070C002142A3739004EC2FA /* HappyCampfire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HappyCampfire.framework; sourceTree = "<group>"; };
 		7094E43D1419A4EB002A09C5 /* HappyCampr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HappyCampr.entitlements; sourceTree = "<group>"; };
 		7094E46A1419B9C3002A09C5 /* vuvuzela.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vuvuzela.png; sourceTree = "<group>"; };
 		7094E46C1419B9FF002A09C5 /* Trombone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trombone.png; sourceTree = "<group>"; };
@@ -209,8 +209,8 @@
 				F116417713D0738F00A528F8 /* CoreServices.framework in Frameworks */,
 				F116417313D0737600A528F8 /* SystemConfiguration.framework in Frameworks */,
 				F116413F13D0736200A528F8 /* Cocoa.framework in Frameworks */,
-				7094E43A141863D7002A09C5 /* HappyCampfire.framework in Frameworks */,
 				70A68F261429530B00BCE30D /* Growl.framework in Frameworks */,
+				7070C003142A3739004EC2FA /* HappyCampfire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +228,6 @@
 		F116412F13D0736200A528F8 = {
 			isa = PBXGroup;
 			children = (
-				7094E439141863D7002A09C5 /* HappyCampfire.framework */,
 				F191440413E2F26B0069ECF9 /* libz.dylib */,
 				F13549F113D0D8D300967F63 /* Security.framework */,
 				F13549CF13D08C0300967F63 /* libxml2.2.dylib */,
@@ -254,6 +253,7 @@
 		F116413D13D0736200A528F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7070C002142A3739004EC2FA /* HappyCampfire.framework */,
 				70A68F251429530B00BCE30D /* Growl.framework */,
 				F116413E13D0736200A528F8 /* Cocoa.framework */,
 				F116414013D0736200A528F8 /* Other Frameworks */,
@@ -477,9 +477,9 @@
 				F13549E513D0C25F00967F63 /* j-crickett.jpg in Resources */,
 				F13549E713D0C2A900967F63 /* doitlive.jpeg in Resources */,
 				F13549E913D0C2C900967F63 /* Pic_GreatJob.gif in Resources */,
-				7094E43C1418657B002A09C5 /* HappyCampfire.framework in Resources */,
 				F13549ED13D0CD0E00967F63 /* happyCamperIcon.icns in Resources */,
 				F178CFCC13EC778500A6AD3E /* UserPopoverController.xib in Resources */,
+				7070C004142A3B9C004EC2FA /* HappyCampfire.framework in Resources */,
 				F1B7E5FE13FEF25D005201DF /* happyCamper.png in Resources */,
 				7094E46B1419B9C3002A09C5 /* vuvuzela.png in Resources */,
 				7094E46D1419B9FF002A09C5 /* Trombone.png in Resources */,

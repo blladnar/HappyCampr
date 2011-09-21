@@ -7,14 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <HappyCampfire/Message.h>
+#import <HappyCampfire/HCMessage.h>
 
 @interface MessageView : NSTableRowView
 {
-   Message *message;
+   HCMessage *message;
    NSTextField *usernameField;
 }
 
-@property (retain) Message *message;
+@property (retain) HCMessage *message;
 
 @end

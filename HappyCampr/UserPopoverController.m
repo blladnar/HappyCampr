@@ -7,12 +7,12 @@
 //
 
 #import "UserPopoverController.h"
-#import <HappyCampfire/User.h>
+#import <HappyCampfire/HCUser.h>
 
 @implementation UserPopoverController
 @synthesize positioningView;
 
--(void)showPopoverForUser:(User*)user
+-(void)showPopoverForUser:(HCUser*)user
 {
    if( !popover )
    {
